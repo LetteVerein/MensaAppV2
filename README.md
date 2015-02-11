@@ -19,7 +19,7 @@ Zusätzlich müssen Sie das Projekt "TestActivity" zu einem Library Projekt mach
 Zum Klonen des Projekts wählen Sie File -> Import.<br>
 In dem neuen Fenster wählen Sie im Ordner Git "Projects from Git" aus und bestätigen mit Next.<br>
 Im folgenden Fenster wählen Sie "Clone URI" aus und bestätigen mit Next.<br>
-Im Feld "URI" geben Sie nun diesen Link ein: https://github.com/MarcelHenze/MensaAppV1.git und bestätigen zwei mal mit Next. In dem folgendem Fenster wählen Sie den Ort aus an dem das Projekt gespeichert werden soll und bestätigen zwei mal mit Next und ein mal mit Finish.<br><br>
+Im Feld "URI" geben Sie nun diesen Link ein: https://github.com/MarcelHenze/MensaAppV2.git und bestätigen zwei mal mit Next. In dem folgendem Fenster wählen Sie den Ort aus an dem das Projekt gespeichert werden soll und bestätigen zwei mal mit Next und ein mal mit Finish.<br><br>
 Zuletzt müssen Sie das importierte Projekt mit den in Schritt 1 importierten Libraries verbinden. Dazu wählen Sie das Projekt mit Rechtsklick aus, wählen "Properties" und fügen im Menüpunkt "Android" unter "Library" die beiden Projekte aus Schritt 1 hinzu.
 
 ##Fertig!
