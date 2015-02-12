@@ -19,6 +19,11 @@ public class Zusatzstoff {
 		this.name = name;
 	}
 
+	/**
+	 * Gibt die Datenbank-Id dieses Zusatzstoffs zurück.
+	 * 
+	 * @return Datenbank-Id
+	 */
 	public int getId() {
 		return id;
 	}
@@ -27,6 +32,11 @@ public class Zusatzstoff {
 		this.id = id;
 	}
 
+	/**
+	 * Gibt die Id zurück, die diesen Zusatzstoff im Speiseplan representiert.
+	 * 
+	 * @return die Id, die diesen Zusatzstoff im Speiseplan representiert
+	 */
 	public int getNummer() {
 		return nummer;
 	}

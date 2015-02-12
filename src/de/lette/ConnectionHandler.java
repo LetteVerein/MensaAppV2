@@ -8,7 +8,11 @@ import java.net.HttpURLConnection;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import org.apache.http.client.ClientProtocolException;
@@ -19,47 +23,43 @@ import android.util.Log;
 import com.google.gson.Gson;
 
 import de.lette.mensaplan.server.ClientData;
-import de.lette.mensaplan.server.Speise;
 import de.lette.mensaplan.server.SpeiseArt;
 import de.lette.mensaplan.server.Termin;
 import de.lette.mensaplan.server.Zusatzstoff;
 
 public class ConnectionHandler {
 	public static String urlToServer = "";
-	private static ClientData data;
+	private static List<Tagesplan> tagesPläne;
 
-	public static ClientData getClientData() throws ClientProtocolException,
+	public static List<Tagesplan> getClientData() throws ClientProtocolException,
 			IOException, URISyntaxException {
 		// data = getClientDataFromServer();
-		if (data != null)
-			return data;
-		data = new ClientData();
+		if (tagesPläne != null)
+			return tagesPläne;
+		ClientData data = new ClientData();
 
-		Set<Speise> alleSpeisen = new LinkedHashSet<Speise>();
-		alleSpeisen.add(new Speise(1, "Hamburger", SpeiseArt.VOLLKOST, false, "Fleisch", 9000, 9000, 9000, 9000));
-		alleSpeisen.add(new Speise(2, "Caesar Salat", SpeiseArt.VORSPEISE,false, "Salat", 100, 100, 100, 100));
-		alleSpeisen.add(new Speise(3, "Suppe", SpeiseArt.VORSPEISE, false, "Suppe", 200, 200, 200, 200));
-		alleSpeisen.add(new Speise(4, "Pferde Steak", SpeiseArt.VOLLKOST, false, "Fleisch", 9000, 9000, 9000, 9000));
-		alleSpeisen.add(new Speise(5, "Bio Burger", SpeiseArt.VOLLKOST, true, "Bio", 0, 0, 0, 0));
-		alleSpeisen.add(new Speise(6, "Eis im Eimer", SpeiseArt.DESSERT, false, "Eis", 9000, 9000, 9000, 9000));
+		Set<de.lette.mensaplan.server.Speise> alleSpeisen = new LinkedHashSet<de.lette.mensaplan.server.Speise>();
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(1, "Hamburger", SpeiseArt.VOLLKOST, false, "Fleisch", 9000, 9000, 9000, 9000));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(2, "Caesar Salat", SpeiseArt.VORSPEISE,false, "Salat", 100, 100, 100, 100));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(3, "Suppe", SpeiseArt.VORSPEISE, false, "Suppe", 200, 200, 200, 200));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(4, "Pferde Steak", SpeiseArt.VOLLKOST, false, "Fleisch", 9000, 9000, 9000, 9000));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(5, "Bio Burger", SpeiseArt.VOLLKOST, true, "Bio", 0, 0, 0, 0));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(6, "Eis im Eimer", SpeiseArt.DESSERT, false, "Eis", 9000, 9000, 9000, 9000));
 		
-		alleSpeisen.add(new Speise(7, "Cheeseburger", SpeiseArt.VOLLKOST, false, "Fleisch", 9000, 9000, 9000, 9000));
-		alleSpeisen.add(new Speise(8, "Obelix Salat", SpeiseArt.VORSPEISE,false, "Salat", 100, 100, 100, 100));
-		alleSpeisen.add(new Speise(9, "Leichte Suppe", SpeiseArt.VORSPEISE, false, "Suppe", 200, 200, 200, 200));
-		alleSpeisen.add(new Speise(10, "Kuh Steak", SpeiseArt.VOLLKOST, false, "Fleisch", 9000, 9000, 9000, 9000));
-		alleSpeisen.add(new Speise(11, "Bio Banane", SpeiseArt.VOLLKOST, true, "Bio", 0, 0, 0, 0));
-		alleSpeisen.add(new Speise(12, "Eis im Becher", SpeiseArt.DESSERT, false, "Eis", 9000, 9000, 9000, 9000));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(7, "Cheeseburger", SpeiseArt.VOLLKOST, false, "Fleisch", 9000, 9000, 9000, 9000));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(8, "Obelix Salat", SpeiseArt.VORSPEISE,false, "Salat", 100, 100, 100, 100));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(9, "Leichte Suppe", SpeiseArt.VORSPEISE, false, "Suppe", 200, 200, 200, 200));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(10, "Kuh Steak", SpeiseArt.VOLLKOST, false, "Fleisch", 9000, 9000, 9000, 9000));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(11, "Bio Banane", SpeiseArt.VOLLKOST, true, "Bio", 0, 0, 0, 0));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(12, "Eis im Becher", SpeiseArt.DESSERT, false, "Eis", 9000, 9000, 9000, 9000));
 		
-		alleSpeisen.add(new Speise(13, "Mc Chicken", SpeiseArt.VOLLKOST, false, "Fleisch", 9000, 9000, 9000, 9000));
-		alleSpeisen.add(new Speise(14, "Gurken Salat", SpeiseArt.VORSPEISE,false, "Salat", 100, 100, 100, 100));
-		alleSpeisen.add(new Speise(15, "Schwere Suppe", SpeiseArt.VORSPEISE, false, "Suppe", 200, 200, 200, 200));
-		alleSpeisen.add(new Speise(16, "Kuh Fladen", SpeiseArt.VOLLKOST, false, "Fleisch", 9000, 9000, 9000, 9000));
-		alleSpeisen.add(new Speise(17, "Bio Birne", SpeiseArt.VOLLKOST, true, "Bio", 0, 0, 0, 0));
-		alleSpeisen.add(new Speise(18, "Pudding im Becher", SpeiseArt.DESSERT, false, "Pudding", 9000, 9000, 9000, 9000));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(13, "Mc Chicken", SpeiseArt.VOLLKOST, false, "Fleisch", 9000, 9000, 9000, 9000));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(14, "Gurken Salat", SpeiseArt.VORSPEISE,false, "Salat", 100, 100, 100, 100));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(15, "Schwere Suppe", SpeiseArt.VORSPEISE, false, "Suppe", 200, 200, 200, 200));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(16, "Kuh Fladen", SpeiseArt.VOLLKOST, false, "Fleisch", 9000, 9000, 9000, 9000));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(17, "Bio Birne", SpeiseArt.VOLLKOST, true, "Bio", 0, 0, 0, 0));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(18, "Pudding im Becher", SpeiseArt.DESSERT, false, "Pudding", 9000, 9000, 9000, 9000));
 		data.setSpeisen(alleSpeisen);
-
-		// Log.d("MensaPlan", "Speisen:");
-		// for(Speise sp : alleSpeisen) Log.d("MensaPlan", sp.getName());
 
 		Set<Termin> termine = new LinkedHashSet<Termin>();
 		Time today = new Time(Time.getCurrentTimezone());
@@ -92,19 +92,24 @@ public class ConnectionHandler {
 		termine.add(new Termin(18, new Date(nextWeek.toMillis(false)), 18, new BigDecimal(2.50), false));
 		data.setTermine(termine);
 
-		// Log.d("MensaPlan", "Termine:");
-		// for(Termin t : termine) Log.d("MensaPlan", "" + t.getDatum());
-
 		Set<Zusatzstoff> zusätze = new LinkedHashSet<Zusatzstoff>();
 		zusätze.add(new Zusatzstoff(1, 1, "Kohlenstoffdioxid"));
 		zusätze.add(new Zusatzstoff(2, 2, "Kohlenstofftrioxid"));
 		zusätze.add(new Zusatzstoff(3, 3, "Zucker"));
 		data.setZusatzstoffe(zusätze);
 
-		// Log.d("MensaPlan", "Zusätze:");
-		// for(Zusatzstoff z : zusätze) Log.d("MensaPlan", "" + z.getName());
-
-		return data;
+		tagesPläne = new ArrayList<Tagesplan>();
+		for(Entry<java.util.Date, Map<de.lette.mensaplan.server.Speise, Termin>> dateMap : data.getSpeisenForDate().entrySet()) {
+			// Normalerweise ist jedes Date-Objekt ein Tag, es kann jedoch auch vorkommen, dass 2 Date-Objekte 1 Tag sind.
+			Tagesplan tagesPlan = new Tagesplan(dateMap.getKey());
+			for(Entry<de.lette.mensaplan.server.Speise, Termin> dataMap : dateMap.getValue().entrySet()) {
+				de.lette.mensaplan.server.Speise s = dataMap.getKey();
+				Speise speise = new Speise(s.getName(), s.getArt(), s.isDiät(), dataMap.getValue().getPreis(), s.getBeachte(), s.getKcal(), s.getEiweiß(), s.getFett(), s.getKohlenhydrate(), data.getZusatzstoffe(s));
+				tagesPlan.addSpeise(speise);
+			}
+			tagesPläne.add(tagesPlan);
+		}
+		return tagesPläne;
 	}
 
 	/**

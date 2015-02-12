@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import com.google.gson.Gson;
@@ -142,8 +143,8 @@ public class ClientData {
 	}
 
 	/**
-	 * Gibt eine Map zurück, die zu jedem Date-Objekt eine Map mit einem Termin zu einer Speise enthällt. Achtung! Nicht jedes unterschiedliche Date-Objekt muss auch
-	 * gleich ein anderer Tag sein!<br>
+	 * Gibt eine Map zurück, die zu jedem Date-Objekt eine Map mit einem Termin zu einer Speise enthällt. Achtung! Nicht jedes unterschiedliche
+	 * Date-Objekt muss auch gleich ein anderer Tag sein!<br>
 	 * Bsp: new Date(1000000) und new Date(1000001) sind der selbe Tag aber dennoch unterschiedliche Date-Objekte
 	 * 
 	 * @return Map mit einer Map mit einem Termin zu einer Speise zu einem Date
@@ -171,6 +172,20 @@ public class ClientData {
 
 	public void setSpeisen(Set<Speise> speisen) {
 		this.speisen = speisen;
+	}
+
+	public Set<Date> getTermin(Speise speise) {
+		Map<Date, Map<Speise, Termin>> map = getSpeisenForDate();
+		Set<Date> returnSet = new LinkedHashSet<Date>();
+		for(Entry<Date, Map<Speise, Termin>> entry : map.entrySet()) {
+			Map<Speise, Termin> m = entry.getValue();
+			for(Speise s : m.keySet()) {
+				if(s.getId() == speise.getId()) {
+					returnSet.add(entry.getKey());
+				}
+			}
+		}
+		return returnSet;
 	}
 
 	public Set<Zusatzstoff> getZusatzstoffe() {
