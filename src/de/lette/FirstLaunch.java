@@ -4,9 +4,14 @@ import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.larvalabs.svgandroid.SVGParser;
 
 public class FirstLaunch extends Activity {
 
@@ -22,8 +27,11 @@ public class FirstLaunch extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_first_launch);
 		
-//		TextView tv = (TextView) findViewById(R.id.readme);
-//		tv.setMovementMethod(new ScrollingMovementMethod());
+		ImageView iv = (ImageView) findViewById(R.id.firstLogo);
+		iv.setImageDrawable(SVGParser.getSVGFromResource(getResources(), R.raw.lettelogo).createPictureDrawable());
+		iv.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+		TextView tv = (TextView) findViewById(R.id.readme);
+		tv.setMovementMethod(new ScrollingMovementMethod());
 		Button button = (Button) findViewById(R.id.okay);
 		button.setOnClickListener(new OnClickListener() {
 			@Override

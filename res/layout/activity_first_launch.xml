@@ -6,11 +6,21 @@
     android:orientation="vertical"
     android:gravity="center_vertical"
     tools:context="${relativePackage}.${activityClass}" >
+    
+    <ImageView 
+        android:id="@+id/firstLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="Logo"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="30dp" />
 
     <TextView
+        android:id="@+id/readme"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
+        android:layout_gravity="center_horizontal"
         android:text="@string/firstLaunch"
         android:layout_marginBottom="40dp"
         android:textColor="@color/abc_primary_text_material_light" />

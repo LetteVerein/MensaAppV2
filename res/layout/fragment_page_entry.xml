@@ -9,14 +9,15 @@
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:contentDescription="SpeiseBild"
-        android:paddingRight="5dp"
-        android:paddingLeft="5dp" />
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="10dp" />
 
     <TextView
         android:id="@+id/fragment_page_entry_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingTop="17dp"
+        android:layout_marginTop="5dp"
         android:textColor="@color/abc_primary_text_material_light"
         android:textSize="15sp" />
 
