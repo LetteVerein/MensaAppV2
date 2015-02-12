@@ -50,11 +50,25 @@ public class PageFragment extends Fragment {
 		try {
 			List<Tagesplan> data = ConnectionHandler.getClientData();
 			Drawable vorspeise = SVGParser.getSVGFromResource(getResources(), R.raw.vorspeise).createPictureDrawable();
-			Drawable hauptspeise = SVGParser.getSVGFromResource(getResources(), R.raw.hauptspeise).createPictureDrawable();
-			Drawable nachspeise = SVGParser.getSVGFromResource(getResources(), R.raw.nachspeise).createPictureDrawable();
+			Drawable leichtevollkost = SVGParser.getSVGFromResource(getResources(), R.raw.hauptspeise).createPictureDrawable();
+			Drawable gemüseteller = SVGParser.getSVGFromResource(getResources(), R.raw.gemueseteller).createPictureDrawable();
+			Drawable dessert = SVGParser.getSVGFromResource(getResources(), R.raw.dessert).createPictureDrawable();
 			LinearLayout vorspeisen = (LinearLayout) view.findViewById(R.id.vorspeisen);
-			LinearLayout hauptspeisen = (LinearLayout) view.findViewById(R.id.hauptspeisen);
-			LinearLayout nachspeisen = (LinearLayout) view.findViewById(R.id.nachspeisen);
+			LinearLayout leichtevollkosten = (LinearLayout) view.findViewById(R.id.hauptspeisen);
+			LinearLayout gemüsetellerr = (LinearLayout) view.findViewById(R.id.gemüseteller);
+			LinearLayout desserts = (LinearLayout) view.findViewById(R.id.dessert);
+			
+			
+			Drawable diätvorspeise = SVGParser.getSVGFromResource(getResources(), R.raw.vorspeise).createPictureDrawable();
+			Drawable vegetarisch = SVGParser.getSVGFromResource(getResources(), R.raw.vegetarisch).createPictureDrawable();
+			Drawable diätvollkost = SVGParser.getSVGFromResource(getResources(), R.raw.hauptspeise).createPictureDrawable();
+			Drawable beilagen = SVGParser.getSVGFromResource(getResources(), R.raw.beilagen).createPictureDrawable();
+			Drawable diätdessert = SVGParser.getSVGFromResource(getResources(), R.raw.dessert).createPictureDrawable();
+			LinearLayout diätvorspeisen = (LinearLayout) view.findViewById(R.id.diätvorspeisen);
+			LinearLayout vegetarische = (LinearLayout) view.findViewById(R.id.diätVegetarisch);
+			LinearLayout diätvollkosten = (LinearLayout) view.findViewById(R.id.diätVollkost);
+			LinearLayout beilagenn = (LinearLayout) view.findViewById(R.id.diätBeilagen);
+			LinearLayout diätdesserts = (LinearLayout) view.findViewById(R.id.diätDessert);
 			Calendar c = Calendar.getInstance(Locale.getDefault());
 			for(Tagesplan tag : data) {
 				for(Speise speise : tag.getSpeisen()) {
@@ -80,11 +94,29 @@ public class PageFragment extends Fragment {
 						iv.setImageDrawable(vorspeise);
 						vorspeisen.addView(newView);
 					} else if(speise.getArt() == SpeiseArt.VOLLKOST) {
-						iv.setImageDrawable(hauptspeise);
-						hauptspeisen.addView(newView);
+						iv.setImageDrawable(leichtevollkost);
+						leichtevollkosten.addView(newView);
+					}  else if(speise.getArt() == SpeiseArt.GEMÜSETELLER) {
+						iv.setImageDrawable(gemüseteller);
+						gemüsetellerr.addView(newView);
 					} else if(speise.getArt() == SpeiseArt.DESSERT) {
-						iv.setImageDrawable(nachspeise);
-						nachspeisen.addView(newView);
+						iv.setImageDrawable(dessert);
+						desserts.addView(newView);
+					} else if(speise.getArt() == SpeiseArt.VORSPEISE && speise.isDiät()) {
+						iv.setImageDrawable(diätvorspeise);
+						diätvorspeisen.addView(newView);
+					} else if(speise.getArt() == SpeiseArt.VEGETARISCH && speise.isDiät()) {
+						iv.setImageDrawable(vegetarisch);
+						vegetarische.addView(newView);
+					} else if(speise.getArt() == SpeiseArt.VOLLKOST && speise.isDiät()) {
+						iv.setImageDrawable(diätvollkost);
+						diätvollkosten.addView(newView);
+					} else if(speise.getArt() == SpeiseArt.BEILAGEN && speise.isDiät()) {
+						iv.setImageDrawable(beilagen);
+						beilagenn.addView(newView);
+					} else if(speise.getArt() == SpeiseArt.DESSERT && speise.isDiät()) {
+						iv.setImageDrawable(diätdessert);
+						diätdesserts.addView(newView);
 					}
 				}
 			}

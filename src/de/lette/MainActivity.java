@@ -10,6 +10,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.format.Time;
+import android.util.Log;
 import android.view.Menu;
 import android.widget.Toast;
 
@@ -93,6 +94,7 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerC
 	@Override
 	public void onNavigationDrawerItemSelected(int position) {
 		Toast.makeText(this, "Woche selected -> " + position, Toast.LENGTH_SHORT).show();
+		//TODO mNavigationDrawerFragment.getMenu().get(position).getText(); zum laufen bringen ?
 	}
 
 	@Override
