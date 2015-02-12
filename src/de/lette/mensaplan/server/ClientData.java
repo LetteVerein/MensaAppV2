@@ -12,6 +12,7 @@ import java.util.Set;
 import com.google.gson.Gson;
 
 /**
+ * BITTE NICHT NUTZEN! Diese Klasse dient deserialisierungszwecken.
  * Objekte dieser Klasse werden serialisiert und an den Client zurückgegeben. Alle Daten, die der Client benötigt, kommen hier rein.
  * 
  * @author Tommy Schmidt

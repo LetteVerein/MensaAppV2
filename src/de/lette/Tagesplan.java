@@ -9,6 +9,15 @@ import java.util.Set;
 import de.lette.mensaplan.server.SpeiseArt;
 import de.lette.mensaplan.server.Zusatzstoff;
 
+/**
+ * Diese Klasse representiert im Normalfall einen Tag im Speiseplan und enthällt Informationen zu den Speisen an diesem Tag.<br>
+ * Um genau zu seien repräsentiert diese Klasse ein Date-Objekt und dessen Speisen.<br>
+ * Das bedeutet, dass ein Tag aus meheren Objekten dieser Klasse bestehen kann.<br><br>
+ * 
+ * Tagesplan t1 und Tagesplan t2 können also beide Montag repräsentieren.
+ * 
+ * @author Tommy Schmidt
+ */
 public class Tagesplan {
 	private Date datum;
 	private List<Speise> speisen;

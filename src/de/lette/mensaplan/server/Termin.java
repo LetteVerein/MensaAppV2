@@ -6,6 +6,7 @@ import java.sql.Date;
 import com.google.gson.Gson;
 
 /**
+ * BITTE NICHT NUTZEN! Diese Klasse dient deserialisierungszwecken.
  * Representiert deinen Eintrag aus der Tabelle termine.
  * 
  * @author Tommy Schmidt

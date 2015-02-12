@@ -6,6 +6,7 @@ import java.util.Set;
 import com.google.gson.Gson;
 
 /**
+ * BITTE NICHT NUTZEN! Diese Klasse dient deserialisierungszwecken.
  * Representiert einen Eintrag aus der Tabelle speisen.
  * 
  * @author Tommy Schmidt
