@@ -26,7 +26,7 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerC
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-		
+
 		if (prefs.getBoolean(FIRST_LAUNCH, true)) {
 			Intent intent = new Intent(this, FirstLaunch.class);
 			startActivity(intent);
@@ -38,8 +38,8 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerC
 
 		mNavigationDrawerFragment = (NavigationDrawerFragment) getFragmentManager().findFragmentById(R.id.fragment_drawer);
 		mNavigationDrawerFragment.setup(R.id.fragment_drawer, (DrawerLayout) findViewById(R.id.drawer), mToolbar);
-		
-		//Schließe Drawer
+
+		// Schließe Drawer
 		mNavigationDrawerFragment.closeDrawer();
 
 		// Get the ViewPager and set it's PagerAdapter so that it can display
@@ -92,8 +92,28 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerC
 
 	@Override
 	public void onNavigationDrawerItemSelected(int position) {
-		Toast.makeText(this, "Woche selected -> " + position, Toast.LENGTH_SHORT).show();
-		//TODO mNavigationDrawerFragment.getMenu().get(position).getText(); zum laufen bringen ?
+		switch (position) {
+		case 0:
+			Toast.makeText(this, "Woche selected -> " + position, Toast.LENGTH_SHORT).show();
+			break;
+		case 1:
+			Toast.makeText(this, "Woche selected -> " + position, Toast.LENGTH_SHORT).show();
+			break;
+		case 2:
+			Toast.makeText(this, "Woche selected -> " + position, Toast.LENGTH_SHORT).show();
+			break;
+		case 3:
+			Toast.makeText(this, "Woche selected -> " + position, Toast.LENGTH_SHORT).show();
+			break;
+		case 4:
+			// Aufruf Zusatzstoffe, Allergene
+			break;
+		case 5:
+			// Aufruf Impressum
+			break;
+		default:
+			break;
+		}
 	}
 
 	@Override
