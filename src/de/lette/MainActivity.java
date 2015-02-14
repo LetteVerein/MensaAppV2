@@ -77,8 +77,8 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerC
 		// Setzt den Tab auf den Aktuellen Tag.
 		Time today = new Time(Time.getCurrentTimezone());
 		today.setToNow();
-		if (today.weekDay - 1 < 4) {
-			viewPager.setCurrentItem(today.weekDay - 1);
+		if (today.weekDay <= 5) {
+			viewPager.setCurrentItem(today.weekDay);
 		} else {
 			viewPager.setCurrentItem(0);
 		}
@@ -94,7 +94,7 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerC
 	public void onNavigationDrawerItemSelected(int position) {
 		switch (position) {
 		case 0:
-			Toast.makeText(this, "Woche selected -> " + position, Toast.LENGTH_SHORT).show();
+			Toast.makeText(this, "Woche selected -> " + position, Toast.LENGTH_SHORT).show();			
 			break;
 		case 1:
 			Toast.makeText(this, "Woche selected -> " + position, Toast.LENGTH_SHORT).show();

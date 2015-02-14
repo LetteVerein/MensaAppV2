@@ -23,12 +23,14 @@ public class Speise {
 	private int fett; // fette
 	private int kohlenhydrate; // kohlenhydrate
 	private Set<Integer> zusatzstoffe; // Tabelle zusatzstoffelink
+	private int likes;
+	private int dislikes;
 
 	public Speise() {
 		zusatzstoffe = new LinkedHashSet<Integer>();
 	}
 
-	public Speise(int id, String name, SpeiseArt typ, boolean isDiät, String beachte, int kcal, int eiweiß, int fett, int kohlenhydrate) {
+	public Speise(int id, String name, SpeiseArt typ, boolean isDiät, String beachte, int kcal, int eiweiß, int fett, int kohlenhydrate, int likes, int dislikes) {
 		this();
 		this.id = id;
 		this.name = name;
@@ -39,6 +41,8 @@ public class Speise {
 		this.eiweiß = eiweiß;
 		this.fett = fett;
 		this.kohlenhydrate = kohlenhydrate;
+		this.likes = likes;
+		this.dislikes = dislikes;
 	}
 
 	public int getId() {
@@ -115,6 +119,30 @@ public class Speise {
 
 	public Set<Integer> getZusatzstoffe() {
 		return zusatzstoffe;
+	}
+
+	public int getLikes() {
+		return likes;
+	}
+
+	public void addLikes() {
+		likes += 1;
+	}
+
+	public void remLikes() {
+		likes -= 1;
+	}
+	
+	public int getDislikes() {
+		return dislikes;
+	}
+
+	public void addDislikes() {
+		dislikes += 1;
+	}
+
+	public void remDislikes() {
+		dislikes -= 1;
 	}
 
 	@Override

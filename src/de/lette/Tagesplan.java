@@ -64,9 +64,11 @@ class Speise {
 	private int fett;
 	private int kohlenhydrate;
 	private Set<Zusatzstoff> zusatzstoffe;
+	private int likes;
+	private int dislikes;
 
 	public Speise(String name, SpeiseArt art, boolean isDiät, BigDecimal preis, String beachte, int kcal, int eiweiß, int fett, int kohlenhydrate,
-			Set<Zusatzstoff> zusatzstoffe) {
+			Set<Zusatzstoff> zusatzstoffe, int likes, int dislikes) {
 		this.name = name;
 		this.art = art;
 		this.isDiät = isDiät;
@@ -77,6 +79,8 @@ class Speise {
 		this.fett = fett;
 		this.kohlenhydrate = kohlenhydrate;
 		this.zusatzstoffe = zusatzstoffe;
+		this.likes = likes;
+		this.dislikes = dislikes;
 	}
 
 	public String getName() {
@@ -157,5 +161,29 @@ class Speise {
 
 	public void setZusatzstoffe(Set<Zusatzstoff> zusatzstoffe) {
 		this.zusatzstoffe = zusatzstoffe;
+	}
+
+	public int getLikes() {
+		return likes;
+	}
+
+	public void addLikes() {
+		likes += 1;
+	}
+
+	public void remLikes() {
+		likes -= 1;
+	}
+	
+	public int getDislikes() {
+		return dislikes;
+	}
+
+	public void addDislikes() {
+		dislikes += 1;
+	}
+
+	public void remDislikes() {
+		dislikes -= 1;
 	}
 }

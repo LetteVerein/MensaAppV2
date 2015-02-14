@@ -11,5 +11,21 @@
         \n\nDiese APP ist ausschließlich für Lehrkräfte und SchülerInnen des Lette-Vereins in Berlin gedacht.
         Außenstehenden ist der Besuch der Mensa und das dortige speisen verboten.
       	\n\nMit dem drücken des Okay Buttons bestätigen Sie, dass sie obriges gelesen und zugestimmt haben.</string>
-
+    <string name="impressum">Berufsausbildungszentrum Lette-Verein
+      	    \nStiftung des öffentlichen Rechts
+      	    \nDie Direktorin, Petra Madyda
+      	    \nViktoria-Luise-Platz 6
+      	    \nD-10777 Berlin
+      	    \n\nTelefon <a href="tel:030219940">(030) 21994-0</a>
+      	    \n\n<i>Bankverbindung</i>
+			\nBerliner Bank
+			\nKonto-Nr 5125208 05
+			\nBLZ 100 708 48
+			\n\n<i>Projektmanagement</i>
+			\nJulia von Randow
+			\n\n<i>Redaktion</i>
+			\nDie von den Abteilungen und weiteren Einrichtungen unterbreiteten Angebote unterliegen der redaktionellen Verantwortung der jeweiligen Abteilungsleitungen. Die zuständigen Ansprechpartner/innen sind im Allgemeinen auf den entsprechenden Seiten genannt. Sollten keine Kontaktdaten angegeben sein, kann die redaktionelle Bearbeitung erfragt werden bei:
+			\n\nBerufsausbildungszentrum Lette-Verein
+			\nWebteam <a href="mailto:webteam@lette-verein.de">webteam@lette-verein.de</a>
+			\n\nTelefon <a href="tel:03021994155">(030) 21994-155</a></string>
 </resources>

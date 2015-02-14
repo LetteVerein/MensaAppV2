@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -46,8 +47,10 @@ public class PageFragment extends Fragment {
 	 */
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		View view = inflater.inflate(R.layout.fragment_page, container, false);
+		View view = inflater.inflate(R.layout.fragment_speiseplan, container, false);
 		try {
+			Drawable likeSVG = SVGParser.getSVGFromResource(getResources(), R.raw.like).createPictureDrawable();
+			Drawable dislikeSVG = SVGParser.getSVGFromResource(getResources(), R.raw.dislike).createPictureDrawable();			
 			List<Tagesplan> data = ConnectionHandler.getClientData();
 			Drawable vorspeise = SVGParser.getSVGFromResource(getResources(), R.raw.vorspeise).createPictureDrawable();
 			Drawable leichtevollkost = SVGParser.getSVGFromResource(getResources(), R.raw.hauptspeise).createPictureDrawable();
@@ -71,7 +74,7 @@ public class PageFragment extends Fragment {
 			LinearLayout diätdesserts = (LinearLayout) view.findViewById(R.id.diätDessert);
 			Calendar c = Calendar.getInstance(Locale.getDefault());
 			for(Tagesplan tag : data) {
-				for(Speise speise : tag.getSpeisen()) {
+				for(final Speise speise : tag.getSpeisen()) {
 					// Date Stuff
 					c.setTime(tag.getDatum());
 					// int year = c.get(Calendar.YEAR);
@@ -83,12 +86,48 @@ public class PageFragment extends Fragment {
 					// Add View to ViewGroup
 					View newView = inflater.inflate(R.layout.fragment_page_entry, container, false);
 					ImageView iv = (ImageView) newView.findViewById(R.id.fragment_page_entry_imageView);
+					ImageView like = (ImageView) newView.findViewById(R.id.fragment_page_entry_like);
+					ImageView dislike = (ImageView) newView.findViewById(R.id.fragment_page_entry_dislike);
 					iv.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+					like.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+					like.setImageDrawable(likeSVG);
+					like.setOnClickListener(new OnClickListener() {	
+						boolean clicked = false;
+						@Override
+						public void onClick(View v) {
+							if (clicked){
+								speise.remLikes();
+								clicked = !clicked;
+							}else if(!clicked){
+								speise.addLikes();	
+								clicked = !clicked;
+							}
+						}
+					});
+					dislike.setOnClickListener(new OnClickListener() {
+						boolean clicked = false;
+						@Override
+						public void onClick(View v) {
+							if (clicked){
+								speise.remDislikes();
+								clicked = !clicked;
+							}else if(!clicked){
+								speise.addDislikes();	
+								clicked = !clicked;
+							}
+						}
+					});
+					dislike.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+					dislike.setImageDrawable(dislikeSVG);
 					TextView tv = (TextView) newView.findViewById(R.id.fragment_page_entry_textView);
 					tv.setText(speise.getName() + ", " + speise.getKcal() + " kcal, " + speise.getEiweiß() + " Eiweiße, " + speise.getFett()
 							+ " Fette, " + speise.getKohlenhydrate() + " Kohlenhydrate.\r\n");
 					tv.append("Beachte: " + speise.getBeachte() + "\r\n");
 					tv.append("Preis: " + speise.getPreis() + "€");
+					TextView likeCount = (TextView) newView.findViewById(R.id.fragment_page_entry_like_count);
+					likeCount.setText(speise.getLikes());
+					TextView dislikeCount = (TextView) newView.findViewById(R.id.fragment_page_entry_dislike_count);
+					dislikeCount.setText(speise.getDislikes());
 					
 					if(speise.getArt() == SpeiseArt.VORSPEISE) {
 						iv.setImageDrawable(vorspeise);
