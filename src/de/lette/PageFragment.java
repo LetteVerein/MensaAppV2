@@ -49,8 +49,10 @@ public class PageFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.fragment_speiseplan, container, false);
 		try {
-			Drawable likeSVG = SVGParser.getSVGFromResource(getResources(), R.raw.like).createPictureDrawable();
-			Drawable dislikeSVG = SVGParser.getSVGFromResource(getResources(), R.raw.dislike).createPictureDrawable();			
+			final Drawable like1 = SVGParser.getSVGFromResource(getResources(), R.raw.like1).createPictureDrawable();
+			final Drawable dislike1 = SVGParser.getSVGFromResource(getResources(), R.raw.dislike1).createPictureDrawable();	
+			final Drawable like2 = SVGParser.getSVGFromResource(getResources(), R.raw.like2).createPictureDrawable();
+			final Drawable dislike2 = SVGParser.getSVGFromResource(getResources(), R.raw.dislike2).createPictureDrawable();			
 			List<Tagesplan> data = ConnectionHandler.getClientData();
 			Drawable vorspeise = SVGParser.getSVGFromResource(getResources(), R.raw.vorspeise).createPictureDrawable();
 			Drawable leichtevollkost = SVGParser.getSVGFromResource(getResources(), R.raw.hauptspeise).createPictureDrawable();
@@ -86,20 +88,22 @@ public class PageFragment extends Fragment {
 					// Add View to ViewGroup
 					View newView = inflater.inflate(R.layout.fragment_page_entry, container, false);
 					ImageView iv = (ImageView) newView.findViewById(R.id.fragment_page_entry_imageView);
-					ImageView like = (ImageView) newView.findViewById(R.id.fragment_page_entry_like);
-					ImageView dislike = (ImageView) newView.findViewById(R.id.fragment_page_entry_dislike);
+					final ImageView like = (ImageView) newView.findViewById(R.id.fragment_page_entry_like);
+					final ImageView dislike = (ImageView) newView.findViewById(R.id.fragment_page_entry_dislike);
 					iv.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
 					like.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
-					like.setImageDrawable(likeSVG);
+					like.setImageDrawable(like1);
 					like.setOnClickListener(new OnClickListener() {	
 						boolean clicked = false;
 						@Override
 						public void onClick(View v) {
 							if (clicked){
 								speise.remLikes();
+								like.setImageDrawable(like1);
 								clicked = !clicked;
 							}else if(!clicked){
 								speise.addLikes();	
+								like.setImageDrawable(like2);
 								clicked = !clicked;
 							}
 						}
@@ -110,15 +114,17 @@ public class PageFragment extends Fragment {
 						public void onClick(View v) {
 							if (clicked){
 								speise.remDislikes();
+								dislike.setImageDrawable(dislike1);
 								clicked = !clicked;
 							}else if(!clicked){
-								speise.addDislikes();	
+								speise.addDislikes();
+								dislike.setImageDrawable(dislike2);
 								clicked = !clicked;
 							}
 						}
 					});
 					dislike.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
-					dislike.setImageDrawable(dislikeSVG);
+					dislike.setImageDrawable(dislike1);
 					TextView tv = (TextView) newView.findViewById(R.id.fragment_page_entry_textView);
 					tv.setText(speise.getName() + ", " + speise.getKcal() + " kcal, " + speise.getEiweiß() + " Eiweiße, " + speise.getFett()
 							+ " Fette, " + speise.getKohlenhydrate() + " Kohlenhydrate.\r\n");
