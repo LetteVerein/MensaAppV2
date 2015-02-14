@@ -27,6 +27,7 @@ import de.lette.mensaplan.server.SpeiseArt;
 public class PageFragment extends Fragment {
 	public static final String ARG_PAGE = "ARG_PAGE";
 	private int mPage;
+	boolean isActive = true;
 
 	public static PageFragment newInstance(int page) {
 		Bundle args = new Bundle();
@@ -50,9 +51,9 @@ public class PageFragment extends Fragment {
 		View view = inflater.inflate(R.layout.fragment_speiseplan, container, false);
 		try {
 			final Drawable like1 = SVGParser.getSVGFromResource(getResources(), R.raw.like1).createPictureDrawable();
-			final Drawable dislike1 = SVGParser.getSVGFromResource(getResources(), R.raw.dislike1).createPictureDrawable();	
+			final Drawable dislike1 = SVGParser.getSVGFromResource(getResources(), R.raw.dislike1).createPictureDrawable();
 			final Drawable like2 = SVGParser.getSVGFromResource(getResources(), R.raw.like2).createPictureDrawable();
-			final Drawable dislike2 = SVGParser.getSVGFromResource(getResources(), R.raw.dislike2).createPictureDrawable();			
+			final Drawable dislike2 = SVGParser.getSVGFromResource(getResources(), R.raw.dislike2).createPictureDrawable();
 			List<Tagesplan> data = ConnectionHandler.getClientData();
 			Drawable vorspeise = SVGParser.getSVGFromResource(getResources(), R.raw.vorspeise).createPictureDrawable();
 			Drawable leichtevollkost = SVGParser.getSVGFromResource(getResources(), R.raw.hauptspeise).createPictureDrawable();
@@ -62,8 +63,7 @@ public class PageFragment extends Fragment {
 			LinearLayout leichtevollkosten = (LinearLayout) view.findViewById(R.id.hauptspeisen);
 			LinearLayout gemüsetellerr = (LinearLayout) view.findViewById(R.id.gemüseteller);
 			LinearLayout desserts = (LinearLayout) view.findViewById(R.id.dessert);
-			
-			
+
 			Drawable diätvorspeise = SVGParser.getSVGFromResource(getResources(), R.raw.vorspeise).createPictureDrawable();
 			Drawable vegetarisch = SVGParser.getSVGFromResource(getResources(), R.raw.vegetarisch).createPictureDrawable();
 			Drawable diätvollkost = SVGParser.getSVGFromResource(getResources(), R.raw.hauptspeise).createPictureDrawable();
@@ -75,103 +75,109 @@ public class PageFragment extends Fragment {
 			LinearLayout beilagenn = (LinearLayout) view.findViewById(R.id.diätBeilagen);
 			LinearLayout diätdesserts = (LinearLayout) view.findViewById(R.id.diätDessert);
 			Calendar c = Calendar.getInstance(Locale.getDefault());
-			for(Tagesplan tag : data) {
-				for(final Speise speise : tag.getSpeisen()) {
+			for (Tagesplan tag : data) {
+				for (final Speise speise : tag.getSpeisen()) {
 					// Date Stuff
 					c.setTime(tag.getDatum());
 					// int year = c.get(Calendar.YEAR);
 					// int mounth = c.get(Calendar.MONTH);
 					// int week = c.get(Calendar.WEEK_OF_MONTH);
 					int day = c.get(Calendar.DAY_OF_WEEK);
-					if(day != mPage + 1) continue;
-					
+					if (day != mPage + 1)
+						continue;
+
 					// Add View to ViewGroup
 					View newView = inflater.inflate(R.layout.fragment_page_entry, container, false);
 					ImageView iv = (ImageView) newView.findViewById(R.id.fragment_page_entry_imageView);
 					final ImageView like = (ImageView) newView.findViewById(R.id.fragment_page_entry_like);
 					final ImageView dislike = (ImageView) newView.findViewById(R.id.fragment_page_entry_dislike);
+					final TextView likeCount = (TextView) newView.findViewById(R.id.fragment_page_entry_like_count);
+					likeCount.setText("" + speise.getLikes());
+					final TextView dislikeCount = (TextView) newView.findViewById(R.id.fragment_page_entry_dislike_count);
+					dislikeCount.setText("" + speise.getDislikes());
 					iv.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
 					like.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
 					like.setImageDrawable(like1);
-					like.setOnClickListener(new OnClickListener() {	
+					like.setOnClickListener(new OnClickListener() {
 						boolean clicked = false;
 						@Override
 						public void onClick(View v) {
-							if (clicked){
+							if (clicked) {
 								speise.remLikes();
 								like.setImageDrawable(like1);
 								clicked = !clicked;
-							}else if(!clicked){
-								speise.addLikes();	
+							} else if (!clicked) {
+								speise.addLikes();
 								like.setImageDrawable(like2);
 								clicked = !clicked;
 							}
+							isActive = !isActive;
+							likeCount.setText("" + speise.getLikes());
+							dislike.setClickable(isActive);
 						}
 					});
 					dislike.setOnClickListener(new OnClickListener() {
 						boolean clicked = false;
 						@Override
 						public void onClick(View v) {
-							if (clicked){
+							if (clicked) {
 								speise.remDislikes();
 								dislike.setImageDrawable(dislike1);
 								clicked = !clicked;
-							}else if(!clicked){
+							} else if (!clicked) {
 								speise.addDislikes();
 								dislike.setImageDrawable(dislike2);
 								clicked = !clicked;
 							}
+							isActive = !isActive;
+							dislikeCount.setText("" + speise.getDislikes());
+							like.setClickable(isActive);
 						}
 					});
 					dislike.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
 					dislike.setImageDrawable(dislike1);
 					TextView tv = (TextView) newView.findViewById(R.id.fragment_page_entry_textView);
-					tv.setText(speise.getName() + ", " + speise.getKcal() + " kcal, " + speise.getEiweiß() + " Eiweiße, " + speise.getFett()
-							+ " Fette, " + speise.getKohlenhydrate() + " Kohlenhydrate.\r\n");
+					tv.setText(speise.getName() + ", " + speise.getKcal() + " kcal, " + speise.getEiweiß() + " Eiweiße, " + speise.getFett() + " Fette, " + speise.getKohlenhydrate() + " Kohlenhydrate.\r\n");
 					tv.append("Beachte: " + speise.getBeachte() + "\r\n");
 					tv.append("Preis: " + speise.getPreis() + "€");
-					TextView likeCount = (TextView) newView.findViewById(R.id.fragment_page_entry_like_count);
-					likeCount.setText("" +speise.getLikes());
-					TextView dislikeCount = (TextView) newView.findViewById(R.id.fragment_page_entry_dislike_count);
-					dislikeCount.setText("" +speise.getDislikes());
-					
-					if(speise.getArt() == SpeiseArt.VORSPEISE) {
+
+					if (speise.getArt() == SpeiseArt.VORSPEISE) {
 						iv.setImageDrawable(vorspeise);
 						vorspeisen.addView(newView);
-					} else if(speise.getArt() == SpeiseArt.VOLLKOST) {
+					} else if (speise.getArt() == SpeiseArt.VOLLKOST) {
 						iv.setImageDrawable(leichtevollkost);
 						leichtevollkosten.addView(newView);
-					}  else if(speise.getArt() == SpeiseArt.GEMÜSETELLER) {
+					} else if (speise.getArt() == SpeiseArt.GEMÜSETELLER) {
 						iv.setImageDrawable(gemüseteller);
 						gemüsetellerr.addView(newView);
-					} else if(speise.getArt() == SpeiseArt.DESSERT) {
+					} else if (speise.getArt() == SpeiseArt.DESSERT) {
 						iv.setImageDrawable(dessert);
 						desserts.addView(newView);
-					} else if(speise.getArt() == SpeiseArt.VORSPEISE && speise.isDiät()) {
+					} else if (speise.getArt() == SpeiseArt.VORSPEISE && speise.isDiät()) {
 						iv.setImageDrawable(diätvorspeise);
 						diätvorspeisen.addView(newView);
-					} else if(speise.getArt() == SpeiseArt.VEGETARISCH && speise.isDiät()) {
+					} else if (speise.getArt() == SpeiseArt.VEGETARISCH && speise.isDiät()) {
 						iv.setImageDrawable(vegetarisch);
 						vegetarische.addView(newView);
-					} else if(speise.getArt() == SpeiseArt.VOLLKOST && speise.isDiät()) {
+					} else if (speise.getArt() == SpeiseArt.VOLLKOST && speise.isDiät()) {
 						iv.setImageDrawable(diätvollkost);
 						diätvollkosten.addView(newView);
-					} else if(speise.getArt() == SpeiseArt.BEILAGEN && speise.isDiät()) {
+					} else if (speise.getArt() == SpeiseArt.BEILAGEN && speise.isDiät()) {
 						iv.setImageDrawable(beilagen);
 						beilagenn.addView(newView);
-					} else if(speise.getArt() == SpeiseArt.DESSERT && speise.isDiät()) {
+					} else if (speise.getArt() == SpeiseArt.DESSERT && speise.isDiät()) {
 						iv.setImageDrawable(diätdessert);
 						diätdesserts.addView(newView);
 					}
 				}
 			}
-		} catch(ClientProtocolException e) {
+		} catch (ClientProtocolException e) {
 			e.printStackTrace();
-		} catch(IOException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
-		} catch(URISyntaxException e) {
+		} catch (URISyntaxException e) {
 			e.printStackTrace();
-		} catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return view;
