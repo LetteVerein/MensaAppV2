@@ -131,9 +131,9 @@ public class PageFragment extends Fragment {
 					tv.append("Beachte: " + speise.getBeachte() + "\r\n");
 					tv.append("Preis: " + speise.getPreis() + "€");
 					TextView likeCount = (TextView) newView.findViewById(R.id.fragment_page_entry_like_count);
-					likeCount.setText(speise.getLikes());
+					likeCount.setText("" +speise.getLikes());
 					TextView dislikeCount = (TextView) newView.findViewById(R.id.fragment_page_entry_dislike_count);
-					dislikeCount.setText(speise.getDislikes());
+					dislikeCount.setText("" +speise.getDislikes());
 					
 					if(speise.getArt() == SpeiseArt.VORSPEISE) {
 						iv.setImageDrawable(vorspeise);
