@@ -13,48 +13,46 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 public class ZusaetzeFragment extends Fragment {
-	
-	InputStream zusatzStream;
-	InputStream allergenStream;
-	
+
 	public static ZusaetzeFragment newInstance(int page) {
 		ZusaetzeFragment fragment = new ZusaetzeFragment();
 		return fragment;
 	}
-	
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		zusatzStream = getResources().openRawResource(R.raw.zusaetze);
-		allergenStream = getResources().openRawResource(R.raw.allergene);
 	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.fragment_zusaetze, container, false);
-		
-		TextView zusaetze = (TextView) view.findViewById(R.id.zusaetze);
-		TextView allergene = (TextView) view.findViewById(R.id.allergene);
-		
-		try {
-			zusaetze.setText(readRawTextFile(zusatzStream));
-			allergene.setText(readRawTextFile(allergenStream));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}	
-		
+
+		InputStream zusätze = getResources().openRawResource(R.raw.zusaetze);
+		InputStream allergene = getResources().openRawResource(R.raw.allergene);
+
+		TextView zusatzView = (TextView) view.findViewById(R.id.zusaetze);
+		TextView allergenView = (TextView) view.findViewById(R.id.allergene);
+
+		zusatzView.setText(readFile(zusätze));
+		allergenView.setText(readFile(allergene));
+
 		return view;
 	}
-	
-	public static String readRawTextFile(InputStream i) throws IOException
-	{
-	    BufferedReader reader = new BufferedReader(new InputStreamReader(i));
-	    String line = reader.readLine();
-	    StringBuilder text = new StringBuilder();
-	    while (line != null) {
-	            text.append(line);
-	            text.append('\n');
-	        }
-	    return text.toString();
+
+	private StringBuilder readFile(InputStream is) {
+		BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+		StringBuilder strBuild = new StringBuilder();
+		String line;
+		try {
+			while ((line = reader.readLine()) != null) {
+				strBuild.append(line);
+				strBuild.append("\n");
+			}
+			reader.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return strBuild;
 	}
 }

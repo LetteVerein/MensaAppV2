@@ -24,15 +24,15 @@ import com.larvalabs.svgandroid.SVGParser;
 import de.lette.mensaplan.server.SpeiseArt;
 
 // In this case, the fragment displays simple text based on the page
-public class PageFragment extends Fragment {
+public class SpeiseplanFragment extends Fragment {
 	public static final String ARG_PAGE = "ARG_PAGE";
 	private int mPage;
 	boolean isActive = true;
 
-	public static PageFragment newInstance(int page) {
+	public static SpeiseplanFragment newInstance(int page) {
 		Bundle args = new Bundle();
 		args.putInt(ARG_PAGE, page);
-		PageFragment fragment = new PageFragment();
+		SpeiseplanFragment fragment = new SpeiseplanFragment();
 		fragment.setArguments(args);
 		return fragment;
 	}
