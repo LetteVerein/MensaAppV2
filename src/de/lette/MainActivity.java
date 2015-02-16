@@ -1,5 +1,7 @@
 package de.lette;
 
+import java.util.ArrayList;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -9,6 +11,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.widget.Toast;
 
@@ -18,11 +21,14 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerC
 	private NavigationDrawerFragment mNavigationDrawerFragment;
 	private static final String FIRST_LAUNCH = "first_launch";
 	private Fragment tabFragment;
+	private ArrayList<Integer> positioning;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		positioning = new ArrayList<Integer>();
+		
 		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
 
 		if (prefs.getBoolean(FIRST_LAUNCH, true)) {
@@ -88,12 +94,12 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerC
 		case 4:
 			// Aufruf Zusatzstoffe, Allergene
 			fragment = new ZusaetzeFragment();
-			transaction.hide(tabFragment);
+//			transaction.hide(tabFragment);
 			break;
 		case 5:
 			// Aufruf Impressum
 			fragment = new ImpressFragment();
-			transaction.hide(tabFragment);
+//			transaction.hide(tabFragment);
 			break;
 		default:
 			break;
@@ -103,7 +109,8 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerC
 			// fragment,
 			// and add the transaction to the back stack so the user can
 			// navigate back
-			transaction.add(R.id.fragment_container, fragment).addToBackStack(null).commit();
+			positioning.add(position);
+			transaction.replace(R.id.fragment_container, fragment).addToBackStack(null).commit();
 		}
 	}
 
@@ -112,7 +119,20 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerC
 		if (mNavigationDrawerFragment.isDrawerOpen()){
 			mNavigationDrawerFragment.closeDrawer();			
 		} else {
-			super.onBackPressed();
+			if(positioning.get(positioning.size()-1) != 0){
+				super.onBackPressed();
+				if(positioning.size() > 1){
+					mNavigationDrawerFragment.getAdapter().selectPosition(positioning.get(positioning.size()-2));
+				}else {
+					mNavigationDrawerFragment.getAdapter().selectPosition(0);
+				}
+				positioning.remove(positioning.size()-1);
+			} else {
+				positioning.removeAll(positioning);
+				positioning.add(0);
+				Toast.makeText(this, "Zum Beenden nochmal drücken.", Toast.LENGTH_SHORT).show();
+			}			
 		}
+		Log.e("Length", +positioning.size()+"");
 	}
 }

@@ -31,8 +31,13 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
     private boolean mUserLearnedDrawer;
     private boolean mFromSavedInstanceState;
     private int mCurrentSelectedPosition;
+    private NavigationDrawerAdapter adapter;
 
-    @Nullable
+	public NavigationDrawerAdapter getAdapter() {
+		return adapter;
+	}
+
+	@Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_navigation_drawer, container, false);
@@ -43,7 +48,7 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
         mDrawerList.setHasFixedSize(true);
 
         final List<NavigationItem> navigationItems = getMenu();
-        NavigationDrawerAdapter adapter = new NavigationDrawerAdapter(navigationItems);
+        adapter = new NavigationDrawerAdapter(navigationItems);
         adapter.setNavigationDrawerCallbacks(this);
         mDrawerList.setAdapter(adapter);
         selectItem(mCurrentSelectedPosition);

@@ -1,7 +1,5 @@
 package de.lette;
 
-import com.google.samples.apps.iosched.ui.widget.SlidingTabLayout;
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -10,6 +8,8 @@ import android.text.format.Time;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.google.samples.apps.iosched.ui.widget.SlidingTabLayout;
 
 public class TabFragment extends Fragment {
 
@@ -52,12 +52,11 @@ public class TabFragment extends Fragment {
 		// Setzt den Tab auf den Aktuellen Tag.
 		Time today = new Time(Time.getCurrentTimezone());
 		today.setToNow();
-		if (today.weekDay <= 5) {
-			viewPager.setCurrentItem(today.weekDay);
+		if (today.weekDay >= 1 && today.weekDay <= 5) {
+			viewPager.setCurrentItem(today.weekDay-1);
 		} else {
 			viewPager.setCurrentItem(0);
 		}
-
 		return view;
 	}
 }
