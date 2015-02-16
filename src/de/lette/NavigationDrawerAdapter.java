@@ -16,6 +16,10 @@ public class NavigationDrawerAdapter extends RecyclerView.Adapter<NavigationDraw
 	private NavigationDrawerCallbacks mNavigationDrawerCallbacks;
 	private int mSelectedPosition;
 	private int mTouchedPosition = -1;
+	
+	public int getmSelectedPosition() {
+		return mSelectedPosition;
+	}
 
 	public NavigationDrawerAdapter(List<NavigationItem> data) {
 		mData = data;

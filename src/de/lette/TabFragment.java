@@ -13,6 +13,12 @@ import com.google.samples.apps.iosched.ui.widget.SlidingTabLayout;
 
 public class TabFragment extends Fragment {
 
+	
+	
+	public static TabFragment newInstance(int position) {
+		return new TabFragment();
+	}
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.tabs, container, false);
@@ -57,6 +63,8 @@ public class TabFragment extends Fragment {
 		} else {
 			viewPager.setCurrentItem(0);
 		}
+		view.invalidate();
+		view.requestLayout();
 		return view;
 	}
 }

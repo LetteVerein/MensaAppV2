@@ -97,18 +97,18 @@ public class SpeiseplanFragment extends Fragment {
 					dislikeCount.setText("" + speise.getDislikes());
 					iv.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
 					like.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
-					like.setImageDrawable(like1);
+					like.setImageDrawable(like2);
 					like.setOnClickListener(new OnClickListener() {
 						boolean clicked = false;
 						@Override
 						public void onClick(View v) {
 							if (clicked) {
 								speise.remLikes();
-								like.setImageDrawable(like1);
+								like.setImageDrawable(like2);
 								clicked = !clicked;
 							} else if (!clicked) {
 								speise.addLikes();
-								like.setImageDrawable(like2);
+								like.setImageDrawable(like1);
 								clicked = !clicked;
 							}
 							isActive = !isActive;
@@ -122,11 +122,11 @@ public class SpeiseplanFragment extends Fragment {
 						public void onClick(View v) {
 							if (clicked) {
 								speise.remDislikes();
-								dislike.setImageDrawable(dislike1);
+								dislike.setImageDrawable(dislike2);
 								clicked = !clicked;
 							} else if (!clicked) {
 								speise.addDislikes();
-								dislike.setImageDrawable(dislike2);
+								dislike.setImageDrawable(dislike1);
 								clicked = !clicked;
 							}
 							isActive = !isActive;
@@ -135,7 +135,7 @@ public class SpeiseplanFragment extends Fragment {
 						}
 					});
 					dislike.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
-					dislike.setImageDrawable(dislike1);
+					dislike.setImageDrawable(dislike2);
 					TextView tv = (TextView) newView.findViewById(R.id.fragment_page_entry_textView);
 					tv.setText(speise.getName() + ", " + speise.getKcal() + " kcal, " + speise.getEiweiß() + " Eiweiße, " + speise.getFett() + " Fette, " + speise.getKohlenhydrate() + " Kohlenhydrate.\r\n");
 					tv.append("Beachte: " + speise.getBeachte() + "\r\n");
@@ -180,6 +180,8 @@ public class SpeiseplanFragment extends Fragment {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		view.invalidate();
+		view.requestLayout();
 		return view;
 	}
 

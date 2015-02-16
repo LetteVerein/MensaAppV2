@@ -8,9 +8,9 @@
     <string name="title_activity_readme">Readme</string>
     <string name="hello_world">Hello world!</string>
     <string name="firstLaunch">Willkommen in der Lette MensaAPP.
-        \n\nDiese APP ist ausschließlich für Lehrkräfte und SchülerInnen des Lette-Vereins in Berlin gedacht.
-        Außenstehenden ist der Besuch der Mensa und das dortige speisen verboten.
-      	\n\nMit dem drücken des Okay Buttons bestätigen Sie, dass sie obriges gelesen und zugestimmt haben.</string>
+        \n\nDiese APP ist ausschließlich für Mitarbeiter und SchülerInnen des Berufsausbildungszentrums des Lette-Vereins in Berlin gedacht.
+        Außenstehenden ist die Teilnahme am Mittagstisch nicht gestattet.
+        \n\nMit dem Drücken des OK-Buttons stimmen Sie zu.</string>
     <string name="impressum">Berufsausbildungszentrum Lette-Verein
       	    \nStiftung des öffentlichen Rechts
       	    \nDie Direktorin, Petra Madyda
