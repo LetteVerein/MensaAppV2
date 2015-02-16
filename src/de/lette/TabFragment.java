@@ -26,7 +26,7 @@ public class TabFragment extends Fragment {
 		// Get the ViewPager and set it's PagerAdapter so that it can display
 		// items
 		ViewPager viewPager = (ViewPager) view.findViewById(R.id.pager);
-		viewPager.setAdapter(new MyFragmentPagerAdapter(getFragmentManager(), getActivity()));
+		viewPager.setAdapter(new MyFragmentPagerAdapter(getChildFragmentManager(), getActivity()));
 
 		// Give the SlidingTabLayout the ViewPager
 		SlidingTabLayout slidingTabLayout = (SlidingTabLayout) view.findViewById(R.id.sliding_tabs);
@@ -63,8 +63,7 @@ public class TabFragment extends Fragment {
 		} else {
 			viewPager.setCurrentItem(0);
 		}
-		view.invalidate();
-		view.requestLayout();
+		viewPager.refreshDrawableState();
 		return view;
 	}
 }

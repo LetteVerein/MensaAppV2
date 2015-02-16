@@ -37,23 +37,6 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerC
 
 		// Schließe Drawer
 		mNavigationDrawerFragment.closeDrawer();
-		// Check that the activity is using the layout version with
-		// the fragment_container FrameLayout
-		if (findViewById(R.id.fragment_container) != null) {
-
-			// However, if we're being restored from a previous state,
-			// then we don't need to do anything and should return or else
-			// we could end up with overlapping fragments.
-			if (savedInstanceState != null) {
-				return;
-			}
-
-			// Create a new Fragment to be placed in the activity layout
-			Fragment tabFragment = TabFragment.newInstance(0);
-
-			// Add the fragment to the 'fragment_container' FrameLayout
-			getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, tabFragment).addToBackStack(null).commit();
-		}
 	}
 
 	@Override
@@ -98,11 +81,7 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerC
 			break;
 		}
 		if (fragment != null) {
-			// Replace whatever is in the fragment_container view with this
-			// fragment,
-			// and add the transaction to the back stack so the user can
-			// navigate back
-			getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack(null).commit();
+			getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, fragment).addToBackStack("back").commit();
 		}
 	}
 
@@ -111,7 +90,9 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerC
 		if (mNavigationDrawerFragment.isDrawerOpen()) {
 			mNavigationDrawerFragment.closeDrawer();
 		} else {
-			super.onBackPressed();
+			if (getSupportFragmentManager().getBackStackEntryCount() > 1) {
+				super.onBackPressed();
+			}
 		}
 	}
 }
