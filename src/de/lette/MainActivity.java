@@ -81,7 +81,7 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerC
 			break;
 		}
 		if (fragment != null) {
-			getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, fragment).addToBackStack("back").commit();
+			getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack("back").commit();
 		}
 	}
 

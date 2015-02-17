@@ -15,14 +15,39 @@
         android:contentDescription="SpeiseBild"
         android:gravity="left" />
 
-    <TextView
-        android:id="@+id/fragment_page_entry_textView"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:layout_weight="1"
         android:textColor="@color/abc_primary_text_material_light"
-        android:textSize="15sp" />
+        android:textSize="15sp" >
+
+        <TextView
+            android:id="@+id/fragment_page_entry_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/fragment_page_entry_warning"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/fragment_page_entry_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        
+    </LinearLayout>
+
+    <!-- <TextView -->
+    <!-- android:id="@+id/fragment_page_entry_textView" -->
+    <!-- android:layout_width="wrap_content" -->
+    <!-- android:layout_height="wrap_content" -->
+    <!-- android:layout_marginTop="5dp" -->
+    <!-- android:layout_weight="1" -->
+    <!-- android:textColor="@color/abc_primary_text_material_light" -->
+    <!-- android:textSize="15sp" /> -->
 
     <LinearLayout
         android:layout_width="64dp"
