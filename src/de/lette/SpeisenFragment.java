@@ -9,41 +9,51 @@ import android.widget.TextView;
 import com.larvalabs.svgandroid.SVGParser;
 
 public class SpeisenFragment extends View {
-	
-	private ImageView icon = null;
-	private ImageView likeButton,dislikeButton;
-	private Drawable like1,like2,dislike1,dislike2;
-	private boolean isActive;
-	private TextView speisenBeschreibung,speisenInfo,speisenPreis;
 
-	public SpeisenFragment(Context context, final Speise speise) {
+	ImageView icon;
+	private ImageView likeButton, dislikeButton;
+	private Drawable like1, like2, dislike1, dislike2;
+	private boolean isActive;
+	private TextView speisenBeschreibung, speisenInfo, speisenPreis;
+
+	public SpeisenFragment(Context context) {
 		super(context);
-		inflate(context, R.layout.fragment_page_entry, null);
+		inflate(getContext(), R.layout.fragment_page_entry, null);
+	}
+
+	public View createSpeise(final Speise speise, String drawable) {
+		View view = View.inflate(getContext(), R.layout.fragment_page_entry, null);
 		
-		speisenBeschreibung = (TextView) findViewById(R.id.fragment_page_entry_description);
+		icon = (ImageView) view.findViewById(R.id.fragment_page_entry_imageView);
+		Drawable imageResource = SVGParser.getSVGFromResource(getResources(), getResources().getIdentifier(drawable, "raw", "de.lette")).createPictureDrawable();
+		icon.setImageDrawable(imageResource);
+
+		speisenBeschreibung = (TextView) view.findViewById(R.id.fragment_page_entry_description);
 		speisenBeschreibung.setText(speise.getName() + ", " + speise.getKcal() + " kcal, " + speise.getEiweiß() + " Eiweiße, " + speise.getFett() + " Fette, " + speise.getKohlenhydrate() + " Kohlenhydrate.\r\n");
-		speisenInfo = (TextView) findViewById(R.id.fragment_page_entry_warning);
+		speisenInfo = (TextView) view.findViewById(R.id.fragment_page_entry_warning);
 		speisenInfo.append("Beachte: " + speise.getBeachte() + "\r\n");
-		speisenPreis = (TextView) findViewById(R.id.fragment_page_entry_price);
+		speisenPreis = (TextView) view.findViewById(R.id.fragment_page_entry_price);
 		speisenPreis.append("Preis: " + speise.getPreis().unscaledValue() + "€");
-		
-		
-		likeButton = (ImageView) findViewById(R.raw.like1);
+
+		likeButton = (ImageView) view.findViewById(R.id.fragment_page_entry_like);
 		likeButton.setLayerType(LAYER_TYPE_SOFTWARE, null);
 		like1 = SVGParser.getSVGFromResource(getResources(), R.raw.like1).createPictureDrawable();
 		like2 = SVGParser.getSVGFromResource(getResources(), R.raw.like2).createPictureDrawable();
 		likeButton.setImageDrawable(like1);
-		final TextView likeCount = (TextView) findViewById(R.id.fragment_page_entry_like_count);
-		
-		dislikeButton = (ImageView) findViewById(R.raw.dislike1);
+		final TextView likeCount = (TextView) view.findViewById(R.id.fragment_page_entry_like_count);
+		likeCount.setText("" + speise.getLikes());
+
+		dislikeButton = (ImageView) view.findViewById(R.id.fragment_page_entry_dislike);
 		dislikeButton.setLayerType(LAYER_TYPE_SOFTWARE, null);
 		dislike1 = SVGParser.getSVGFromResource(getResources(), R.raw.dislike1).createPictureDrawable();
 		dislike2 = SVGParser.getSVGFromResource(getResources(), R.raw.dislike2).createPictureDrawable();
 		dislikeButton.setImageDrawable(dislike1);
-		final TextView dislikeCount = (TextView) findViewById(R.id.fragment_page_entry_dislike_count);
-		
+		final TextView dislikeCount = (TextView) view.findViewById(R.id.fragment_page_entry_dislike_count);
+		dislikeCount.setText("" + speise.getDislikes());
+
 		likeButton.setOnClickListener(new OnClickListener() {
 			boolean clicked = false;
+
 			@Override
 			public void onClick(View v) {
 				if (clicked) {
@@ -62,6 +72,7 @@ public class SpeisenFragment extends View {
 		});
 		dislikeButton.setOnClickListener(new OnClickListener() {
 			boolean clicked = false;
+
 			@Override
 			public void onClick(View v) {
 				if (clicked) {
@@ -78,12 +89,7 @@ public class SpeisenFragment extends View {
 				likeButton.setClickable(isActive);
 			}
 		});
+
+		return view;
 	}
-	
-	//Holt sich ein Vectorbild aus dem Raw Ordner.
-	public void setIcon(String drawable){		
-		Drawable imageResource = SVGParser.getSVGFromResource(getResources(), getResources().getIdentifier(drawable, "raw", "de.lette")).createPictureDrawable();
-		icon.setImageDrawable(imageResource);
-	}
-	
 }

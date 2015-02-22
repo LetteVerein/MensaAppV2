@@ -218,14 +218,14 @@ public class SpeiseplanFragment extends Fragment {
 			LinearLayout vollkosten = (LinearLayout) view.findViewById(R.id.vollkost);
 			LinearLayout beilagen = (LinearLayout) view.findViewById(R.id.beilagen);
 			LinearLayout desserts = (LinearLayout) view.findViewById(R.id.dessert);
-			
+
 			LinearLayout diätVorspeisen = (LinearLayout) view.findViewById(R.id.diätVorspeisen);
 			LinearLayout diätVollkosten = (LinearLayout) view.findViewById(R.id.diätVollkost);
 			LinearLayout gemüseteller = (LinearLayout) view.findViewById(R.id.gemüseteller);
 			LinearLayout diätDesserts = (LinearLayout) view.findViewById(R.id.diätDessert);
-			
+
 			Calendar c = Calendar.getInstance(Locale.getDefault());
-			
+
 			for (Tagesplan tag : data) {
 				for (final Speise speise : tag.getSpeisen()) {
 					// Date Stuff
@@ -236,35 +236,35 @@ public class SpeiseplanFragment extends Fragment {
 					int day = c.get(Calendar.DAY_OF_WEEK);
 					if (day != mPage + 1)
 						continue;
-
-					SpeisenFragment speisenFragment = new SpeisenFragment(getActivity().getApplicationContext(), speise);
+					
+					SpeisenFragment speisenFragment = new SpeisenFragment(getActivity().getApplicationContext());
 
 					if (speise.getArt() == SpeiseArt.VORSPEISE) {
-						speisenFragment.setIcon("vorspeise");
+						speisenFragment.createSpeise(speise, "vorspeise");
 						vorspeisen.addView(speisenFragment);
 					} else if (speise.getArt() == SpeiseArt.VEGETARISCH) {
-						speisenFragment.setIcon("vegetarisch");
+						speisenFragment.createSpeise(speise, "vegetarisch");
 						vegetarisch.addView(speisenFragment);
 					} else if (speise.getArt() == SpeiseArt.VOLLKOST) {
-						speisenFragment.setIcon("hauptspeise");
+						speisenFragment.createSpeise(speise, "hauptspeise");
 						vollkosten.addView(speisenFragment);
 					} else if (speise.getArt() == SpeiseArt.BEILAGEN) {
-						speisenFragment.setIcon("beilagen");
+						speisenFragment.createSpeise(speise, "beilagen");
 						beilagen.addView(speisenFragment);
 					} else if (speise.getArt() == SpeiseArt.DESSERT) {
-						speisenFragment.setIcon("dessert");
+						speisenFragment.createSpeise(speise, "dessert");
 						desserts.addView(speisenFragment);
 					} else if (speise.getArt() == SpeiseArt.VORSPEISE && speise.isDiät()) {
-						speisenFragment.setIcon("vorspeise");
+						speisenFragment.createSpeise(speise, "vorspeise");
 						diätVorspeisen.addView(speisenFragment);
 					} else if (speise.getArt() == SpeiseArt.VOLLKOST && speise.isDiät()) {
-						speisenFragment.setIcon("hauptspeise");
+						speisenFragment.createSpeise(speise, "hauptspeise");
 						diätVollkosten.addView(speisenFragment);
 					} else if (speise.getArt() == SpeiseArt.GEMÜSETELLER && speise.isDiät()) {
-						speisenFragment.setIcon("gemüseteller");
+						speisenFragment.createSpeise(speise, "gemüseteller");
 						gemüseteller.addView(speisenFragment);
 					} else if (speise.getArt() == SpeiseArt.DESSERT && speise.isDiät()) {
-						speisenFragment.setIcon("dessert");
+						speisenFragment.createSpeise(speise, "dessert");
 						diätDesserts.addView(speisenFragment);
 					}
 				}
