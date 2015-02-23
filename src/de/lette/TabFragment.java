@@ -19,7 +19,7 @@ public class TabFragment extends Fragment {
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		View view = inflater.inflate(R.layout.tabs, container, false);
+		View view = inflater.inflate(R.layout.pager_tabs, container, false);
 
 		// Get the ViewPager and set it's PagerAdapter so that it can display
 		// items

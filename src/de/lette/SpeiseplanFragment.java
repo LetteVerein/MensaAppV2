@@ -71,26 +71,26 @@ public class SpeiseplanFragment extends Fragment {
 
 					Log.d("DEBUG", "SpeiseplanFragment about to init");
 					if (speise.getArt() == SpeiseArt.VORSPEISE) {
-						vorspeisen.addView(new SpeisenFragment(getActivity().getApplicationContext(), speise, "vorspeise"));
+						vorspeisen.addView(new SpeisenItem(getActivity().getApplicationContext(), speise, "vorspeise"));
 						Log.d("DEBUG", "SpeiseplanFragment vorspeise");
 					} else if (speise.getArt() == SpeiseArt.VEGETARISCH) {
-						vegetarisch.addView(new SpeisenFragment(getActivity().getApplicationContext(), speise, "vegetarisch"));
+						vegetarisch.addView(new SpeisenItem(getActivity().getApplicationContext(), speise, "vegetarisch"));
 						Log.d("DEBUG", "SpeiseplanFragment vegetarisch");
 					} else if (speise.getArt() == SpeiseArt.VOLLKOST) {
-						vollkosten.addView(new SpeisenFragment(getActivity().getApplicationContext(), speise, "hauptspeise"));
+						vollkosten.addView(new SpeisenItem(getActivity().getApplicationContext(), speise, "hauptspeise"));
 						Log.d("DEBUG", "SpeiseplanFragment hauptspeise");
 					} else if (speise.getArt() == SpeiseArt.BEILAGEN) {
-						beilagen.addView(new SpeisenFragment(getActivity().getApplicationContext(), speise, "beilagen"));
+						beilagen.addView(new SpeisenItem(getActivity().getApplicationContext(), speise, "beilagen"));
 					} else if (speise.getArt() == SpeiseArt.DESSERT) {
-						desserts.addView(new SpeisenFragment(getActivity().getApplicationContext(), speise, "dessert"));
+						desserts.addView(new SpeisenItem(getActivity().getApplicationContext(), speise, "dessert"));
 					} else if (speise.getArt() == SpeiseArt.VORSPEISE && speise.isDiät()) {
-						diätVorspeisen.addView(new SpeisenFragment(getActivity().getApplicationContext(), speise, "vorspeise"));
+						diätVorspeisen.addView(new SpeisenItem(getActivity().getApplicationContext(), speise, "vorspeise"));
 					} else if (speise.getArt() == SpeiseArt.VOLLKOST && speise.isDiät()) {
-						diätVollkosten.addView(new SpeisenFragment(getActivity().getApplicationContext(), speise, "hauptspeise"));
+						diätVollkosten.addView(new SpeisenItem(getActivity().getApplicationContext(), speise, "hauptspeise"));
 					} else if (speise.getArt() == SpeiseArt.GEMÜSETELLER && speise.isDiät()) {
-						gemüseteller.addView(new SpeisenFragment(getActivity().getApplicationContext(), speise, "gemüseteller"));
+						gemüseteller.addView(new SpeisenItem(getActivity().getApplicationContext(), speise, "gemüseteller"));
 					} else if (speise.getArt() == SpeiseArt.DESSERT && speise.isDiät()) {
-						diätDesserts.addView(new SpeisenFragment(getActivity().getApplicationContext(), speise, "dessert"));
+						diätDesserts.addView(new SpeisenItem(getActivity().getApplicationContext(), speise, "dessert"));
 					}
 					Log.d("DEBUG", "SpeiseplanFragment speise rdy.");
 				}

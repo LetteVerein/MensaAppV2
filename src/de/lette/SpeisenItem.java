@@ -9,17 +9,17 @@ import android.widget.TextView;
 
 import com.larvalabs.svgandroid.SVGParser;
 
-public class SpeisenFragment extends LinearLayout {
+public class SpeisenItem extends LinearLayout {
 	private ImageView icon;
 	private ImageView likeButton, dislikeButton;
 	private Drawable like1, like2, dislike1, dislike2;
 	private View selectedButton = null;
 	private TextView speisenBeschreibung, speisenInfo, speisenPreis;
 
-	public SpeisenFragment(Context context, final Speise speise, String drawable) {
+	public SpeisenItem(Context context, final Speise speise, String drawable) {
 		super(context);
 
-		View view = View.inflate(getContext(), R.layout.fragment_page_entry, this);
+		View view = View.inflate(getContext(), R.layout.speisen_item, this);
 		icon = (ImageView) view.findViewById(R.id.fragment_page_entry_imageView);
 		Drawable imageResource = SVGParser.getSVGFromResource(getResources(), getResources().getIdentifier(drawable, "raw", "de.lette")).createPictureDrawable();
 		icon.setImageDrawable(imageResource);
