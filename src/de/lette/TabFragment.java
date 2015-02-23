@@ -11,9 +11,7 @@ import android.view.ViewGroup;
 
 import com.google.samples.apps.iosched.ui.widget.SlidingTabLayout;
 
-public class TabFragment extends Fragment {
-
-	
+public class TabFragment extends Fragment {	
 	
 	public static TabFragment newInstance(int position) {
 		return new TabFragment();

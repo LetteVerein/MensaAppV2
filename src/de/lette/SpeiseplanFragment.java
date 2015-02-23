@@ -10,6 +10,7 @@ import org.apache.http.client.ClientProtocolException;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,175 +40,6 @@ public class SpeiseplanFragment extends Fragment {
 	/**
 	 * Fügt die Speisen hinzu und zeigt sie an..
 	 */
-	// @Override
-	// public View onCreateView(LayoutInflater inflater, ViewGroup container,
-	// Bundle savedInstanceState) {
-	// View view = inflater.inflate(R.layout.fragment_speiseplan, container,
-	// false);
-	// try {
-	// final Drawable like1 = SVGParser.getSVGFromResource(getResources(),
-	// R.raw.like1).createPictureDrawable();
-	// final Drawable dislike1 = SVGParser.getSVGFromResource(getResources(),
-	// R.raw.dislike1).createPictureDrawable();
-	// final Drawable like2 = SVGParser.getSVGFromResource(getResources(),
-	// R.raw.like2).createPictureDrawable();
-	// final Drawable dislike2 = SVGParser.getSVGFromResource(getResources(),
-	// R.raw.dislike2).createPictureDrawable();
-	// List<Tagesplan> data = ConnectionHandler.getClientData();
-	// Drawable vorspeise = SVGParser.getSVGFromResource(getResources(),
-	// R.raw.vorspeise).createPictureDrawable();
-	// Drawable leichtevollkost = SVGParser.getSVGFromResource(getResources(),
-	// R.raw.hauptspeise).createPictureDrawable();
-	// Drawable gemüseteller = SVGParser.getSVGFromResource(getResources(),
-	// R.raw.gemueseteller).createPictureDrawable();
-	// Drawable dessert = SVGParser.getSVGFromResource(getResources(),
-	// R.raw.dessert).createPictureDrawable();
-	// LinearLayout vorspeisen = (LinearLayout)
-	// view.findViewById(R.id.vorspeisen);
-	// LinearLayout leichtevollkosten = (LinearLayout)
-	// view.findViewById(R.id.hauptspeisen);
-	// LinearLayout gemüsetellerr = (LinearLayout)
-	// view.findViewById(R.id.gemüseteller);
-	// LinearLayout desserts = (LinearLayout) view.findViewById(R.id.dessert);
-	//
-	// Drawable diätvorspeise = SVGParser.getSVGFromResource(getResources(),
-	// R.raw.vorspeise).createPictureDrawable();
-	// Drawable vegetarisch = SVGParser.getSVGFromResource(getResources(),
-	// R.raw.vegetarisch).createPictureDrawable();
-	// Drawable diätvollkost = SVGParser.getSVGFromResource(getResources(),
-	// R.raw.hauptspeise).createPictureDrawable();
-	// Drawable beilagen = SVGParser.getSVGFromResource(getResources(),
-	// R.raw.beilagen).createPictureDrawable();
-	// Drawable diätdessert = SVGParser.getSVGFromResource(getResources(),
-	// R.raw.dessert).createPictureDrawable();
-	// LinearLayout diätvorspeisen = (LinearLayout)
-	// view.findViewById(R.id.diätvorspeisen);
-	// LinearLayout vegetarische = (LinearLayout)
-	// view.findViewById(R.id.diätVegetarisch);
-	// LinearLayout diätvollkosten = (LinearLayout)
-	// view.findViewById(R.id.diätVollkost);
-	// LinearLayout beilagenn = (LinearLayout)
-	// view.findViewById(R.id.diätBeilagen);
-	// LinearLayout diätdesserts = (LinearLayout)
-	// view.findViewById(R.id.diätDessert);
-	// Calendar c = Calendar.getInstance(Locale.getDefault());
-	// for (Tagesplan tag : data) {
-	// for (final Speise speise : tag.getSpeisen()) {
-	// // Date Stuff
-	// c.setTime(tag.getDatum());
-	// // int year = c.get(Calendar.YEAR);
-	// // int mounth = c.get(Calendar.MONTH);
-	// // int week = c.get(Calendar.WEEK_OF_MONTH);
-	// int day = c.get(Calendar.DAY_OF_WEEK);
-	// if (day != mPage + 1)
-	// continue;
-	//
-	// // Add View to ViewGroup
-	// View newView = inflater.inflate(R.layout.fragment_page_entry, container,
-	// false);
-	// ImageView iv = (ImageView)
-	// newView.findViewById(R.id.fragment_page_entry_imageView);
-	// final ImageView like = (ImageView)
-	// newView.findViewById(R.id.fragment_page_entry_like);
-	// final ImageView dislike = (ImageView)
-	// newView.findViewById(R.id.fragment_page_entry_dislike);
-	// final TextView likeCount = (TextView)
-	// newView.findViewById(R.id.fragment_page_entry_like_count);
-	// likeCount.setText("" + speise.getLikes());
-	// final TextView dislikeCount = (TextView)
-	// newView.findViewById(R.id.fragment_page_entry_dislike_count);
-	// dislikeCount.setText("" + speise.getDislikes());
-	// iv.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
-	// like.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
-	// like.setImageDrawable(like2);
-	// like.setOnClickListener(new OnClickListener() {
-	// boolean clicked = false;
-	// @Override
-	// public void onClick(View v) {
-	// if (clicked) {
-	// speise.remLikes();
-	// like.setImageDrawable(like2);
-	// clicked = !clicked;
-	// } else if (!clicked) {
-	// speise.addLikes();
-	// like.setImageDrawable(like1);
-	// clicked = !clicked;
-	// }
-	// isActive = !isActive;
-	// likeCount.setText("" + speise.getLikes());
-	// dislike.setClickable(isActive);
-	// }
-	// });
-	// dislike.setOnClickListener(new OnClickListener() {
-	// boolean clicked = false;
-	// @Override
-	// public void onClick(View v) {
-	// if (clicked) {
-	// speise.remDislikes();
-	// dislike.setImageDrawable(dislike2);
-	// clicked = !clicked;
-	// } else if (!clicked) {
-	// speise.addDislikes();
-	// dislike.setImageDrawable(dislike1);
-	// clicked = !clicked;
-	// }
-	// isActive = !isActive;
-	// dislikeCount.setText("" + speise.getDislikes());
-	// like.setClickable(isActive);
-	// }
-	// });
-	// dislike.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
-	// dislike.setImageDrawable(dislike2);
-	// TextView tv = (TextView)
-	// newView.findViewById(R.id.fragment_page_entry_textView);
-	// tv.setText(speise.getName() + ", " + speise.getKcal() + " kcal, " +
-	// speise.getEiweiß() + " Eiweiße, " + speise.getFett() + " Fette, " +
-	// speise.getKohlenhydrate() + " Kohlenhydrate.\r\n");
-	// tv.append("Beachte: " + speise.getBeachte() + "\r\n");
-	// tv.append("Preis: " + speise.getPreis() + "€");
-	//
-	// if (speise.getArt() == SpeiseArt.VORSPEISE) {
-	// iv.setImageDrawable(vorspeise);
-	// vorspeisen.addView(newView);
-	// } else if (speise.getArt() == SpeiseArt.VOLLKOST) {
-	// iv.setImageDrawable(leichtevollkost);
-	// leichtevollkosten.addView(newView);
-	// } else if (speise.getArt() == SpeiseArt.GEMÜSETELLER) {
-	// iv.setImageDrawable(gemüseteller);
-	// gemüsetellerr.addView(newView);
-	// } else if (speise.getArt() == SpeiseArt.DESSERT) {
-	// iv.setImageDrawable(dessert);
-	// desserts.addView(newView);
-	// } else if (speise.getArt() == SpeiseArt.VORSPEISE && speise.isDiät()) {
-	// iv.setImageDrawable(diätvorspeise);
-	// diätvorspeisen.addView(newView);
-	// } else if (speise.getArt() == SpeiseArt.VEGETARISCH && speise.isDiät()) {
-	// iv.setImageDrawable(vegetarisch);
-	// vegetarische.addView(newView);
-	// } else if (speise.getArt() == SpeiseArt.VOLLKOST && speise.isDiät()) {
-	// iv.setImageDrawable(diätvollkost);
-	// diätvollkosten.addView(newView);
-	// } else if (speise.getArt() == SpeiseArt.BEILAGEN && speise.isDiät()) {
-	// iv.setImageDrawable(beilagen);
-	// beilagenn.addView(newView);
-	// } else if (speise.getArt() == SpeiseArt.DESSERT && speise.isDiät()) {
-	// iv.setImageDrawable(diätdessert);
-	// diätdesserts.addView(newView);
-	// }
-	// }
-	// }
-	// } catch (ClientProtocolException e) {
-	// e.printStackTrace();
-	// } catch (IOException e) {
-	// e.printStackTrace();
-	// } catch (URISyntaxException e) {
-	// e.printStackTrace();
-	// } catch (Exception e) {
-	// e.printStackTrace();
-	// }
-	// return view;
-	// }
-
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.fragment_speiseplan, container, false);
@@ -236,39 +68,35 @@ public class SpeiseplanFragment extends Fragment {
 					int day = c.get(Calendar.DAY_OF_WEEK);
 					if (day != mPage + 1)
 						continue;
-					
-					SpeisenFragment speisenFragment = new SpeisenFragment(getActivity().getApplicationContext());
 
+					Log.d("DEBUG", "SpeiseplanFragment about to init");
 					if (speise.getArt() == SpeiseArt.VORSPEISE) {
-						speisenFragment.createSpeise(speise, "vorspeise");
-						vorspeisen.addView(speisenFragment);
+						vorspeisen.addView(new SpeisenFragment(getActivity().getApplicationContext(), speise, "vorspeise"));
+						Log.d("DEBUG", "SpeiseplanFragment vorspeise");
 					} else if (speise.getArt() == SpeiseArt.VEGETARISCH) {
-						speisenFragment.createSpeise(speise, "vegetarisch");
-						vegetarisch.addView(speisenFragment);
+						vegetarisch.addView(new SpeisenFragment(getActivity().getApplicationContext(), speise, "vegetarisch"));
+						Log.d("DEBUG", "SpeiseplanFragment vegetarisch");
 					} else if (speise.getArt() == SpeiseArt.VOLLKOST) {
-						speisenFragment.createSpeise(speise, "hauptspeise");
-						vollkosten.addView(speisenFragment);
+						vollkosten.addView(new SpeisenFragment(getActivity().getApplicationContext(), speise, "hauptspeise"));
+						Log.d("DEBUG", "SpeiseplanFragment hauptspeise");
 					} else if (speise.getArt() == SpeiseArt.BEILAGEN) {
-						speisenFragment.createSpeise(speise, "beilagen");
-						beilagen.addView(speisenFragment);
+						beilagen.addView(new SpeisenFragment(getActivity().getApplicationContext(), speise, "beilagen"));
 					} else if (speise.getArt() == SpeiseArt.DESSERT) {
-						speisenFragment.createSpeise(speise, "dessert");
-						desserts.addView(speisenFragment);
+						desserts.addView(new SpeisenFragment(getActivity().getApplicationContext(), speise, "dessert"));
 					} else if (speise.getArt() == SpeiseArt.VORSPEISE && speise.isDiät()) {
-						speisenFragment.createSpeise(speise, "vorspeise");
-						diätVorspeisen.addView(speisenFragment);
+						diätVorspeisen.addView(new SpeisenFragment(getActivity().getApplicationContext(), speise, "vorspeise"));
 					} else if (speise.getArt() == SpeiseArt.VOLLKOST && speise.isDiät()) {
-						speisenFragment.createSpeise(speise, "hauptspeise");
-						diätVollkosten.addView(speisenFragment);
+						diätVollkosten.addView(new SpeisenFragment(getActivity().getApplicationContext(), speise, "hauptspeise"));
 					} else if (speise.getArt() == SpeiseArt.GEMÜSETELLER && speise.isDiät()) {
-						speisenFragment.createSpeise(speise, "gemüseteller");
-						gemüseteller.addView(speisenFragment);
+						gemüseteller.addView(new SpeisenFragment(getActivity().getApplicationContext(), speise, "gemüseteller"));
 					} else if (speise.getArt() == SpeiseArt.DESSERT && speise.isDiät()) {
-						speisenFragment.createSpeise(speise, "dessert");
-						diätDesserts.addView(speisenFragment);
+						diätDesserts.addView(new SpeisenFragment(getActivity().getApplicationContext(), speise, "dessert"));
 					}
+					Log.d("DEBUG", "SpeiseplanFragment speise rdy.");
 				}
+				Log.d("DEBUG", "SpeiseplanFragment next day");
 			}
+			Log.d("DEBUG", "SpeiseplanFragment all rdy");
 		} catch (ClientProtocolException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -278,6 +106,7 @@ public class SpeiseplanFragment extends Fragment {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		view.refreshDrawableState();
 		return view;
 	}
 
