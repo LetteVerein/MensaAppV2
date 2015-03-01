@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import de.lette.mensaplan.server.SpeiseArt;
 
 // In this case, the fragment displays simple text based on the page
@@ -68,35 +69,41 @@ public class SpeiseplanFragment extends Fragment {
 					int day = c.get(Calendar.DAY_OF_WEEK);
 					if (day != mPage + 1)
 						continue;
+					
 
-					Log.d("DEBUG", "SpeiseplanFragment about to init");
-					if (speise.getArt() == SpeiseArt.VORSPEISE) {
+					RelativeLayout wrap = null;
+
+					if (speise.getArt() == SpeiseArt.VORSPEISE && !speise.isDiät()) {
+						wrap = (RelativeLayout) view.findViewById(R.id.vorspeisenWrap);
 						vorspeisen.addView(new SpeisenItem(getActivity().getApplicationContext(), speise, "vorspeise"));
-						Log.d("DEBUG", "SpeiseplanFragment vorspeise");
-					} else if (speise.getArt() == SpeiseArt.VEGETARISCH) {
+					} else if (speise.getArt() == SpeiseArt.VEGETARISCH && !speise.isDiät()) {
+						wrap = (RelativeLayout) view.findViewById(R.id.vegetarischWrap);
 						vegetarisch.addView(new SpeisenItem(getActivity().getApplicationContext(), speise, "vegetarisch"));
-						Log.d("DEBUG", "SpeiseplanFragment vegetarisch");
-					} else if (speise.getArt() == SpeiseArt.VOLLKOST) {
+					} else if (speise.getArt() == SpeiseArt.VOLLKOST && !speise.isDiät()) {
+						wrap = (RelativeLayout) view.findViewById(R.id.vollkostWrap);
 						vollkosten.addView(new SpeisenItem(getActivity().getApplicationContext(), speise, "hauptspeise"));
-						Log.d("DEBUG", "SpeiseplanFragment hauptspeise");
-					} else if (speise.getArt() == SpeiseArt.BEILAGEN) {
+					} else if (speise.getArt() == SpeiseArt.BEILAGEN && !speise.isDiät()) {
+						wrap = (RelativeLayout) view.findViewById(R.id.beilagenWrap);
 						beilagen.addView(new SpeisenItem(getActivity().getApplicationContext(), speise, "beilagen"));
-					} else if (speise.getArt() == SpeiseArt.DESSERT) {
+					} else if (speise.getArt() == SpeiseArt.DESSERT && !speise.isDiät()) {
+						wrap = (RelativeLayout) view.findViewById(R.id.dessertWrap);
 						desserts.addView(new SpeisenItem(getActivity().getApplicationContext(), speise, "dessert"));
 					} else if (speise.getArt() == SpeiseArt.VORSPEISE && speise.isDiät()) {
+						wrap = (RelativeLayout) view.findViewById(R.id.diätVorspeisenWrap);
 						diätVorspeisen.addView(new SpeisenItem(getActivity().getApplicationContext(), speise, "vorspeise"));
-					} else if (speise.getArt() == SpeiseArt.VOLLKOST && speise.isDiät()) {
+					} else if (speise.getArt() == SpeiseArt.LEICHTEVOLLKOST && speise.isDiät()) {
+						wrap = (RelativeLayout) view.findViewById(R.id.diätVollkostWrap);
 						diätVollkosten.addView(new SpeisenItem(getActivity().getApplicationContext(), speise, "hauptspeise"));
 					} else if (speise.getArt() == SpeiseArt.GEMÜSETELLER && speise.isDiät()) {
-						gemüseteller.addView(new SpeisenItem(getActivity().getApplicationContext(), speise, "gemüseteller"));
+						wrap = (RelativeLayout) view.findViewById(R.id.gemüsetellerWrap);
+						gemüseteller.addView(new SpeisenItem(getActivity().getApplicationContext(), speise, "gemueseteller"));
 					} else if (speise.getArt() == SpeiseArt.DESSERT && speise.isDiät()) {
+						wrap = (RelativeLayout) view.findViewById(R.id.diätDessertWrap);
 						diätDesserts.addView(new SpeisenItem(getActivity().getApplicationContext(), speise, "dessert"));
 					}
-					Log.d("DEBUG", "SpeiseplanFragment speise rdy.");
+					wrap.setVisibility(RelativeLayout.VISIBLE);
 				}
-				Log.d("DEBUG", "SpeiseplanFragment next day");
 			}
-			Log.d("DEBUG", "SpeiseplanFragment all rdy");
 		} catch (ClientProtocolException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -106,7 +113,6 @@ public class SpeiseplanFragment extends Fragment {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		view.refreshDrawableState();
 		return view;
 	}
 

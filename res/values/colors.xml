@@ -17,6 +17,7 @@
     <color name="myNavigationColor">#000000</color>
     <color name="white">#ffffff</color>
     <color name="dropShadowColor">#50CCCCCC</color>
+    <color name="lebensArtGrün">#79B900</color>
 
     <color name="selected_gray">#ffdbdbdb</color>
 </resources>

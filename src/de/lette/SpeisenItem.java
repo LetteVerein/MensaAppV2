@@ -1,5 +1,7 @@
 package de.lette;
 
+import java.math.RoundingMode;
+
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.view.View;
@@ -26,11 +28,11 @@ public class SpeisenItem extends LinearLayout {
 		icon.setLayerType(LAYER_TYPE_SOFTWARE, null);
 
 		speisenBeschreibung = (TextView) view.findViewById(R.id.fragment_page_entry_description);
-		speisenBeschreibung.setText(speise.getName() + ", " + speise.getKcal() + " kcal, " + speise.getEiweiß() + " Eiweiße, " + speise.getFett() + " Fette, " + speise.getKohlenhydrate() + " Kohlenhydrate.");
-		speisenInfo = (TextView) view.findViewById(R.id.fragment_page_entry_warning);
-		speisenInfo.setText("Beachte: " + speise.getBeachte());
+		speisenBeschreibung.setText(speise.getName());
+//		speisenInfo = (TextView) view.findViewById(R.id.fragment_page_entry_warning);
+//		speisenInfo.setText("Beachte: " + speise.getBeachte());
 		speisenPreis = (TextView) view.findViewById(R.id.fragment_page_entry_price);
-		speisenPreis.setText("Preis: " + speise.getPreis().unscaledValue() + "€");
+		speisenPreis.setText("Preis: " + speise.getPreis().setScale(2, RoundingMode.HALF_DOWN) + "€");
 
 		likeButton = (ImageView) view.findViewById(R.id.fragment_page_entry_like);
 		likeButton.setLayerType(LAYER_TYPE_SOFTWARE, null);

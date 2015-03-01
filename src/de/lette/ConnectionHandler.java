@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -40,70 +39,143 @@ public class ConnectionHandler {
 		ClientData data = new ClientData();
 
 		Set<de.lette.mensaplan.server.Speise> alleSpeisen = new LinkedHashSet<de.lette.mensaplan.server.Speise>();
-		alleSpeisen.add(new de.lette.mensaplan.server.Speise(1, "Suppe", SpeiseArt.VORSPEISE, false, "Suppe", 200, 200, 200, 200, 10, 2));
-		alleSpeisen.add(new de.lette.mensaplan.server.Speise(2, "Gurken Salat", SpeiseArt.VORSPEISE,false, "Salat", 100, 100, 100, 100, 10, 2));
-		alleSpeisen.add(new de.lette.mensaplan.server.Speise(3, "Schwere Suppe", SpeiseArt.VORSPEISE, false, "Suppe", 200, 200, 200, 200, 10, 2));
-		alleSpeisen.add(new de.lette.mensaplan.server.Speise(4, "Obelix Salat", SpeiseArt.VORSPEISE,false, "Salat", 100, 100, 100, 100, 10, 2));
-		alleSpeisen.add(new de.lette.mensaplan.server.Speise(5, "Leichte Suppe", SpeiseArt.VORSPEISE, false, "Suppe", 200, 200, 200, 200, 10, 2));
-		alleSpeisen.add(new de.lette.mensaplan.server.Speise(6, "Caesar Salat", SpeiseArt.VORSPEISE,false, "Salat", 100, 100, 100, 100, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(1, "Möhren-Sellerie Cremesuppe", SpeiseArt.VORSPEISE, false, "", 200, 200, 200, 200, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(2, "Kartoffel-Zucchini Puffer mit Kräuterquark", SpeiseArt.VORSPEISE, false, "", 200, 200, 200, 200, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(3, "Kräutercremesuppe", SpeiseArt.VORSPEISE, false, "", 200, 200, 200, 200, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(4, "Blätterteigtasche mit Gemüsefüllung und Tomatensauce", SpeiseArt.VORSPEISE, false, "", 200, 200, 200, 200, 10, 2));
 		
-		alleSpeisen.add(new de.lette.mensaplan.server.Speise(7, "Hamburger", SpeiseArt.VOLLKOST, false, "Fleisch", 9000, 9000, 9000, 9000, 10, 2));
-		alleSpeisen.add(new de.lette.mensaplan.server.Speise(8, "Pferde Steak", SpeiseArt.VOLLKOST, false, "Fleisch", 9000, 9000, 9000, 9000, 10, 2));
-		alleSpeisen.add(new de.lette.mensaplan.server.Speise(9, "Bio Burger", SpeiseArt.VOLLKOST, true, "Bio", 0, 0, 0, 0, 10, 2));
-		alleSpeisen.add(new de.lette.mensaplan.server.Speise(10, "Mc Chicken", SpeiseArt.VOLLKOST, false, "Fleisch", 9000, 9000, 9000, 9000, 10, 2));
-		alleSpeisen.add(new de.lette.mensaplan.server.Speise(11, "Kuh Fladen", SpeiseArt.VOLLKOST, false, "Fleisch", 9000, 9000, 9000, 9000, 10, 2));
-		alleSpeisen.add(new de.lette.mensaplan.server.Speise(12, "Bio Birne", SpeiseArt.VOLLKOST, true, "Bio", 0, 0, 0, 0, 10, 2));
-		alleSpeisen.add(new de.lette.mensaplan.server.Speise(13, "Cheeseburger", SpeiseArt.VOLLKOST, false, "Fleisch", 9000, 9000, 9000, 9000, 10, 2));
-		alleSpeisen.add(new de.lette.mensaplan.server.Speise(14, "Kuh Steak", SpeiseArt.VOLLKOST, false, "Fleisch", 9000, 9000, 9000, 9000, 10, 2));
-		alleSpeisen.add(new de.lette.mensaplan.server.Speise(15, "Bio Banane", SpeiseArt.VOLLKOST, true, "Bio", 0, 0, 0, 0, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(5, "Chinakohlsalat", SpeiseArt.VORSPEISE,true, "", 100, 100, 100, 100, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(6, "Bruschetta", SpeiseArt.VORSPEISE,true, "", 100, 100, 100, 100, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(7, "Chicorreesalat", SpeiseArt.VORSPEISE,true, "", 100, 100, 100, 100, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(8, "Tomatencremesuppe", SpeiseArt.VORSPEISE,true, "", 100, 100, 100, 100, 10, 2));
 		
-		alleSpeisen.add(new de.lette.mensaplan.server.Speise(16, "Eis im Becher", SpeiseArt.DESSERT, false, "Eis", 9000, 9000, 9000, 9000, 10, 2));
-		alleSpeisen.add(new de.lette.mensaplan.server.Speise(17, "Eis im Eimer", SpeiseArt.DESSERT, false, "Eis", 9000, 9000, 9000, 9000, 10, 2));
-		alleSpeisen.add(new de.lette.mensaplan.server.Speise(18, "Pudding im Becher", SpeiseArt.DESSERT, false, "Pudding", 9000, 9000, 9000, 9000, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(9, "Gemüsenudeln mit Käsesauce", SpeiseArt.VEGETARISCH,false, "", 100, 100, 100, 100, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(10, "Milchreis mit Erdbeerkompott", SpeiseArt.VEGETARISCH,false, "", 100, 100, 100, 100, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(11, "Gnocchi mit Tomaten-Basilikumsauce", SpeiseArt.VEGETARISCH,false, "", 100, 100, 100, 100, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(12, "Gemüsepfanne mit Joghurt-Kräuterdip", SpeiseArt.VEGETARISCH,false, "", 100, 100, 100, 100, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(13, "Spaghetti mit Gemüsebolognese", SpeiseArt.VEGETARISCH,false, "", 100, 100, 100, 100, 10, 2));	
+		
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(14, "Schweinegulasch mit gemischtem Gemüse", SpeiseArt.VOLLKOST, false, "", 200, 200, 200, 200, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(15, "Mangoldlasagne mit Champignons", SpeiseArt.VOLLKOST, false, "", 200, 200, 200, 200, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(16, "Seelachsfilet mit Senfdip und gemischtem Salat", SpeiseArt.VOLLKOST, false, "", 200, 200, 200, 200, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(17, "Hühnerfrikassee", SpeiseArt.VOLLKOST, false, "", 200, 200, 200, 200, 10, 2));
+
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(18, "Hackbraten mit Schwarzwurzeln, Kartoffelpüree", SpeiseArt.LEICHTEVOLLKOST, true, "", 9000, 9000, 9000, 9000, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(20, "grüne Bohneneintopf mit Fleischeinlage", SpeiseArt.LEICHTEVOLLKOST, true, "", 9000, 9000, 9000, 9000, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(21, "Tilapia mit Kartoffelsalat und Dipp", SpeiseArt.LEICHTEVOLLKOST, true, "", 9000, 9000, 9000, 9000, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(22, "Putenbrust mit Ananas und Käse, Reis und Salat", SpeiseArt.LEICHTEVOLLKOST, true, "", 200, 200, 200, 200, 10, 2));
+		
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(24, "Kartoffelpüree", SpeiseArt.BEILAGEN,false, "", 100, 100, 100, 100, 10, 2));		
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(25, "Petersilienkartoffeln", SpeiseArt.BEILAGEN,false, "", 100, 100, 100, 100, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(26, "Reis", SpeiseArt.BEILAGEN,false, "", 100, 100, 100, 100, 10, 2));
+		
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(27, "Erbsen, Schwarzwurzeln", SpeiseArt.GEMÜSETELLER, true, "", 9000, 9000, 9000, 9000, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(29, "Bohneneintopf", SpeiseArt.GEMÜSETELLER, true, "", 9000, 9000, 9000, 9000, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(30, "Kürbis, Broccoli", SpeiseArt.GEMÜSETELLER, true, "", 9000, 9000, 9000, 9000, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(32, "Linsencurry", SpeiseArt.GEMÜSETELLER, true, "", 9000, 9000, 9000, 9000, 10, 2));
+		
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(33, "Mango-Limettencreme", SpeiseArt.DESSERT, false, "", 200, 200, 200, 200, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(34, "Mandelcreme mit Lychees", SpeiseArt.DESSERT, false, "", 200, 200, 200, 200, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(35, "Quark mit Pfirsich", SpeiseArt.DESSERT, false, "", 200, 200, 200, 200, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(36, "Quark mit Himbeeren", SpeiseArt.DESSERT, false, "", 200, 200, 200, 200, 10, 2));
+
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(37, "Grießflammeri mit Mandarinen", SpeiseArt.DESSERT, true, "", 0, 0, 0, 0, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(38, "Obstsalat", SpeiseArt.DESSERT, true, "", 0, 0, 0, 0, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(39, "Kirschgrütze", SpeiseArt.DESSERT, true, "", 0, 0, 0, 0, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(40, "Pfirsichquarkspeise", SpeiseArt.DESSERT, true, "", 200, 200, 200, 200, 10, 2));
+		
 		data.setSpeisen(alleSpeisen);
 
 		Set<Termin> termine = new LinkedHashSet<Termin>();
-		Calendar c = Calendar.getInstance(Locale.getDefault());
-		c.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
 		
-		// Monday This Week
-		termine.add(new Termin(1, new Date(c.getTimeInMillis()), 1, new BigDecimal(1.00), false));
-		termine.add(new Termin(2, new Date(c.getTimeInMillis()), 7, new BigDecimal(1.75), false));
-		termine.add(new Termin(3, new Date(c.getTimeInMillis()), 8, new BigDecimal(1.75), false));
-		termine.add(new Termin(4, new Date(c.getTimeInMillis()), 16, new BigDecimal(1.00), false));
+		/*2.3.2015*/
+		termine.add(new Termin(1, new Date(2015,3,2), 1, new BigDecimal(1.00), false));
+		termine.add(new Termin(2, new Date(2015,3,2), 9, new BigDecimal(1.00), false));
+		termine.add(new Termin(3, new Date(2015,3,2), 14, new BigDecimal(1.00), false));
+		termine.add(new Termin(4, new Date(2015,3,2), 24, new BigDecimal(1.00), false));
+		termine.add(new Termin(5, new Date(2015,3,2), 25, new BigDecimal(1.00), false));
+		termine.add(new Termin(6, new Date(2015,3,2), 33, new BigDecimal(1.00), false));
 		
-		// Monday +1 ;D
-		c.add(Calendar.DAY_OF_WEEK, 1);
-		termine.add(new Termin(5, new Date(c.getTimeInMillis()), 2, new BigDecimal(2.00), false));
-		termine.add(new Termin(6, new Date(c.getTimeInMillis()), 9, new BigDecimal(2.50), false));
-		termine.add(new Termin(7, new Date(c.getTimeInMillis()), 17, new BigDecimal(3.75), false));
+		termine.add(new Termin(7, new Date(2015,3,2), 5, new BigDecimal(0.70), true));
+		termine.add(new Termin(8, new Date(2015,3,2), 18, new BigDecimal(3.50), true));
+		termine.add(new Termin(10, new Date(2015,3,2), 27, new BigDecimal(2.50), true));
+		termine.add(new Termin(12, new Date(2015,3,2), 37, new BigDecimal(0.70), true));
+		
+		/*3.3.2015*/
+		termine.add(new Termin(13, new Date(2015,3,3), 2, new BigDecimal(1.00), false));
+		termine.add(new Termin(14, new Date(2015,3,3), 10, new BigDecimal(1.00), false));
+		termine.add(new Termin(15, new Date(2015,3,3), 11, new BigDecimal(1.00), false));
+		termine.add(new Termin(16, new Date(2015,3,3), 15, new BigDecimal(1.00), false));
+		termine.add(new Termin(17, new Date(2015,3,3), 34, new BigDecimal(1.00), false));
+		
+		termine.add(new Termin(18, new Date(2015,3,3), 6, new BigDecimal(0.70), true));
+		termine.add(new Termin(19, new Date(2015,3,3), 20, new BigDecimal(3.50), true));
+		termine.add(new Termin(20, new Date(2015,3,3), 29, new BigDecimal(2.50), true));
+		termine.add(new Termin(21, new Date(2015,3,3), 38, new BigDecimal(0.70), true));
+		
+		/*4.3.2015*/
+		termine.add(new Termin(22, new Date(2015,3,4), 3, new BigDecimal(1.00), false));
+		termine.add(new Termin(23, new Date(2015,3,4), 12, new BigDecimal(1.00), false));
+		termine.add(new Termin(24, new Date(2015,3,4), 16, new BigDecimal(1.00), false));
+		termine.add(new Termin(25, new Date(2015,3,4), 25, new BigDecimal(1.00), false));
+		termine.add(new Termin(26, new Date(2015,3,4), 26, new BigDecimal(1.00), false));
+		termine.add(new Termin(27, new Date(2015,3,4), 35, new BigDecimal(1.00), false));
+		
+		termine.add(new Termin(28, new Date(2015,3,4), 7, new BigDecimal(0.70), true));
+		termine.add(new Termin(29, new Date(2015,3,4), 21, new BigDecimal(3.50), true));
+		termine.add(new Termin(31, new Date(2015,3,4), 30, new BigDecimal(2.50), true));
+		termine.add(new Termin(32, new Date(2015,3,4), 39, new BigDecimal(0.70), true));
+		
+		/*5.3.2015*/
+		termine.add(new Termin(33, new Date(2015,3,5), 4, new BigDecimal(1.00), false));
+		termine.add(new Termin(34, new Date(2015,3,5), 13, new BigDecimal(1.00), false));
+		termine.add(new Termin(35, new Date(2015,3,5), 17, new BigDecimal(1.00), false));
+		termine.add(new Termin(36, new Date(2015,3,5), 25, new BigDecimal(1.00), false));
+		termine.add(new Termin(37, new Date(2015,3,5), 26, new BigDecimal(1.00), false));
+		termine.add(new Termin(38, new Date(2015,3,5), 36, new BigDecimal(1.00), false));
 
-		// Monday +2 ;D
-		c.add(Calendar.DAY_OF_WEEK, 1);
-		termine.add(new Termin(8, new Date(c.getTimeInMillis()), 3, new BigDecimal(2.75), false));
-		termine.add(new Termin(9, new Date(c.getTimeInMillis()), 10, new BigDecimal(1.75), false));
-		termine.add(new Termin(10, new Date(c.getTimeInMillis()), 11, new BigDecimal(1.75), false));
-		termine.add(new Termin(11, new Date(c.getTimeInMillis()), 18, new BigDecimal(2.00), false));
-
-		// Monday +3 ;D
-		c.add(Calendar.DAY_OF_WEEK, 1);
-		termine.add(new Termin(12, new Date(c.getTimeInMillis()), 4, new BigDecimal(2.50), false));
-		termine.add(new Termin(13, new Date(c.getTimeInMillis()), 12, new BigDecimal(3.75), false));
-		termine.add(new Termin(14, new Date(c.getTimeInMillis()), 13, new BigDecimal(2.75), false));
-		termine.add(new Termin(15, new Date(c.getTimeInMillis()), 16, new BigDecimal(1.75), false));
+		termine.add(new Termin(39, new Date(2015,3,5), 8, new BigDecimal(0.70), true));
+		termine.add(new Termin(40, new Date(2015,3,5), 22, new BigDecimal(3.50), true));
+		termine.add(new Termin(42, new Date(2015,3,5), 32, new BigDecimal(2.50), true));
+		termine.add(new Termin(43, new Date(2015,3,5), 40, new BigDecimal(0.70), true));		
 		
-		// Monday +4 ;D
-		c.add(Calendar.DAY_OF_WEEK, 1);
-		termine.add(new Termin(16, new Date(c.getTimeInMillis()), 5, new BigDecimal(1.75), false));
-		termine.add(new Termin(17, new Date(c.getTimeInMillis()), 14, new BigDecimal(2.00), false));
-		termine.add(new Termin(18, new Date(c.getTimeInMillis()), 15, new BigDecimal(2.00), false));
-		termine.add(new Termin(19, new Date(c.getTimeInMillis()), 18, new BigDecimal(2.50), false));
 		data.setTermine(termine);
 
 		Set<Zusatzstoff> zusätze = new LinkedHashSet<Zusatzstoff>();
-		zusätze.add(new Zusatzstoff(1, 1, "Kohlenstoffdioxid"));
-		zusätze.add(new Zusatzstoff(2, 2, "Kohlenstofftrioxid"));
-		zusätze.add(new Zusatzstoff(3, 3, "Zucker"));
+		zusätze.add(new Zusatzstoff(1, 1, "Konservierungsmittel"));
+		zusätze.add(new Zusatzstoff(2, 2, "Antioxidationsmittel"));
+		zusätze.add(new Zusatzstoff(3, 3, "Farbstoff"));
+		zusätze.add(new Zusatzstoff(4, 4, "Geschmacksverstärker, u.a. Natriumglutamat"));
+		zusätze.add(new Zusatzstoff(5, 5, "Schwefel"));
+		zusätze.add(new Zusatzstoff(6, 6, "Phosphat"));
+		zusätze.add(new Zusatzstoff(7, 7, "geschwärzt"));
+		zusätze.add(new Zusatzstoff(8, 8, "gewachst"));
+		zusätze.add(new Zusatzstoff(9, 9, "Süßungsmittel, u.a. Saccarin, Cyclamat, Aspartam"));
+		zusätze.add(new Zusatzstoff(10, 10, "enthält eine Phenylalaninquelle"));
+		zusätze.add(new Zusatzstoff(11, 11, "Säuerungsmittel"));
+		zusätze.add(new Zusatzstoff(12, 12, "Hühnereiweiß"));
+		zusätze.add(new Zusatzstoff(13, 13, "Jodsalz"));
+		zusätze.add(new Zusatzstoff(14, 14, "Nitritpökelsalz"));
+		zusätze.add(new Zusatzstoff(15, 15, "Milcheiweiß ( Kuhmilch und Kuhmilcherzeugnisse)"));
+		zusätze.add(new Zusatzstoff(16, 16, "Hefeextrakt"));
+		zusätze.add(new Zusatzstoff(17, 17, "Aroma"));
+		zusätze.add(new Zusatzstoff(18, 18, "Zuckerarten und /oder Süßungsmittel"));
+		zusätze.add(new Zusatzstoff(19, 19, "Gluten"));
+		
+		zusätze.add(new Zusatzstoff(20, 20, "Glutenhaltiges Getreide/ Erzeugnisse ( Weizen, Roggen, Gerste, Hafer, Dinkel)"));
+		zusätze.add(new Zusatzstoff(21, 21, "Soja und Sojaerzeugnisse"));
+		zusätze.add(new Zusatzstoff(22, 22, "Sellerie und Sellerieerzeugnisse"));
+		zusätze.add(new Zusatzstoff(23, 23, "Senf und Senfsaaten"));
+		zusätze.add(new Zusatzstoff(24, 24, "Sesamsaaten und Sesamsamenerzeugnisse"));
+		zusätze.add(new Zusatzstoff(25, 25, "Lupine und Lupinenerzeugnisse"));
+		zusätze.add(new Zusatzstoff(26, 26, "Erdnüsse und Erdnusserzeugnisse"));
+		zusätze.add(new Zusatzstoff(27, 27, "Fisch und Fischerzeugnisse"));
+		zusätze.add(new Zusatzstoff(28, 28, "Krebstiere und Krebserzeugnisse u.a. Krabben, Garnelen, Hummer"));
+		zusätze.add(new Zusatzstoff(29, 29, "Weichtiere und Weichtiererzeugnisse u.a. Muscheln, Schnecken"));
+		zusätze.add(new Zusatzstoff(30, 30, "Schalenfrüchte und Schalenfruchterzeugnisse(z.B. Mandeln, Haselnüsse)"));
+		zusätze.add(new Zusatzstoff(31, 31, "Eier und Eiererzeugnisse "));
+		zusätze.add(new Zusatzstoff(32, 32, "Milch und Milcherzeugnisse (incl. Lactose)"));
+		zusätze.add(new Zusatzstoff(33, 33, "Schwefeldioxid und Sulfite"));
 		data.setZusatzstoffe(zusätze);
 
 		tagesPläne = new ArrayList<Tagesplan>();

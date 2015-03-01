@@ -12,7 +12,7 @@
         android:layout_marginRight="10dp"
         android:layout_marginTop="5dp"
         android:contentDescription="SpeiseBild"
-        android:layout_gravity="center_vertical"
+        android:layout_gravity="top"
         android:gravity="left" />
 
     <LinearLayout

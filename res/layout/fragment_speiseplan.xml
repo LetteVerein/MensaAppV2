@@ -12,10 +12,12 @@
         android:padding="20dp" >
 
         <RelativeLayout
+            android:id="@+id/vorspeisenWrap"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/roundedcorners"
-            android:padding="1dp" >
+            android:padding="1dp"
+            android:visibility="invisible" >
 
             <TextView
                 android:id="@+id/vorspeisenTitel"
@@ -41,11 +43,13 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/vegetarischWrap"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:background="@drawable/roundedcorners"
-            android:padding="1dp" >
+            android:padding="1dp"
+            android:visibility="invisible" >
 
             <TextView
                 android:id="@+id/vegetarischTitel"
@@ -71,11 +75,13 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/vollkostWrap"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:background="@drawable/roundedcorners"
-            android:padding="1dp" >
+            android:padding="1dp"
+            android:visibility="invisible" >
 
             <TextView
                 android:id="@+id/vollkostTitel"
@@ -101,11 +107,13 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/beilagenWrap"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:background="@drawable/roundedcorners"
-            android:padding="1dp" >
+            android:padding="1dp"
+            android:visibility="invisible" >
 
             <TextView
                 android:id="@+id/beilagenTitel"
@@ -131,11 +139,13 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/dessertWrap"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:background="@drawable/roundedcorners"
-            android:padding="1dp" >
+            android:padding="1dp"
+            android:visibility="invisible" >
 
             <TextView
                 android:id="@+id/dessertTitel"
@@ -163,11 +173,13 @@
         <!-- Diatspeiseplan -->
 
         <RelativeLayout
+            android:id="@+id/diätVorspeisenWrap"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:background="@drawable/roundedcorners"
-            android:padding="1dp" >
+            android:padding="1dp"
+            android:visibility="invisible" >
 
             <TextView
                 android:id="@+id/diätVorspeisenTitel"
@@ -193,11 +205,13 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/diätVollkostWrap"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:background="@drawable/roundedcorners"
-            android:padding="1dp" >
+            android:padding="1dp"
+            android:visibility="invisible" >
 
             <TextView
                 android:id="@+id/diätVollkostTitel"
@@ -223,11 +237,13 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/gemüsetellerWrap"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:background="@drawable/roundedcorners"
-            android:padding="1dp" >
+            android:padding="1dp" 
+            android:visibility="invisible">
 
             <TextView
                 android:id="@+id/gemüsetellerTitel"
@@ -253,11 +269,13 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/diätDessertWrap"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:background="@drawable/roundedcorners"
-            android:padding="1dp" >
+            android:padding="1dp"
+            android:visibility="invisible" >
 
             <TextView
                 android:id="@+id/diätDessertTitel"
