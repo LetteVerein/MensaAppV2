@@ -10,6 +10,7 @@ import org.apache.http.client.ClientProtocolException;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,12 +21,15 @@ import de.lette.mensaplan.server.SpeiseArt;
 // In this case, the fragment displays simple text based on the page
 public class SpeiseplanFragment extends Fragment {
 	public static final String ARG_PAGE = "ARG_PAGE";
+	public static final String ARG_WOCHE = "ARG_WOCHE";
 	private int mPage;
+	private int mWoche;
 	boolean isActive = true;
 
-	public static SpeiseplanFragment newInstance(int page) {
+	public static SpeiseplanFragment newInstance(int page, int woche) {
 		Bundle args = new Bundle();
 		args.putInt(ARG_PAGE, page);
+		args.putInt(ARG_WOCHE, woche);
 		SpeiseplanFragment fragment = new SpeiseplanFragment();
 		fragment.setArguments(args);
 		return fragment;
@@ -35,6 +39,7 @@ public class SpeiseplanFragment extends Fragment {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		mPage = getArguments().getInt(ARG_PAGE);
+		mWoche = getArguments().getInt(ARG_WOCHE);
 	}
 
 	/**
@@ -56,19 +61,18 @@ public class SpeiseplanFragment extends Fragment {
 			ViewGroup gemüseteller = (LinearLayout) view.findViewById(R.id.gemüseteller);
 			ViewGroup diätDesserts = (LinearLayout) view.findViewById(R.id.diätDessert);
 
-			Calendar c = Calendar.getInstance(Locale.getDefault());
+			Calendar speiseDatum = Calendar.getInstance(Locale.getDefault());
 
 			boolean hasSpeisen = false;
 			for(Tagesplan tag : data) {
-				c.setTime(tag.getDatum());
-				// int year = c.get(Calendar.YEAR);
-				// int mounth = c.get(Calendar.MONTH);
-				// int week = c.get(Calendar.WEEK_OF_MONTH);
-				int day = c.get(Calendar.DAY_OF_WEEK);
+				speiseDatum.setTime(tag.getDatum());
+				int week = speiseDatum.get(Calendar.WEEK_OF_MONTH);
+				Log.w("TEST", "CurrWeek: " + week);
+				if(week != mWoche + 1) continue;
+				int day = speiseDatum.get(Calendar.DAY_OF_WEEK);
 				if(day != mPage + 1) continue;
 				for(final Speise speise : tag.getSpeisen()) {
 					ViewGroup wrap = null;
-
 					if(speise.getArt() == SpeiseArt.VORSPEISE && !speise.isDiät()) {
 						wrap = (RelativeLayout) view.findViewById(R.id.vorspeisenWrap);
 						vorspeisen.addView(new SpeisenItem(getActivity().getApplicationContext(), speise, "vorspeise"));

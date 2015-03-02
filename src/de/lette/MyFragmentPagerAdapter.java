@@ -10,10 +10,12 @@ public class MyFragmentPagerAdapter extends FragmentPagerAdapter {
 	final int PAGE_COUNT = tabTitles.length;
 	@SuppressWarnings("unused")
 	private Context context;
+	private int woche;
 
-	public MyFragmentPagerAdapter(FragmentManager fm, Context context) {
+	public MyFragmentPagerAdapter(FragmentManager fm, Context context, int woche) {
 		super(fm);
 		this.context = context;
+		this.woche = woche;
 	}
 
 	@Override
@@ -23,7 +25,7 @@ public class MyFragmentPagerAdapter extends FragmentPagerAdapter {
 
 	@Override
 	public Fragment getItem(int position) {
-		return SpeiseplanFragment.newInstance(position + 1);
+		return SpeiseplanFragment.newInstance(position + 1, woche);
 	}
 
 	@Override
