@@ -10,7 +10,6 @@ import org.apache.http.client.ClientProtocolException;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,71 +45,73 @@ public class SpeiseplanFragment extends Fragment {
 		View view = inflater.inflate(R.layout.fragment_speiseplan, container, false);
 		try {
 			List<Tagesplan> data = ConnectionHandler.getClientData();
-			LinearLayout vorspeisen = (LinearLayout) view.findViewById(R.id.vorspeisen);
-			LinearLayout vegetarisch = (LinearLayout) view.findViewById(R.id.vegetarisch);
-			LinearLayout vollkosten = (LinearLayout) view.findViewById(R.id.vollkost);
-			LinearLayout beilagen = (LinearLayout) view.findViewById(R.id.beilagen);
-			LinearLayout desserts = (LinearLayout) view.findViewById(R.id.dessert);
+			ViewGroup vorspeisen = (LinearLayout) view.findViewById(R.id.vorspeisen);
+			ViewGroup vegetarisch = (LinearLayout) view.findViewById(R.id.vegetarisch);
+			ViewGroup vollkosten = (LinearLayout) view.findViewById(R.id.vollkost);
+			ViewGroup beilagen = (LinearLayout) view.findViewById(R.id.beilagen);
+			ViewGroup desserts = (LinearLayout) view.findViewById(R.id.dessert);
 
-			LinearLayout diätVorspeisen = (LinearLayout) view.findViewById(R.id.diätVorspeisen);
-			LinearLayout diätVollkosten = (LinearLayout) view.findViewById(R.id.diätVollkost);
-			LinearLayout gemüseteller = (LinearLayout) view.findViewById(R.id.gemüseteller);
-			LinearLayout diätDesserts = (LinearLayout) view.findViewById(R.id.diätDessert);
+			ViewGroup diätVorspeisen = (LinearLayout) view.findViewById(R.id.diätVorspeisen);
+			ViewGroup diätVollkosten = (LinearLayout) view.findViewById(R.id.diätVollkost);
+			ViewGroup gemüseteller = (LinearLayout) view.findViewById(R.id.gemüseteller);
+			ViewGroup diätDesserts = (LinearLayout) view.findViewById(R.id.diätDessert);
 
 			Calendar c = Calendar.getInstance(Locale.getDefault());
 
-			for (Tagesplan tag : data) {
-				for (final Speise speise : tag.getSpeisen()) {
-					// Date Stuff
-					c.setTime(tag.getDatum());
-					// int year = c.get(Calendar.YEAR);
-					// int mounth = c.get(Calendar.MONTH);
-					// int week = c.get(Calendar.WEEK_OF_MONTH);
-					int day = c.get(Calendar.DAY_OF_WEEK);
-					if (day != mPage + 1)
-						continue;
-					
+			boolean hasSpeisen = false;
+			for(Tagesplan tag : data) {
+				c.setTime(tag.getDatum());
+				// int year = c.get(Calendar.YEAR);
+				// int mounth = c.get(Calendar.MONTH);
+				// int week = c.get(Calendar.WEEK_OF_MONTH);
+				int day = c.get(Calendar.DAY_OF_WEEK);
+				if(day != mPage + 1) continue;
+				for(final Speise speise : tag.getSpeisen()) {
+					ViewGroup wrap = null;
 
-					RelativeLayout wrap = null;
-
-					if (speise.getArt() == SpeiseArt.VORSPEISE && !speise.isDiät()) {
+					if(speise.getArt() == SpeiseArt.VORSPEISE && !speise.isDiät()) {
 						wrap = (RelativeLayout) view.findViewById(R.id.vorspeisenWrap);
 						vorspeisen.addView(new SpeisenItem(getActivity().getApplicationContext(), speise, "vorspeise"));
-					} else if (speise.getArt() == SpeiseArt.VEGETARISCH && !speise.isDiät()) {
+					} else if(speise.getArt() == SpeiseArt.VEGETARISCH && !speise.isDiät()) {
 						wrap = (RelativeLayout) view.findViewById(R.id.vegetarischWrap);
 						vegetarisch.addView(new SpeisenItem(getActivity().getApplicationContext(), speise, "vegetarisch"));
-					} else if (speise.getArt() == SpeiseArt.VOLLKOST && !speise.isDiät()) {
+					} else if(speise.getArt() == SpeiseArt.VOLLKOST && !speise.isDiät()) {
 						wrap = (RelativeLayout) view.findViewById(R.id.vollkostWrap);
 						vollkosten.addView(new SpeisenItem(getActivity().getApplicationContext(), speise, "hauptspeise"));
-					} else if (speise.getArt() == SpeiseArt.BEILAGEN && !speise.isDiät()) {
+					} else if(speise.getArt() == SpeiseArt.BEILAGEN && !speise.isDiät()) {
 						wrap = (RelativeLayout) view.findViewById(R.id.beilagenWrap);
 						beilagen.addView(new SpeisenItem(getActivity().getApplicationContext(), speise, "beilagen"));
-					} else if (speise.getArt() == SpeiseArt.DESSERT && !speise.isDiät()) {
+					} else if(speise.getArt() == SpeiseArt.DESSERT && !speise.isDiät()) {
 						wrap = (RelativeLayout) view.findViewById(R.id.dessertWrap);
 						desserts.addView(new SpeisenItem(getActivity().getApplicationContext(), speise, "dessert"));
-					} else if (speise.getArt() == SpeiseArt.VORSPEISE && speise.isDiät()) {
+					} else if(speise.getArt() == SpeiseArt.VORSPEISE && speise.isDiät()) {
 						wrap = (RelativeLayout) view.findViewById(R.id.diätVorspeisenWrap);
 						diätVorspeisen.addView(new SpeisenItem(getActivity().getApplicationContext(), speise, "vorspeise"));
-					} else if (speise.getArt() == SpeiseArt.LEICHTEVOLLKOST && speise.isDiät()) {
+					} else if(speise.getArt() == SpeiseArt.LEICHTEVOLLKOST && speise.isDiät()) {
 						wrap = (RelativeLayout) view.findViewById(R.id.diätVollkostWrap);
 						diätVollkosten.addView(new SpeisenItem(getActivity().getApplicationContext(), speise, "hauptspeise"));
-					} else if (speise.getArt() == SpeiseArt.GEMÜSETELLER && speise.isDiät()) {
+					} else if(speise.getArt() == SpeiseArt.GEMÜSETELLER && speise.isDiät()) {
 						wrap = (RelativeLayout) view.findViewById(R.id.gemüsetellerWrap);
 						gemüseteller.addView(new SpeisenItem(getActivity().getApplicationContext(), speise, "gemueseteller"));
-					} else if (speise.getArt() == SpeiseArt.DESSERT && speise.isDiät()) {
+					} else if(speise.getArt() == SpeiseArt.DESSERT && speise.isDiät()) {
 						wrap = (RelativeLayout) view.findViewById(R.id.diätDessertWrap);
 						diätDesserts.addView(new SpeisenItem(getActivity().getApplicationContext(), speise, "dessert"));
 					}
-					wrap.setVisibility(RelativeLayout.VISIBLE);
+					hasSpeisen = true;
+					wrap.setVisibility(ViewGroup.VISIBLE);
 				}
 			}
-		} catch (ClientProtocolException e) {
+			if(!hasSpeisen) {
+				ViewGroup vg = (RelativeLayout) view.findViewById(R.id.keineSpeisen);
+				vg.setVisibility(ViewGroup.VISIBLE);
+			}
+		} catch(ClientProtocolException e) {
 			e.printStackTrace();
-		} catch (IOException e) {
+		} catch(IOException e) {
 			e.printStackTrace();
-		} catch (URISyntaxException e) {
+		} catch(URISyntaxException e) {
 			e.printStackTrace();
-		} catch (Exception e) {
+		} catch(Exception e) {
 			e.printStackTrace();
 		}
 		return view;
