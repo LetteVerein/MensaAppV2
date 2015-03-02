@@ -12,17 +12,23 @@ import android.view.ViewGroup;
 import com.google.samples.apps.iosched.ui.widget.SlidingTabLayout;
 
 public class TabFragment extends Fragment {
-
+	public static final String ARG_WOCHE = "ARG_WOCHE";
 	private int woche;
 
-	public TabFragment(int woche) {
-		this.woche = woche;
-	}
-
 	public static TabFragment newInstance(int woche) {
-		return new TabFragment(woche);
+		Bundle args = new Bundle();
+		args.putInt(ARG_WOCHE, woche);
+		TabFragment tabFragment = new TabFragment();
+		tabFragment.setArguments(args);
+		return tabFragment;
 	}
 
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		woche = getArguments().getInt(ARG_WOCHE);
+	}
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.pager_tabs, container, false);
