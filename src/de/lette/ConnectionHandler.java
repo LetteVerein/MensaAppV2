@@ -8,6 +8,8 @@ import java.net.HttpURLConnection;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.LinkedHashSet;
@@ -32,7 +34,7 @@ public class ConnectionHandler {
 	private static List<Tagesplan> tagesPläne;
 
 	public static List<Tagesplan> getClientData() throws ClientProtocolException,
-			IOException, URISyntaxException {
+			IOException, URISyntaxException, ParseException {
 		// data = getClientDataFromServer();
 		if (tagesPläne != null)
 			return tagesPläne;
@@ -88,56 +90,58 @@ public class ConnectionHandler {
 
 		Set<Termin> termine = new LinkedHashSet<Termin>();
 		
-		/*2.3.2015*/
-		termine.add(new Termin(1, new Date(2015,3,2), 1, new BigDecimal(1.00), false));
-		termine.add(new Termin(2, new Date(2015,3,2), 9, new BigDecimal(1.00), false));
-		termine.add(new Termin(3, new Date(2015,3,2), 14, new BigDecimal(1.00), false));
-		termine.add(new Termin(4, new Date(2015,3,2), 24, new BigDecimal(1.00), false));
-		termine.add(new Termin(5, new Date(2015,3,2), 25, new BigDecimal(1.00), false));
-		termine.add(new Termin(6, new Date(2015,3,2), 33, new BigDecimal(1.00), false));
+		SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
 		
-		termine.add(new Termin(7, new Date(2015,3,2), 5, new BigDecimal(0.70), true));
-		termine.add(new Termin(8, new Date(2015,3,2), 18, new BigDecimal(3.50), true));
-		termine.add(new Termin(10, new Date(2015,3,2), 27, new BigDecimal(2.50), true));
-		termine.add(new Termin(12, new Date(2015,3,2), 37, new BigDecimal(0.70), true));
+		/*2.3.2015*/
+		termine.add(new Termin(1, new Date(sdf.parse("02.03.2015").getTime()), 1, new BigDecimal(1.00), false));
+		termine.add(new Termin(2, new Date(sdf.parse("02.03.2015").getTime()), 9, new BigDecimal(1.00), false));
+		termine.add(new Termin(3, new Date(sdf.parse("02.03.2015").getTime()), 14, new BigDecimal(1.00), false));
+		termine.add(new Termin(4, new Date(sdf.parse("02.03.2015").getTime()), 24, new BigDecimal(1.00), false));
+		termine.add(new Termin(5, new Date(sdf.parse("02.03.2015").getTime()), 25, new BigDecimal(1.00), false));
+		termine.add(new Termin(6, new Date(sdf.parse("02.03.2015").getTime()), 33, new BigDecimal(1.00), false));
+		
+		termine.add(new Termin(7, new Date(sdf.parse("02.03.2015").getTime()), 5, new BigDecimal(0.70), true));
+		termine.add(new Termin(8, new Date(sdf.parse("02.03.2015").getTime()), 18, new BigDecimal(3.50), true));
+		termine.add(new Termin(10, new Date(sdf.parse("02.03.2015").getTime()), 27, new BigDecimal(2.50), true));
+		termine.add(new Termin(12, new Date(sdf.parse("02.03.2015").getTime()), 37, new BigDecimal(0.70), true));
 		
 		/*3.3.2015*/
-		termine.add(new Termin(13, new Date(2015,3,3), 2, new BigDecimal(1.00), false));
-		termine.add(new Termin(14, new Date(2015,3,3), 10, new BigDecimal(1.00), false));
-		termine.add(new Termin(15, new Date(2015,3,3), 11, new BigDecimal(1.00), false));
-		termine.add(new Termin(16, new Date(2015,3,3), 15, new BigDecimal(1.00), false));
-		termine.add(new Termin(17, new Date(2015,3,3), 34, new BigDecimal(1.00), false));
+		termine.add(new Termin(13, new Date(sdf.parse("03.03.2015").getTime()), 2, new BigDecimal(1.00), false));
+		termine.add(new Termin(14, new Date(sdf.parse("03.03.2015").getTime()), 10, new BigDecimal(1.00), false));
+		termine.add(new Termin(15, new Date(sdf.parse("03.03.2015").getTime()), 11, new BigDecimal(1.00), false));
+		termine.add(new Termin(16, new Date(sdf.parse("03.03.2015").getTime()), 15, new BigDecimal(1.00), false));
+		termine.add(new Termin(17, new Date(sdf.parse("03.03.2015").getTime()), 34, new BigDecimal(1.00), false));
 		
-		termine.add(new Termin(18, new Date(2015,3,3), 6, new BigDecimal(0.70), true));
-		termine.add(new Termin(19, new Date(2015,3,3), 20, new BigDecimal(3.50), true));
-		termine.add(new Termin(20, new Date(2015,3,3), 29, new BigDecimal(2.50), true));
-		termine.add(new Termin(21, new Date(2015,3,3), 38, new BigDecimal(0.70), true));
+		termine.add(new Termin(18, new Date(sdf.parse("03.03.2015").getTime()), 6, new BigDecimal(0.70), true));
+		termine.add(new Termin(19, new Date(sdf.parse("03.03.2015").getTime()), 20, new BigDecimal(3.50), true));
+		termine.add(new Termin(20, new Date(sdf.parse("03.03.2015").getTime()), 29, new BigDecimal(2.50), true));
+		termine.add(new Termin(21, new Date(sdf.parse("03.03.2015").getTime()), 38, new BigDecimal(0.70), true));
 		
 		/*4.3.2015*/
-		termine.add(new Termin(22, new Date(2015,3,4), 3, new BigDecimal(1.00), false));
-		termine.add(new Termin(23, new Date(2015,3,4), 12, new BigDecimal(1.00), false));
-		termine.add(new Termin(24, new Date(2015,3,4), 16, new BigDecimal(1.00), false));
-		termine.add(new Termin(25, new Date(2015,3,4), 25, new BigDecimal(1.00), false));
-		termine.add(new Termin(26, new Date(2015,3,4), 26, new BigDecimal(1.00), false));
-		termine.add(new Termin(27, new Date(2015,3,4), 35, new BigDecimal(1.00), false));
+		termine.add(new Termin(22, new Date(sdf.parse("04.03.2015").getTime()), 3, new BigDecimal(1.00), false));
+		termine.add(new Termin(23, new Date(sdf.parse("04.03.2015").getTime()), 12, new BigDecimal(1.00), false));
+		termine.add(new Termin(24, new Date(sdf.parse("04.03.2015").getTime()), 16, new BigDecimal(1.00), false));
+		termine.add(new Termin(25, new Date(sdf.parse("04.03.2015").getTime()), 25, new BigDecimal(1.00), false));
+		termine.add(new Termin(26, new Date(sdf.parse("04.03.2015").getTime()), 26, new BigDecimal(1.00), false));
+		termine.add(new Termin(27, new Date(sdf.parse("04.03.2015").getTime()), 35, new BigDecimal(1.00), false));
 		
-		termine.add(new Termin(28, new Date(2015,3,4), 7, new BigDecimal(0.70), true));
-		termine.add(new Termin(29, new Date(2015,3,4), 21, new BigDecimal(3.50), true));
-		termine.add(new Termin(31, new Date(2015,3,4), 30, new BigDecimal(2.50), true));
-		termine.add(new Termin(32, new Date(2015,3,4), 39, new BigDecimal(0.70), true));
+		termine.add(new Termin(28, new Date(sdf.parse("04.03.2015").getTime()), 7, new BigDecimal(0.70), true));
+		termine.add(new Termin(29, new Date(sdf.parse("04.03.2015").getTime()), 21, new BigDecimal(3.50), true));
+		termine.add(new Termin(31, new Date(sdf.parse("04.03.2015").getTime()), 30, new BigDecimal(2.50), true));
+		termine.add(new Termin(32, new Date(sdf.parse("04.03.2015").getTime()), 39, new BigDecimal(0.70), true));
 		
 		/*5.3.2015*/
-		termine.add(new Termin(33, new Date(2015,3,5), 4, new BigDecimal(1.00), false));
-		termine.add(new Termin(34, new Date(2015,3,5), 13, new BigDecimal(1.00), false));
-		termine.add(new Termin(35, new Date(2015,3,5), 17, new BigDecimal(1.00), false));
-		termine.add(new Termin(36, new Date(2015,3,5), 25, new BigDecimal(1.00), false));
-		termine.add(new Termin(37, new Date(2015,3,5), 26, new BigDecimal(1.00), false));
-		termine.add(new Termin(38, new Date(2015,3,5), 36, new BigDecimal(1.00), false));
+		termine.add(new Termin(33, new Date(sdf.parse("05.03.2015").getTime()), 4, new BigDecimal(1.00), false));
+		termine.add(new Termin(34, new Date(sdf.parse("05.03.2015").getTime()), 13, new BigDecimal(1.00), false));
+		termine.add(new Termin(35, new Date(sdf.parse("05.03.2015").getTime()), 17, new BigDecimal(1.00), false));
+		termine.add(new Termin(36, new Date(sdf.parse("05.03.2015").getTime()), 25, new BigDecimal(1.00), false));
+		termine.add(new Termin(37, new Date(sdf.parse("05.03.2015").getTime()), 26, new BigDecimal(1.00), false));
+		termine.add(new Termin(38, new Date(sdf.parse("05.03.2015").getTime()), 36, new BigDecimal(1.00), false));
 
-		termine.add(new Termin(39, new Date(2015,3,5), 8, new BigDecimal(0.70), true));
-		termine.add(new Termin(40, new Date(2015,3,5), 22, new BigDecimal(3.50), true));
-		termine.add(new Termin(42, new Date(2015,3,5), 32, new BigDecimal(2.50), true));
-		termine.add(new Termin(43, new Date(2015,3,5), 40, new BigDecimal(0.70), true));		
+		termine.add(new Termin(39, new Date(sdf.parse("05.03.2015").getTime()), 8, new BigDecimal(0.70), true));
+		termine.add(new Termin(40, new Date(sdf.parse("05.03.2015").getTime()), 22, new BigDecimal(3.50), true));
+		termine.add(new Termin(42, new Date(sdf.parse("05.03.2015").getTime()), 32, new BigDecimal(2.50), true));
+		termine.add(new Termin(43, new Date(sdf.parse("05.03.2015").getTime()), 40, new BigDecimal(0.70), true));		
 		
 		data.setTermine(termine);
 
