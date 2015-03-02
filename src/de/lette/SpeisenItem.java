@@ -16,7 +16,7 @@ public class SpeisenItem extends LinearLayout {
 	private ImageView likeButton, dislikeButton;
 	private Drawable like1, like2, dislike1, dislike2;
 	private View selectedButton = null;
-	private TextView speisenBeschreibung, speisenInfo, speisenPreis;
+	private TextView speisenBeschreibung, speisenPreis;
 
 	public SpeisenItem(Context context, final Speise speise, String drawable) {
 		super(context);

@@ -11,9 +11,9 @@ import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -86,7 +86,7 @@ public class ConnectionHandler {
 		alleSpeisen.add(new de.lette.mensaplan.server.Speise(39, "Kirschgrütze", SpeiseArt.DESSERT, true, "", 0, 0, 0, 0, 10, 2));
 		alleSpeisen.add(new de.lette.mensaplan.server.Speise(40, "Pfirsichquarkspeise", SpeiseArt.DESSERT, true, "", 200, 200, 200, 200, 10, 2));
 		
-		alleSpeisen.add(new de.lette.mensaplan.server.Speise(41, "Tomate mit Morzzarella und Baguettebrot", SpeiseArt.VORSPEISE,false , "", 100, 100, 100, 100, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(41, "Tomaten mit Mozzarella und Baguettebrot", SpeiseArt.VORSPEISE,false , "", 100, 100, 100, 100, 10, 2));
 		alleSpeisen.add(new de.lette.mensaplan.server.Speise(42, "Salatteller mit Tunfisch und Ei", SpeiseArt.VORSPEISE,false , "", 100, 100, 100, 100, 10, 2));
 		alleSpeisen.add(new de.lette.mensaplan.server.Speise(43, "Kräutercremesuppe", SpeiseArt.VORSPEISE,false , "", 100, 100, 100, 100, 10, 2));
 		alleSpeisen.add(new de.lette.mensaplan.server.Speise(44, "Toast Hawaii", SpeiseArt.VORSPEISE,false , "", 100, 100, 100, 100, 10, 2));
@@ -98,8 +98,7 @@ public class ConnectionHandler {
 		
 		alleSpeisen.add(new de.lette.mensaplan.server.Speise(49, "Gemüse-Nudelauflauf", SpeiseArt.VOLLKOST, false, "", 200, 200, 200, 200, 10, 2));
 		alleSpeisen.add(new de.lette.mensaplan.server.Speise(50, "Milchreis mit Kirschkompott", SpeiseArt.VOLLKOST, false, "", 200, 200, 200, 200, 10, 2));
-		alleSpeisen.add(new de.lette.mensaplan.server.Speise(51, "Buletten mit Schafkäse und Oliven gefüllt", SpeiseArt.VOLLKOST, false, "", 200, 200, 200, 200, 10, 2));
-		alleSpeisen.add(new de.lette.mensaplan.server.Speise(52, "gemischtes Gemüse", SpeiseArt.VOLLKOST, false, "", 200, 200, 200, 200, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(51, "Buletten mit Schafkäse und Oliven gefüllt, gemischtes Gemüse", SpeiseArt.VOLLKOST, false, "", 200, 200, 200, 200, 10, 2));
 		alleSpeisen.add(new de.lette.mensaplan.server.Speise(53, "Hähnchenbrust mit Wirsing-Möhren-Gemüse", SpeiseArt.VOLLKOST, false, "", 200, 200, 200, 200, 10, 2));
 		alleSpeisen.add(new de.lette.mensaplan.server.Speise(54, "Bratwurst mit gemischtem Gemüse", SpeiseArt.VOLLKOST, false, "", 200, 200, 200, 200, 10, 2));
 		
@@ -112,7 +111,7 @@ public class ConnectionHandler {
 		alleSpeisen.add(new de.lette.mensaplan.server.Speise(60, "Waldorfsalat", SpeiseArt.VORSPEISE,true, "", 100, 100, 100, 100, 10, 2));
 		
 		alleSpeisen.add(new de.lette.mensaplan.server.Speise(61, "Kotelette mit Kartoffelpüre, Prinzessbohnen", SpeiseArt.LEICHTEVOLLKOST, true, "", 9000, 9000, 9000, 9000, 10, 2));
-		alleSpeisen.add(new de.lette.mensaplan.server.Speise(62, "Seelachsfilet nach brasilianischer Art Reis", SpeiseArt.LEICHTEVOLLKOST, true, "", 9000, 9000, 9000, 9000, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(62, "Seelachsfilet nach brasilianischer Art, Reis", SpeiseArt.LEICHTEVOLLKOST, true, "", 9000, 9000, 9000, 9000, 10, 2));
 		alleSpeisen.add(new de.lette.mensaplan.server.Speise(63, "Broccoli-Hackfleisch-Auflauf mit Tomatensauce", SpeiseArt.LEICHTEVOLLKOST, true, "", 9000, 9000, 9000, 9000, 10, 2));
 		alleSpeisen.add(new de.lette.mensaplan.server.Speise(64, "Spinat mit Ei und Salzkartoffeln", SpeiseArt.LEICHTEVOLLKOST, true, "", 9000, 9000, 9000, 9000, 10, 2));
 		
@@ -170,7 +169,7 @@ public class ConnectionHandler {
 
 		Set<Termin> termine = new LinkedHashSet<Termin>();
 		
-		SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
+		SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy",Locale.GERMANY);
 		
 		/*2.3.2015*/
 		termine.add(new Termin(1, new Date(sdf.parse("02.03.2015").getTime()), 1, new BigDecimal(1.00), false));
@@ -222,49 +221,106 @@ public class ConnectionHandler {
 		termine.add(new Termin(40, new Date(sdf.parse("05.03.2015").getTime()), 22, new BigDecimal(3.50), true));
 		termine.add(new Termin(42, new Date(sdf.parse("05.03.2015").getTime()), 32, new BigDecimal(2.50), true));
 		termine.add(new Termin(43, new Date(sdf.parse("05.03.2015").getTime()), 40, new BigDecimal(0.70), true));
-		/*16.3.2015*/
-		termine.add(new Termin(44, new Date(sdf.parse("16.3.2015").getTime()), 4, new BigDecimal(1.00), false));
-		termine.add(new Termin(45, new Date(sdf.parse("16.3.2015").getTime()), 4, new BigDecimal(1.00), false));
-		termine.add(new Termin(46, new Date(sdf.parse("16.3.2015").getTime()), 4, new BigDecimal(1.00), false));
-		termine.add(new Termin(47, new Date(sdf.parse("16.3.2015").getTime()), 4, new BigDecimal(1.00), false));
 		
-		termine.add(new Termin(48, new Date(sdf.parse("16.3.2015").getTime()), 58, new BigDecimal(0.70), true));
-		termine.add(new Termin(49, new Date(sdf.parse("16.3.2015").getTime()), 61, new BigDecimal(0.70), true));
-		termine.add(new Termin(50, new Date(sdf.parse("16.3.2015").getTime()), 40, new BigDecimal(0.70), true));
-		termine.add(new Termin(51, new Date(sdf.parse("16.3.2015").getTime()), 40, new BigDecimal(0.70), true));
+		/*16.3.2015*/
+		termine.add(new Termin(44, new Date(sdf.parse("16.3.2015").getTime()), 41, new BigDecimal(1.00), false));
+		termine.add(new Termin(45, new Date(sdf.parse("16.3.2015").getTime()), 45, new BigDecimal(1.00), false));
+		termine.add(new Termin(46, new Date(sdf.parse("16.3.2015").getTime()), 49, new BigDecimal(1.00), false));
+		termine.add(new Termin(47, new Date(sdf.parse("16.3.2015").getTime()), 50, new BigDecimal(1.00), false));
+		termine.add(new Termin(48, new Date(sdf.parse("16.3.2015").getTime()), 24, new BigDecimal(1.00), false));
+		termine.add(new Termin(49, new Date(sdf.parse("16.3.2015").getTime()), 55, new BigDecimal(1.00), false));
+		
+		termine.add(new Termin(50, new Date(sdf.parse("16.3.2015").getTime()), 58, new BigDecimal(0.70), true));
+		termine.add(new Termin(51, new Date(sdf.parse("16.3.2015").getTime()), 61, new BigDecimal(3.50), true));
+		termine.add(new Termin(52, new Date(sdf.parse("16.3.2015").getTime()), 65, new BigDecimal(2.50), true));
+		termine.add(new Termin(53, new Date(sdf.parse("16.3.2015").getTime()), 69, new BigDecimal(0.70), true));
 		
 		/*17.3.2015*/
-		termine.add(new Termin(44, new Date(sdf.parse("16.3.2015").getTime()), 59, new BigDecimal(1.00), false));
-		termine.add(new Termin(45, new Date(sdf.parse("16.3.2015").getTime()), 4, new BigDecimal(1.00), false));
-		termine.add(new Termin(46, new Date(sdf.parse("16.3.2015").getTime()), 4, new BigDecimal(1.00), false));
-		termine.add(new Termin(47, new Date(sdf.parse("16.3.2015").getTime()), 4, new BigDecimal(1.00), false));
+		termine.add(new Termin(54, new Date(sdf.parse("17.3.2015").getTime()), 42, new BigDecimal(1.00), false));
+		termine.add(new Termin(55, new Date(sdf.parse("17.3.2015").getTime()), 46, new BigDecimal(1.00), false));
+		termine.add(new Termin(56, new Date(sdf.parse("17.3.2015").getTime()), 51, new BigDecimal(1.00), false));
+		termine.add(new Termin(57, new Date(sdf.parse("17.3.2015").getTime()), 24, new BigDecimal(1.00), false));
+		termine.add(new Termin(58, new Date(sdf.parse("17.3.2015").getTime()), 25, new BigDecimal(1.00), false));
+		termine.add(new Termin(59, new Date(sdf.parse("17.3.2015").getTime()), 56, new BigDecimal(1.00), false));
 		
-		termine.add(new Termin(48, new Date(sdf.parse("16.3.2015").getTime()), 59, new BigDecimal(0.70), true));
-		termine.add(new Termin(49, new Date(sdf.parse("16.3.2015").getTime()), 62, new BigDecimal(0.70), true));
-		termine.add(new Termin(50, new Date(sdf.parse("16.3.2015").getTime()), 40, new BigDecimal(0.70), true));
-		termine.add(new Termin(51, new Date(sdf.parse("16.3.2015").getTime()), 40, new BigDecimal(0.70), true));
+		termine.add(new Termin(48, new Date(sdf.parse("17.3.2015").getTime()), 59, new BigDecimal(0.70), true));
+		termine.add(new Termin(49, new Date(sdf.parse("17.3.2015").getTime()), 62, new BigDecimal(3.50), true));
+		termine.add(new Termin(50, new Date(sdf.parse("17.3.2015").getTime()), 66, new BigDecimal(2.50), true));
+		termine.add(new Termin(51, new Date(sdf.parse("17.3.2015").getTime()), 70, new BigDecimal(0.70), true));
 		
 		/*18.3.2015*/
-		termine.add(new Termin(44, new Date(sdf.parse("16.3.2015").getTime()), 4, new BigDecimal(1.00), false));
-		termine.add(new Termin(45, new Date(sdf.parse("16.3.2015").getTime()), 4, new BigDecimal(1.00), false));
-		termine.add(new Termin(46, new Date(sdf.parse("16.3.2015").getTime()), 4, new BigDecimal(1.00), false));
-		termine.add(new Termin(47, new Date(sdf.parse("16.3.2015").getTime()), 4, new BigDecimal(1.00), false));
+		termine.add(new Termin(52, new Date(sdf.parse("18.3.2015").getTime()), 3, new BigDecimal(1.00), false));
+		termine.add(new Termin(53, new Date(sdf.parse("18.3.2015").getTime()), 47, new BigDecimal(1.00), false));
+		termine.add(new Termin(54, new Date(sdf.parse("18.3.2015").getTime()), 53, new BigDecimal(1.00), false));
+		termine.add(new Termin(55, new Date(sdf.parse("18.3.2015").getTime()), 24, new BigDecimal(1.00), false));
+		termine.add(new Termin(56, new Date(sdf.parse("18.3.2015").getTime()), 25, new BigDecimal(1.00), false));
+		termine.add(new Termin(57, new Date(sdf.parse("18.3.2015").getTime()), 100, new BigDecimal(1.00), false));
 		
-		termine.add(new Termin(48, new Date(sdf.parse("16.3.2015").getTime()), 60, new BigDecimal(0.70), true));
-		termine.add(new Termin(49, new Date(sdf.parse("16.3.2015").getTime()), 63, new BigDecimal(0.70), true));
-		termine.add(new Termin(50, new Date(sdf.parse("16.3.2015").getTime()), 40, new BigDecimal(0.70), true));
-		termine.add(new Termin(51, new Date(sdf.parse("16.3.2015").getTime()), 40, new BigDecimal(0.70), true));
+		termine.add(new Termin(58, new Date(sdf.parse("18.3.2015").getTime()), 60, new BigDecimal(0.70), true));
+		termine.add(new Termin(59, new Date(sdf.parse("18.3.2015").getTime()), 63, new BigDecimal(3.50), true));
+		termine.add(new Termin(60, new Date(sdf.parse("18.3.2015").getTime()), 67, new BigDecimal(2.50), true));
+		termine.add(new Termin(61, new Date(sdf.parse("18.3.2015").getTime()), 71, new BigDecimal(0.70), true));
 		
 		/*20.3.2015*/
-		termine.add(new Termin(44, new Date(sdf.parse("16.3.2015").getTime()), 4, new BigDecimal(1.00), false));
-		termine.add(new Termin(45, new Date(sdf.parse("16.3.2015").getTime()), 4, new BigDecimal(1.00), false));
-		termine.add(new Termin(46, new Date(sdf.parse("16.3.2015").getTime()), 4, new BigDecimal(1.00), false));
-		termine.add(new Termin(47, new Date(sdf.parse("16.3.2015").getTime()), 4, new BigDecimal(1.00), false));
+		termine.add(new Termin(62, new Date(sdf.parse("20.3.2015").getTime()), 44, new BigDecimal(1.00), false));
+		termine.add(new Termin(63, new Date(sdf.parse("20.3.2015").getTime()), 48, new BigDecimal(1.00), false));
+		termine.add(new Termin(64, new Date(sdf.parse("20.3.2015").getTime()), 54, new BigDecimal(1.00), false));
+		termine.add(new Termin(65, new Date(sdf.parse("20.3.2015").getTime()), 24, new BigDecimal(1.00), false));
+		termine.add(new Termin(66, new Date(sdf.parse("20.3.2015").getTime()), 25, new BigDecimal(1.00), false));
+		termine.add(new Termin(67, new Date(sdf.parse("20.3.2015").getTime()), 57, new BigDecimal(1.00), false));
 		
-		termine.add(new Termin(48, new Date(sdf.parse("16.3.2015").getTime()), 7, new BigDecimal(0.70), true));
-		termine.add(new Termin(49, new Date(sdf.parse("16.3.2015").getTime()), 64, new BigDecimal(0.70), true));
-		termine.add(new Termin(50, new Date(sdf.parse("16.3.2015").getTime()), 40, new BigDecimal(0.70), true));
-		termine.add(new Termin(51, new Date(sdf.parse("16.3.2015").getTime()), 40, new BigDecimal(0.70), true));
+		termine.add(new Termin(68, new Date(sdf.parse("20.3.2015").getTime()), 7, new BigDecimal(0.70), true));
+		termine.add(new Termin(69, new Date(sdf.parse("20.3.2015").getTime()), 64, new BigDecimal(3.50), true));
+		termine.add(new Termin(70, new Date(sdf.parse("20.3.2015").getTime()), 68, new BigDecimal(2.50), true));
+		termine.add(new Termin(71, new Date(sdf.parse("20.3.2015").getTime()), 72, new BigDecimal(0.70), true));
+		
+		/*24.3.2015*/
+		termine.add(new Termin(72, new Date(sdf.parse("24.3.2015").getTime()), 73, new BigDecimal(1.00), false));
+		termine.add(new Termin(73, new Date(sdf.parse("24.3.2015").getTime()), 77, new BigDecimal(1.00), false));
+		termine.add(new Termin(74, new Date(sdf.parse("24.3.2015").getTime()), 81, new BigDecimal(1.00), false));
+		termine.add(new Termin(75, new Date(sdf.parse("24.3.2015").getTime()), 85, new BigDecimal(1.00), false));
+		termine.add(new Termin(76, new Date(sdf.parse("24.3.2015").getTime()), 86, new BigDecimal(1.00), false));
+		
+		termine.add(new Termin(77, new Date(sdf.parse("24.3.2015").getTime()), 90, new BigDecimal(0.70), true));
+		termine.add(new Termin(78, new Date(sdf.parse("24.3.2015").getTime()), 92, new BigDecimal(3.50), true));
+		termine.add(new Termin(79, new Date(sdf.parse("24.3.2015").getTime()), 96, new BigDecimal(2.50), true));
+		termine.add(new Termin(80, new Date(sdf.parse("24.3.2015").getTime()), 100, new BigDecimal(0.70), true));
+
+		/*25.3.2015*/
+		termine.add(new Termin(81, new Date(sdf.parse("25.3.2015").getTime()), 74, new BigDecimal(1.00), false));
+		termine.add(new Termin(82, new Date(sdf.parse("25.3.2015").getTime()), 78, new BigDecimal(1.00), false));
+		termine.add(new Termin(83, new Date(sdf.parse("25.3.2015").getTime()), 82, new BigDecimal(1.00), false));
+		termine.add(new Termin(84, new Date(sdf.parse("25.3.2015").getTime()), 25, new BigDecimal(1.00), false));
+		termine.add(new Termin(85, new Date(sdf.parse("25.3.2015").getTime()), 87, new BigDecimal(1.00), false));
+		
+		termine.add(new Termin(86, new Date(sdf.parse("25.3.2015").getTime()), 91, new BigDecimal(0.70), true));
+		termine.add(new Termin(87, new Date(sdf.parse("25.3.2015").getTime()), 93, new BigDecimal(3.50), true));
+		termine.add(new Termin(88, new Date(sdf.parse("25.3.2015").getTime()), 97, new BigDecimal(2.50), true));
+		termine.add(new Termin(89, new Date(sdf.parse("25.3.2015").getTime()), 101, new BigDecimal(0.70), true));
+
+		/*25.3.2015*/
+		termine.add(new Termin(90, new Date(sdf.parse("25.3.2015").getTime()), 75, new BigDecimal(1.00), false));
+		termine.add(new Termin(91, new Date(sdf.parse("25.3.2015").getTime()), 79, new BigDecimal(1.00), false));
+		termine.add(new Termin(92, new Date(sdf.parse("25.3.2015").getTime()), 83, new BigDecimal(1.00), false));
+		termine.add(new Termin(93, new Date(sdf.parse("25.3.2015").getTime()), 24, new BigDecimal(1.00), false));
+		termine.add(new Termin(94, new Date(sdf.parse("25.3.2015").getTime()), 25, new BigDecimal(1.00), false));
+		termine.add(new Termin(95, new Date(sdf.parse("25.3.2015").getTime()), 88, new BigDecimal(1.00), false));
+		
+		termine.add(new Termin(96, new Date(sdf.parse("25.3.2015").getTime()), 58, new BigDecimal(0.70), true));
+		termine.add(new Termin(97, new Date(sdf.parse("25.3.2015").getTime()), 94, new BigDecimal(3.50), true));
+		termine.add(new Termin(98, new Date(sdf.parse("25.3.2015").getTime()), 98, new BigDecimal(2.50), true));
+		termine.add(new Termin(99, new Date(sdf.parse("25.3.2015").getTime()), 102, new BigDecimal(0.70), true));
+
+		/*26.3.2015*/
+		termine.add(new Termin(100, new Date(sdf.parse("26.3.2015").getTime()), 76, new BigDecimal(1.00), false));
+		termine.add(new Termin(101, new Date(sdf.parse("26.3.2015").getTime()), 80, new BigDecimal(1.00), false));
+		termine.add(new Termin(102, new Date(sdf.parse("26.3.2015").getTime()), 84, new BigDecimal(1.00), false));
+		termine.add(new Termin(103, new Date(sdf.parse("26.3.2015").getTime()), 89, new BigDecimal(1.00), false));
+		
+		termine.add(new Termin(86, new Date(sdf.parse("26.3.2015").getTime()), 59, new BigDecimal(0.70), true));
+		termine.add(new Termin(87, new Date(sdf.parse("26.3.2015").getTime()), 95, new BigDecimal(3.50), true));
+		termine.add(new Termin(88, new Date(sdf.parse("26.3.2015").getTime()), 99, new BigDecimal(2.50), true));
+		termine.add(new Termin(89, new Date(sdf.parse("26.3.2015").getTime()), 103, new BigDecimal(0.70), true));
 		
 		data.setTermine(termine);
 
