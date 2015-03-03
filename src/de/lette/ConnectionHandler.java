@@ -165,6 +165,71 @@ public class ConnectionHandler {
 		alleSpeisen.add(new de.lette.mensaplan.server.Speise(102, "Ananas mit Schokosauce", SpeiseArt.DESSERT, true, "", 0, 0, 0, 0, 10, 2));
 		alleSpeisen.add(new de.lette.mensaplan.server.Speise(103, "Quark mit Aprikosen", SpeiseArt.DESSERT, true, "", 0, 0, 0, 0, 10, 2));
 		
+		/*Woche 2*/
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(104, "Brokkolisuppe mit Kokosmilch", SpeiseArt.VORSPEISE,false , "", 100, 100, 100, 100, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(105, "Nasi Goreng", SpeiseArt.VEGETARISCH,false, "", 100, 100, 100, 100, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(106, "Gemüsebolognese", SpeiseArt.VOLLKOST, false, "", 200, 200, 200, 200, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(107, "Spaghetti", SpeiseArt.BEILAGEN,false, "", 100, 100, 100, 100, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(108, "Veganer Vanilletraum", SpeiseArt.DESSERT, false, "", 0, 0, 0, 0, 10, 2));
+		
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(109, "Matjes Hausfrauenart", SpeiseArt.VORSPEISE,false , "", 100, 100, 100, 100, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(110, "Gebratene Austernpilze auf Salat mit Maisbrot", SpeiseArt.VEGETARISCH,false, "", 100, 100, 100, 100, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(111, "Pizza mit Thunfisch", SpeiseArt.VOLLKOST, false, "", 200, 200, 200, 200, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(112, "Kartoffeln", SpeiseArt.BEILAGEN,false, "", 100, 100, 100, 100, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(113, "Obstsalat mit Nüssen", SpeiseArt.DESSERT, false, "", 0, 0, 0, 0, 10, 2));
+		
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(114, "Frühlingssalat", SpeiseArt.VORSPEISE,false , "", 100, 100, 100, 100, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(115, "Quarkkeulchen mit Zimtzucker", SpeiseArt.VEGETARISCH,false, "", 100, 100, 100, 100, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(116, "Rigatoni mit Käsesauce", SpeiseArt.VEGETARISCH,false, "", 100, 100, 100, 100, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(117, "Schweinegeschnetzeltes mit Tsatsiki", SpeiseArt.VOLLKOST, false, "", 200, 200, 200, 200, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(118, "Reis", SpeiseArt.BEILAGEN,false, "", 100, 100, 100, 100, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(119, "Brombeer-Fool", SpeiseArt.DESSERT, false, "", 0, 0, 0, 0, 10, 2));
+		
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(120, "Kartoffel - Pastinakensuppe", SpeiseArt.VORSPEISE,false , "", 100, 100, 100, 100, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(121, "Paprika gefüllt mit Grünkern", SpeiseArt.VEGETARISCH,false, "", 100, 100, 100, 100, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(122, "Hähnchenkeule mit Linsengemüse", SpeiseArt.VOLLKOST, false, "", 200, 200, 200, 200, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(123, "Kartoffelpüree", SpeiseArt.BEILAGEN,false, "", 100, 100, 100, 100, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(124, "Reis", SpeiseArt.BEILAGEN,false, "", 100, 100, 100, 100, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(125, "Rhabarber - Himbeer - Kompott mit Minzjoghurt", SpeiseArt.DESSERT, false, "", 0, 0, 0, 0, 10, 2));
+		
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(126, "Cole - Slaw", SpeiseArt.VORSPEISE,false , "", 100, 100, 100, 100, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(127, "Ratatoullie mit Fladenbrot", SpeiseArt.VEGETARISCH,false, "", 100, 100, 100, 100, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(128, "Gefüllte Kohlrouladen", SpeiseArt.VOLLKOST, false, "", 200, 200, 200, 200, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(129, "Kartoffelpüree", SpeiseArt.BEILAGEN,false, "", 100, 100, 100, 100, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(130, "Apfelmus mit saurer Sahne", SpeiseArt.DESSERT, false, "", 0, 0, 0, 0, 10, 2));
+
+		/*Woche 2 Bio*/
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(131, "Brokkolisuppe mit Kokosmilch", SpeiseArt.VORSPEISE,true , "", 100, 100, 100, 100, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(132, "Currygemüse", SpeiseArt.GEMÜSETELLER, true, "", 9000, 9000, 9000, 9000, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(133, "Parboiled Reis", SpeiseArt.BEILAGEN,true, "", 100, 100, 100, 100, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(134, "Hausgemachter Apfelstamp mit Zimt", SpeiseArt.DESSERT, true, "", 0, 0, 0, 0, 10, 2));
+		
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(135, "Feldsalat mit karamelisierten Walnüssen", SpeiseArt.VORSPEISE,true , "", 100, 100, 100, 100, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(136, "Rote Beete und grünen Bohnenabschnitten", SpeiseArt.GEMÜSETELLER, true, "", 9000, 9000, 9000, 9000, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(137, "Seelachs mit Frühlingsgemüse", SpeiseArt.LEICHTEVOLLKOST, true, "", 9000, 9000, 9000, 9000, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(138, "Zucchinireis", SpeiseArt.BEILAGEN,true, "", 100, 100, 100, 100, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(139, "Mandel-Sojapudding", SpeiseArt.DESSERT, true, "", 0, 0, 0, 0, 10, 2));
+		
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(140, "Salatteller mit Joghurt-Limonen-Dressing", SpeiseArt.VORSPEISE,true , "", 100, 100, 100, 100, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(141, "Blumenkohl und Kohlrabi", SpeiseArt.GEMÜSETELLER, true, "", 9000, 9000, 9000, 9000, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(142, "Hähnchenbrust mit Kaisergemüse und Dip", SpeiseArt.LEICHTEVOLLKOST, true, "", 9000, 9000, 9000, 9000, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(143, "Kartoffelpüree", SpeiseArt.BEILAGEN,true, "", 100, 100, 100, 100, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(144, "Quarkcreme mit Mandarinen", SpeiseArt.DESSERT, true, "", 0, 0, 0, 0, 10, 2));
+		
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(145, "Nudelsuppe", SpeiseArt.VORSPEISE,true , "", 100, 100, 100, 100, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(146, "Brokkoli und Pilzen", SpeiseArt.GEMÜSETELLER, true, "", 9000, 9000, 9000, 9000, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(147, "Bolognese", SpeiseArt.LEICHTEVOLLKOST, true, "", 9000, 9000, 9000, 9000, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(148, "Spaghetti", SpeiseArt.BEILAGEN,true, "", 100, 100, 100, 100, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(149, "Rote Beerengrütze mit saurer Sahne", SpeiseArt.DESSERT, true, "", 0, 0, 0, 0, 10, 2));
+		
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(150, "Orangen-fenchel-Rohkost", SpeiseArt.VORSPEISE,true , "", 100, 100, 100, 100, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(151, "Gebratenes mediteranes Gemüse", SpeiseArt.GEMÜSETELLER, true, "", 9000, 9000, 9000, 9000, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(152, "Hähnchenschaschlik mit Zigeunersauce", SpeiseArt.LEICHTEVOLLKOST, true, "", 9000, 9000, 9000, 9000, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(153, "Basmatireis", SpeiseArt.BEILAGEN,true, "", 100, 100, 100, 100, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(154, "Papaya mariniert mit frischem Minzdressing", SpeiseArt.DESSERT, true, "", 0, 0, 0, 0, 10, 2));
+		
+		
+		
 		data.setSpeisen(alleSpeisen);
 
 		Set<Termin> termine = new LinkedHashSet<Termin>();
@@ -317,10 +382,73 @@ public class ConnectionHandler {
 		termine.add(new Termin(102, new Date(sdf.parse("26.3.2015").getTime()), 84, new BigDecimal(1.00), false));
 		termine.add(new Termin(103, new Date(sdf.parse("26.3.2015").getTime()), 89, new BigDecimal(1.00), false));
 		
-		termine.add(new Termin(86, new Date(sdf.parse("26.3.2015").getTime()), 59, new BigDecimal(0.70), true));
-		termine.add(new Termin(87, new Date(sdf.parse("26.3.2015").getTime()), 95, new BigDecimal(3.50), true));
-		termine.add(new Termin(88, new Date(sdf.parse("26.3.2015").getTime()), 99, new BigDecimal(2.50), true));
-		termine.add(new Termin(89, new Date(sdf.parse("26.3.2015").getTime()), 103, new BigDecimal(0.70), true));
+		termine.add(new Termin(104, new Date(sdf.parse("26.3.2015").getTime()), 59, new BigDecimal(0.70), true));
+		termine.add(new Termin(105, new Date(sdf.parse("26.3.2015").getTime()), 95, new BigDecimal(3.50), true));
+		termine.add(new Termin(106, new Date(sdf.parse("26.3.2015").getTime()), 99, new BigDecimal(2.50), true));
+		termine.add(new Termin(107, new Date(sdf.parse("26.3.2015").getTime()), 103, new BigDecimal(0.70), true));
+
+		/*Woche 2*/
+		termine.add(new Termin(108, new Date(sdf.parse("9.3.2015").getTime()), 104, new BigDecimal(1.00), false));
+		termine.add(new Termin(109, new Date(sdf.parse("9.3.2015").getTime()), 105, new BigDecimal(1.00), false));
+		termine.add(new Termin(110, new Date(sdf.parse("9.3.2015").getTime()), 106, new BigDecimal(1.00), false));
+		termine.add(new Termin(111, new Date(sdf.parse("9.3.2015").getTime()), 107, new BigDecimal(1.00), false));
+		termine.add(new Termin(112, new Date(sdf.parse("9.3.2015").getTime()), 108, new BigDecimal(1.00), false));
+		
+		termine.add(new Termin(113, new Date(sdf.parse("10.3.2015").getTime()), 109, new BigDecimal(1.00), false));
+		termine.add(new Termin(114, new Date(sdf.parse("10.3.2015").getTime()), 110, new BigDecimal(1.00), false));
+		termine.add(new Termin(115, new Date(sdf.parse("10.3.2015").getTime()), 111, new BigDecimal(1.00), false));
+		termine.add(new Termin(116, new Date(sdf.parse("10.3.2015").getTime()), 112, new BigDecimal(1.00), false));
+		termine.add(new Termin(117, new Date(sdf.parse("10.3.2015").getTime()), 113, new BigDecimal(1.00), false));
+		
+		termine.add(new Termin(118, new Date(sdf.parse("11.3.2015").getTime()), 114, new BigDecimal(1.00), false));
+		termine.add(new Termin(119, new Date(sdf.parse("11.3.2015").getTime()), 115, new BigDecimal(1.00), false));
+		termine.add(new Termin(120, new Date(sdf.parse("11.3.2015").getTime()), 116, new BigDecimal(1.00), false));
+		termine.add(new Termin(121, new Date(sdf.parse("11.3.2015").getTime()), 117, new BigDecimal(1.00), false));
+		termine.add(new Termin(122, new Date(sdf.parse("11.3.2015").getTime()), 118, new BigDecimal(1.00), false));
+		termine.add(new Termin(123, new Date(sdf.parse("11.3.2015").getTime()), 119, new BigDecimal(1.00), false));
+		
+		termine.add(new Termin(124, new Date(sdf.parse("12.3.2015").getTime()), 120, new BigDecimal(1.00), false));
+		termine.add(new Termin(125, new Date(sdf.parse("12.3.2015").getTime()), 121, new BigDecimal(1.00), false));
+		termine.add(new Termin(126, new Date(sdf.parse("12.3.2015").getTime()), 122, new BigDecimal(1.00), false));
+		termine.add(new Termin(127, new Date(sdf.parse("12.3.2015").getTime()), 123, new BigDecimal(1.00), false));
+		termine.add(new Termin(128, new Date(sdf.parse("12.3.2015").getTime()), 124, new BigDecimal(1.00), false));
+		termine.add(new Termin(129, new Date(sdf.parse("12.3.2015").getTime()), 125, new BigDecimal(1.00), false));
+		
+		termine.add(new Termin(130, new Date(sdf.parse("13.3.2015").getTime()), 126, new BigDecimal(1.00), false));
+		termine.add(new Termin(131, new Date(sdf.parse("13.3.2015").getTime()), 127, new BigDecimal(1.00), false));
+		termine.add(new Termin(132, new Date(sdf.parse("13.3.2015").getTime()), 128, new BigDecimal(1.00), false));
+		termine.add(new Termin(133, new Date(sdf.parse("13.3.2015").getTime()), 129, new BigDecimal(1.00), false));
+		termine.add(new Termin(134, new Date(sdf.parse("13.3.2015").getTime()), 130, new BigDecimal(1.00), false));
+		
+		/*Woche 2 Bio*/	
+		termine.add(new Termin(135, new Date(sdf.parse("9.3.2015").getTime()), 131, new BigDecimal(0.70), true));
+		termine.add(new Termin(136, new Date(sdf.parse("9.3.2015").getTime()), 132, new BigDecimal(3.50), true));
+		termine.add(new Termin(137, new Date(sdf.parse("9.3.2015").getTime()), 133, new BigDecimal(0.70), true));
+		termine.add(new Termin(138, new Date(sdf.parse("9.3.2015").getTime()), 134, new BigDecimal(0.70), true));
+		
+		termine.add(new Termin(139, new Date(sdf.parse("10.3.2015").getTime()), 135, new BigDecimal(0.70), true));
+		termine.add(new Termin(140, new Date(sdf.parse("10.3.2015").getTime()), 136, new BigDecimal(3.50), true));
+		termine.add(new Termin(141, new Date(sdf.parse("10.3.2015").getTime()), 137, new BigDecimal(2.50), true));
+		termine.add(new Termin(142, new Date(sdf.parse("10.3.2015").getTime()), 138, new BigDecimal(0.70), true));
+		termine.add(new Termin(143, new Date(sdf.parse("10.3.2015").getTime()), 139, new BigDecimal(0.70), true));
+		
+		termine.add(new Termin(144, new Date(sdf.parse("11.3.2015").getTime()), 140, new BigDecimal(0.70), true));
+		termine.add(new Termin(145, new Date(sdf.parse("11.3.2015").getTime()), 141, new BigDecimal(3.50), true));
+		termine.add(new Termin(146, new Date(sdf.parse("11.3.2015").getTime()), 142, new BigDecimal(2.50), true));
+		termine.add(new Termin(147, new Date(sdf.parse("11.3.2015").getTime()), 143, new BigDecimal(0.70), true));
+		termine.add(new Termin(148, new Date(sdf.parse("11.3.2015").getTime()), 144, new BigDecimal(0.70), true));
+		
+		termine.add(new Termin(149, new Date(sdf.parse("12.3.2015").getTime()), 145, new BigDecimal(0.70), true));
+		termine.add(new Termin(150, new Date(sdf.parse("12.3.2015").getTime()), 146, new BigDecimal(3.50), true));
+		termine.add(new Termin(151, new Date(sdf.parse("12.3.2015").getTime()), 147, new BigDecimal(2.50), true));
+		termine.add(new Termin(152, new Date(sdf.parse("12.3.2015").getTime()), 148, new BigDecimal(0.70), true));
+		termine.add(new Termin(153, new Date(sdf.parse("12.3.2015").getTime()), 149, new BigDecimal(0.70), true));
+		
+		termine.add(new Termin(154, new Date(sdf.parse("13.3.2015").getTime()), 150, new BigDecimal(0.70), true));
+		termine.add(new Termin(155, new Date(sdf.parse("13.3.2015").getTime()), 151, new BigDecimal(3.50), true));
+		termine.add(new Termin(156, new Date(sdf.parse("13.3.2015").getTime()), 152, new BigDecimal(2.50), true));
+		termine.add(new Termin(157, new Date(sdf.parse("13.3.2015").getTime()), 153, new BigDecimal(0.70), true));
+		termine.add(new Termin(158, new Date(sdf.parse("13.3.2015").getTime()), 154, new BigDecimal(0.70), true));
 		
 		data.setTermine(termine);
 

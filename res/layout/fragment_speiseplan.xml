@@ -225,6 +225,38 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/gemüsetellerWrap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/roundedcorners"
+            android:padding="1dp"
+            android:visibility="gone" >
+
+            <TextView
+                android:id="@+id/gemüsetellerTitel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/greenroundedcornersonlytop"
+                android:gravity="center_horizontal"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:text="Gemüseteller"
+                android:textColor="@color/primary_text_default_material_dark"
+                android:textSize="21sp" />
+
+            <LinearLayout
+                android:id="@+id/gemüseteller"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/gemüsetellerTitel"
+                android:background="@drawable/roundedcornersonlybottom"
+                android:orientation="vertical"
+                android:padding="10dp" >
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
             android:id="@+id/diätVollkostWrap"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -257,7 +289,7 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/gemüsetellerWrap"
+            android:id="@+id/diätBeilagenWrap"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -266,22 +298,22 @@
             android:visibility="gone" >
 
             <TextView
-                android:id="@+id/gemüsetellerTitel"
+                android:id="@+id/diätBeilagenTitel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/greenroundedcornersonlytop"
                 android:gravity="center_horizontal"
                 android:paddingBottom="5dp"
                 android:paddingTop="5dp"
-                android:text="Gemüseteller"
+                android:text="Diät Beilagen"
                 android:textColor="@color/primary_text_default_material_dark"
                 android:textSize="21sp" />
 
             <LinearLayout
-                android:id="@+id/gemüseteller"
+                android:id="@+id/diätBeilagen"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/gemüsetellerTitel"
+                android:layout_below="@+id/diätBeilagenTitel"
                 android:background="@drawable/roundedcornersonlybottom"
                 android:orientation="vertical"
                 android:padding="10dp" >
