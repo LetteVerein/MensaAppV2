@@ -69,7 +69,7 @@ public class SpeiseplanFragment extends Fragment {
 			for (Tagesplan tag : data) {
 				speiseDatum.setTime(tag.getDatum());
 				int week = speiseDatum.get(Calendar.WEEK_OF_MONTH);
-				Log.w("TEST", "CurrWeek: " + week);
+//				Log.w("TEST", "CurrWeek: " + week);
 				if (week != mWoche + 1)
 					continue;
 				int day = speiseDatum.get(Calendar.DAY_OF_WEEK);
@@ -110,7 +110,6 @@ public class SpeiseplanFragment extends Fragment {
 					}
 					hasSpeisen = true;
 					wrap.setVisibility(ViewGroup.VISIBLE);
-					Log.w("Speise eingetragen", "Now");
 				}
 			}
 			if (!hasSpeisen) {

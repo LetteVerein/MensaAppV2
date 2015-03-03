@@ -19,7 +19,7 @@ public class TabFragment extends Fragment {
 
 	public static TabFragment newInstance(int woche) {
 		Bundle args = new Bundle();
-		args.putInt(ARG_WOCHE, woche);
+		args.putInt(ARG_WOCHE, woche+1);
 		TabFragment tabFragment = new TabFragment();
 		tabFragment.setArguments(args);
 		return tabFragment;
