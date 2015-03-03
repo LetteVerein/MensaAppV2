@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 
 import com.google.samples.apps.iosched.ui.widget.SlidingTabLayout;
 
-import de.lette.R;
+import de.lette.mensaplan.R;
 
 public class TabFragment extends Fragment {
 	public static final String ARG_WOCHE = "ARG_WOCHE";

@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.larvalabs.svgandroid.SVGParser;
 
-import de.lette.R;
+import de.lette.mensaplan.R;
 
 public class SpeisenItem extends LinearLayout {
 	private ImageView icon;
@@ -25,7 +25,7 @@ public class SpeisenItem extends LinearLayout {
 
 		View view = View.inflate(getContext(), R.layout.speisen_item, this);
 		icon = (ImageView) view.findViewById(R.id.fragment_page_entry_imageView);
-		Drawable imageResource = SVGParser.getSVGFromResource(getResources(), getResources().getIdentifier(drawable, "raw", "de.lette")).createPictureDrawable();
+		Drawable imageResource = SVGParser.getSVGFromResource(getResources(), getResources().getIdentifier(drawable, "raw", "de.lette.mensaplan")).createPictureDrawable();
 		icon.setImageDrawable(imageResource);
 		icon.setLayerType(LAYER_TYPE_SOFTWARE, null);
 

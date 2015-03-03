@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import com.larvalabs.svgandroid.SVGParser;
 
-import de.lette.R;
+import de.lette.mensaplan.R;
 
 public class FirstLaunch extends Activity {
 

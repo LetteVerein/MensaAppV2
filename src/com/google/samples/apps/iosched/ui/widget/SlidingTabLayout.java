@@ -15,7 +15,7 @@
  */
 package com.google.samples.apps.iosched.ui.widget;
 
-import de.lette.R;
+import de.lette.mensaplan.R;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.support.v4.view.PagerAdapter;

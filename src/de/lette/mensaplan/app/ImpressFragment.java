@@ -1,6 +1,6 @@
 package de.lette.mensaplan.app;
 
-import de.lette.R;
+import de.lette.mensaplan.R;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.method.LinkMovementMethod;
