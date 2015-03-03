@@ -28,7 +28,7 @@
 
         <fragment
             android:id="@+id/fragment_drawer"
-            android:name="de.lette.NavigationDrawerFragment"
+            android:name="de.lette.mensaplan.app.NavigationDrawerFragment"
             android:layout_width="@dimen/navigation_drawer_width"
             android:layout_height="match_parent"
             android:layout_gravity="start"

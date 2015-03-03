@@ -1,4 +1,4 @@
-package de.lette;
+package de.lette.mensaplan.app;
 
 import java.math.RoundingMode;
 
@@ -10,6 +10,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.larvalabs.svgandroid.SVGParser;
+
+import de.lette.R;
 
 public class SpeisenItem extends LinearLayout {
 	private ImageView icon;

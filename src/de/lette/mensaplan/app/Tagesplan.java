@@ -1,4 +1,4 @@
-package de.lette;
+package de.lette.mensaplan.app;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;

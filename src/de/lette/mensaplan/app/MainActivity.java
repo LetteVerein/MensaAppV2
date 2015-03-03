@@ -1,5 +1,6 @@
-package de.lette;
+package de.lette.mensaplan.app;
 
+import de.lette.R;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;

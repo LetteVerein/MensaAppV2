@@ -1,4 +1,4 @@
-package de.lette;
+package de.lette.mensaplan.app;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.google.samples.apps.iosched.ui.widget.SlidingTabLayout;
+
+import de.lette.R;
 
 public class TabFragment extends Fragment {
 	public static final String ARG_WOCHE = "ARG_WOCHE";

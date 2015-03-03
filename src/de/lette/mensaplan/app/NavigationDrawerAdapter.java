@@ -1,7 +1,8 @@
-package de.lette;
+package de.lette.mensaplan.app;
 
 import java.util.List;
 
+import de.lette.R;
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;

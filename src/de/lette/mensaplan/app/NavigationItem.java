@@ -1,4 +1,4 @@
-package de.lette;
+package de.lette.mensaplan.app;
 
 import android.graphics.drawable.Drawable;
 

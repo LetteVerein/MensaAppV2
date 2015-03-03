@@ -1,4 +1,4 @@
-package de.lette;
+package de.lette.mensaplan.app;
 
 public interface NavigationDrawerCallbacks {
     void onNavigationDrawerItemSelected(int position);

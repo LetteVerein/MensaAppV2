@@ -1,4 +1,4 @@
-package de.lette;
+package de.lette.mensaplan.app;
 
 import java.io.BufferedReader;
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package de.lette;
+package de.lette.mensaplan.app;
 
 import android.app.Activity;
 import android.app.Fragment;
@@ -18,6 +18,8 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import de.lette.R;
 
 public class NavigationDrawerFragment extends Fragment implements NavigationDrawerCallbacks {
 	private static final String PREF_USER_LEARNED_DRAWER = "navigation_drawer_learned";

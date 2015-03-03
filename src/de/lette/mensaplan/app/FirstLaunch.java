@@ -1,4 +1,4 @@
-package de.lette;
+package de.lette.mensaplan.app;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
@@ -12,6 +12,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.larvalabs.svgandroid.SVGParser;
+
+import de.lette.R;
 
 public class FirstLaunch extends Activity {
 

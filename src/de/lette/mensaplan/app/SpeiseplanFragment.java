@@ -1,4 +1,4 @@
-package de.lette;
+package de.lette.mensaplan.app;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import de.lette.R;
 import de.lette.mensaplan.server.SpeiseArt;
 
 // In this case, the fragment displays simple text based on the page

@@ -1,4 +1,4 @@
-package de.lette;
+package de.lette.mensaplan.app;
 
 import android.content.Context;
 import android.support.v4.app.Fragment;
