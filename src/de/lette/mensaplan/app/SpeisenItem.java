@@ -31,10 +31,13 @@ public class SpeisenItem extends LinearLayout {
 
 		speisenBeschreibung = (TextView) view.findViewById(R.id.fragment_page_entry_description);
 		speisenBeschreibung.setText(speise.getName());
-//		speisenInfo = (TextView) view.findViewById(R.id.fragment_page_entry_warning);
-//		speisenInfo.setText("Beachte: " + speise.getBeachte());
-		speisenPreis = (TextView) view.findViewById(R.id.fragment_page_entry_price);
-		speisenPreis.setText("Preis: " + speise.getPreis().setScale(2, RoundingMode.HALF_DOWN) + "€");
+		// speisenInfo = (TextView)
+		// view.findViewById(R.id.fragment_page_entry_warning);
+		// speisenInfo.setText("Beachte: " + speise.getBeachte());
+		if (speise.isDiät()) {
+			speisenPreis = (TextView) view.findViewById(R.id.fragment_page_entry_price);
+			speisenPreis.setText("Preis: " + speise.getPreis().setScale(2, RoundingMode.HALF_DOWN) + "€");
+		}
 
 		likeButton = (ImageView) view.findViewById(R.id.fragment_page_entry_like);
 		likeButton.setLayerType(LAYER_TYPE_SOFTWARE, null);

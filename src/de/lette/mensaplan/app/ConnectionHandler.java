@@ -143,8 +143,8 @@ public class ConnectionHandler {
 		alleSpeisen.add(new de.lette.mensaplan.server.Speise(85, "Basmatireis", SpeiseArt.BEILAGEN,false, "", 100, 100, 100, 100, 10, 2));
 		
 		alleSpeisen.add(new de.lette.mensaplan.server.Speise(86, "Vanilleflammeri mit Erdbeersauce", SpeiseArt.DESSERT, false, "", 0, 0, 0, 0, 10, 2));
-		alleSpeisen.add(new de.lette.mensaplan.server.Speise(87, "Grieß mit Beerencocktail", SpeiseArt.DESSERT, true, "", 0, 0, 0, 0, 10, 2));
-		alleSpeisen.add(new de.lette.mensaplan.server.Speise(88, "Marmorierter Flammeri", SpeiseArt.DESSERT, true, "", 0, 0, 0, 0, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(87, "Grieß mit Beerencocktail", SpeiseArt.DESSERT, false, "", 0, 0, 0, 0, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(88, "Marmorierter Flammeri", SpeiseArt.DESSERT, false, "", 0, 0, 0, 0, 10, 2));
 		alleSpeisen.add(new de.lette.mensaplan.server.Speise(89, "Vanilleflammeri mit Brombeeren", SpeiseArt.DESSERT, false, "", 0, 0, 0, 0, 10, 2));
 
 		alleSpeisen.add(new de.lette.mensaplan.server.Speise(90, "Kürbiscremesuppe", SpeiseArt.VORSPEISE,true , "", 100, 100, 100, 100, 10, 2));
@@ -181,7 +181,7 @@ public class ConnectionHandler {
 		alleSpeisen.add(new de.lette.mensaplan.server.Speise(114, "Frühlingssalat", SpeiseArt.VORSPEISE,false , "", 100, 100, 100, 100, 10, 2));
 		alleSpeisen.add(new de.lette.mensaplan.server.Speise(115, "Quarkkeulchen mit Zimtzucker", SpeiseArt.VEGETARISCH,false, "", 100, 100, 100, 100, 10, 2));
 		alleSpeisen.add(new de.lette.mensaplan.server.Speise(116, "Rigatoni mit Käsesauce", SpeiseArt.VEGETARISCH,false, "", 100, 100, 100, 100, 10, 2));
-		alleSpeisen.add(new de.lette.mensaplan.server.Speise(117, "Schweinegeschnetzeltes mit Tsatsiki", SpeiseArt.VOLLKOST, false, "", 200, 200, 200, 200, 10, 2));
+		alleSpeisen.add(new de.lette.mensaplan.server.Speise(117, "Schweine geschnetzeltes mit Tsatsiki", SpeiseArt.VOLLKOST, false, "", 200, 200, 200, 200, 10, 2));
 		alleSpeisen.add(new de.lette.mensaplan.server.Speise(118, "Reis", SpeiseArt.BEILAGEN,false, "", 100, 100, 100, 100, 10, 2));
 		alleSpeisen.add(new de.lette.mensaplan.server.Speise(119, "Brombeer-Fool", SpeiseArt.DESSERT, false, "", 0, 0, 0, 0, 10, 2));
 		
