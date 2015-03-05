@@ -11,6 +11,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.widget.Toast;
 import de.lette.mensaplan.R;
 
 public class MainActivity extends ActionBarActivity implements NavigationDrawerCallbacks {
@@ -18,6 +19,7 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerC
 	private Toolbar mToolbar;
 	private NavigationDrawerFragment mNavigationDrawerFragment;
 	private static final String FIRST_LAUNCH = "first_launch";
+	private boolean isLast = false;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +42,8 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerC
 
 		// Schließe Drawer
 		mNavigationDrawerFragment.closeDrawer();
+		TabFragment fragment = TabFragment.newInstance(0);
+		getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack(null).commit();
 	}
 
 	@Override
@@ -54,37 +58,28 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerC
 		final FragmentTransaction fm = getSupportFragmentManager().beginTransaction();
 		switch (position) {
 		case 0:
-			// Toast.makeText(this, "Woche selected -> " + position,
-			// Toast.LENGTH_SHORT).show();
 			fragment = TabFragment.newInstance(position);
 			break;
 		case 1:
-			// Toast.makeText(this, "Woche selected -> " + position,
-			// Toast.LENGTH_SHORT).show();
 			fragment = TabFragment.newInstance(position);
 			break;
 		case 2:
-			// Toast.makeText(this, "Woche selected -> " + position,
-			// Toast.LENGTH_SHORT).show();
 			fragment = TabFragment.newInstance(position);
 			break;
 		case 3:
-			// Toast.makeText(this, "Woche selected -> " + position,
-			// Toast.LENGTH_SHORT).show();
 			fragment = TabFragment.newInstance(position);
 			break;
 		case 4:
-			// Aufruf Zusatzstoffe, Allergene
 			fragment = ZusaetzeFragment.newInstance(position);
 			break;
 		case 5:
-			// Aufruf Impressum
 			fragment = ImpressFragment.newInstance(position);
 			break;
 		default:
 			break;
 		}
-		fm.replace(R.id.fragment_container, fragment).addToBackStack("back");
+		isLast = false;
+		fm.replace(R.id.fragment_container, fragment).addToBackStack("fragBack");
 		if (fragment != null) {
 			new Handler().postDelayed(new Runnable() {
 				@Override
@@ -101,8 +96,15 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerC
 		if (mNavigationDrawerFragment.isDrawerOpen()) {
 			mNavigationDrawerFragment.closeDrawer();
 		} else {
-			if (getSupportFragmentManager().getBackStackEntryCount() > 1) {
-				super.onBackPressed();
+			if (!isLast) {
+				if (getSupportFragmentManager().getBackStackEntryCount() > 1) {
+					super.onBackPressed();
+				} else if (getSupportFragmentManager().getBackStackEntryCount() <= 1) {
+					Toast.makeText(this, "Durch nochmaliges drücken wird die App beendet.", Toast.LENGTH_SHORT).show();
+					isLast = true;
+				}
+			} else if (isLast) {
+				finish();
 			}
 		}
 	}

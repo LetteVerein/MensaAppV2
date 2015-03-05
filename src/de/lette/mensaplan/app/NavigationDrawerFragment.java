@@ -1,5 +1,8 @@
 package de.lette.mensaplan.app;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
@@ -15,9 +18,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.larvalabs.svgandroid.SVGParser;
 
 import de.lette.mensaplan.R;
 
@@ -49,7 +52,10 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
 		adapter = new NavigationDrawerAdapter(navigationItems);
 		adapter.setNavigationDrawerCallbacks(this);
 		mDrawerList.setAdapter(adapter);
-		selectItem(mCurrentSelectedPosition);
+
+		ImageView logo = (ImageView) view.findViewById(R.id.drawerLogo);
+		logo.setImageDrawable(SVGParser.getSVGFromResource(getResources(), getResources().getIdentifier("lettelogo", "raw", "de.lette.mensaplan")).createPictureDrawable());
+		// selectItem(mCurrentSelectedPosition);
 		return view;
 	}
 
@@ -138,10 +144,10 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
 
 	public List<NavigationItem> getMenu() {
 		List<NavigationItem> items = new ArrayList<NavigationItem>();
-		items.add(new NavigationItem("Woche 1"));
-		items.add(new NavigationItem("Woche 2"));
-		items.add(new NavigationItem("Woche 3"));
-		items.add(new NavigationItem("Woche 4"));
+		items.add(new NavigationItem("2.3. bis 6.3.2015"));
+		items.add(new NavigationItem("9.3. bis 13.3.2015"));
+		items.add(new NavigationItem("16.3. bis 20.3.2015"));
+		items.add(new NavigationItem("23.3. bis 27.3.2015"));
 		items.add(new NavigationItem("Zusatzstoffe, Allergene"));
 		items.add(new NavigationItem("Impressum"));
 		return items;
