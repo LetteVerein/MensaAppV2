@@ -1,5 +1,11 @@
 package de.lette.mensaplan.app;
 
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.text.ParseException;
+
+import org.apache.http.client.ClientProtocolException;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -10,6 +16,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.widget.Toast;
 import de.lette.mensaplan.R;
@@ -20,17 +27,34 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerC
 	private NavigationDrawerFragment mNavigationDrawerFragment;
 	private static final String FIRST_LAUNCH = "first_launch";
 	private boolean isLast = false;
+	private LocalTagesplan tagesplan;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		tagesplan = new LocalTagesplan(getApplicationContext());
 
 		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
 
 		if (prefs.getBoolean(FIRST_LAUNCH, true)) {
 			Intent intent = new Intent(this, FirstLaunch.class);
 			startActivity(intent);
+		}
+
+		if (prefs.getString("Tagesplan", null) == null) {
+			try {
+				tagesplan.setLocalTagesplan();
+				Log.i("Neuer Tagesplan","Neuer Tagesplan geladen");
+			} catch (ClientProtocolException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			} catch (URISyntaxException e) {
+				e.printStackTrace();
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
 		}
 
 		mToolbar = (Toolbar) findViewById(R.id.toolbar_actionbar);
