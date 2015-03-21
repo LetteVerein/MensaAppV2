@@ -1,7 +1,5 @@
 package de.lette.mensaplan.app;
 
-import java.math.RoundingMode;
-
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.view.View;
@@ -18,7 +16,7 @@ public class SpeisenItem extends LinearLayout {
 	private ImageView likeButton, dislikeButton;
 	private Drawable like1, like2, dislike1, dislike2;
 	private View selectedButton = null;
-	private TextView speisenBeschreibung, speisenPreis;
+	private TextView speisenBeschreibung;
 
 	public SpeisenItem(Context context, final Speise speise, String drawable) {
 		super(context);
@@ -34,10 +32,12 @@ public class SpeisenItem extends LinearLayout {
 		// speisenInfo = (TextView)
 		// view.findViewById(R.id.fragment_page_entry_warning);
 		// speisenInfo.setText("Beachte: " + speise.getBeachte());
-		if (speise.isDiät()) {
-			speisenPreis = (TextView) view.findViewById(R.id.fragment_page_entry_price);
-			speisenPreis.setText("Preis: " + speise.getPreis().setScale(2, RoundingMode.HALF_DOWN) + "€");
-		}
+		// if (speise.isDiät()) {
+		// speisenPreis = (TextView)
+		// view.findViewById(R.id.fragment_page_entry_price);
+		// speisenPreis.setText("Preis: " + speise.getPreis().setScale(2,
+		// RoundingMode.HALF_DOWN) + "€");
+		// }
 
 		likeButton = (ImageView) view.findViewById(R.id.fragment_page_entry_like);
 		likeButton.setLayerType(LAYER_TYPE_SOFTWARE, null);

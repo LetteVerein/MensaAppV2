@@ -55,7 +55,6 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
 
 		ImageView logo = (ImageView) view.findViewById(R.id.drawerLogo);
 		logo.setImageDrawable(SVGParser.getSVGFromResource(getResources(), getResources().getIdentifier("lettelogo", "raw", "de.lette.mensaplan")).createPictureDrawable());
-		// selectItem(mCurrentSelectedPosition);
 		return view;
 	}
 

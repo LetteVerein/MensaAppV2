@@ -3,6 +3,7 @@ package de.lette.mensaplan.app;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.text.ParseException;
+import java.util.Calendar;
 
 import org.apache.http.client.ClientProtocolException;
 
@@ -26,6 +27,7 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerC
 	private Toolbar mToolbar;
 	private NavigationDrawerFragment mNavigationDrawerFragment;
 	private static final String FIRST_LAUNCH = "first_launch";
+	public static final String ARG_WOCHE = "ARG_WOCHE";
 	private boolean isLast = false;
 	private LocalTagesplan tagesplan;
 
@@ -56,6 +58,8 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerC
 				e.printStackTrace();
 			}
 		}
+		Calendar now = Calendar.getInstance();
+		int mWoche = now.get(Calendar.WEEK_OF_MONTH);
 
 		mToolbar = (Toolbar) findViewById(R.id.toolbar_actionbar);
 		setSupportActionBar(mToolbar);
@@ -66,13 +70,11 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerC
 
 		// Schließe Drawer
 		mNavigationDrawerFragment.closeDrawer();
-		TabFragment fragment = TabFragment.newInstance(0);
-		getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack(null).commit();
+		mNavigationDrawerFragment.selectItem(mWoche-1);
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// getMenuInflater().inflate(R.menu.main, menu);
 		return super.onCreateOptionsMenu(menu);
 	}
 
@@ -103,6 +105,7 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerC
 			break;
 		}
 		isLast = false;
+		mNavigationDrawerFragment.getAdapter().selectPosition(position);
 		fm.replace(R.id.fragment_container, fragment).addToBackStack("fragBack");
 		if (fragment != null) {
 			new Handler().postDelayed(new Runnable() {
@@ -111,7 +114,6 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerC
 					fm.commit();
 				}
 			}, 350);
-
 		}
 	}
 

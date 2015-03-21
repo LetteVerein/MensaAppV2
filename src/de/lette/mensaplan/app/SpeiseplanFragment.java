@@ -48,7 +48,7 @@ public class SpeiseplanFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.fragment_speiseplan, container, false);
-		
+
 		ViewGroup vorspeisen = (LinearLayout) view.findViewById(R.id.vorspeisen);
 		ViewGroup vegetarisch = (LinearLayout) view.findViewById(R.id.vegetarisch);
 		ViewGroup vollkosten = (LinearLayout) view.findViewById(R.id.vollkost);
