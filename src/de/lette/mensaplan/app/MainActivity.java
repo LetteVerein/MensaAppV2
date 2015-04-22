@@ -7,6 +7,7 @@ import java.util.Calendar;
 
 import org.apache.http.client.ClientProtocolException;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -18,7 +19,12 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuItem;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.Toast;
 import de.lette.mensaplan.R;
 
@@ -30,6 +36,7 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerC
 	public static final String ARG_WOCHE = "ARG_WOCHE";
 	private boolean isLast = false;
 	private LocalTagesplan tagesplan;
+	private Menu menu;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -70,13 +77,43 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerC
 
 		// Schließe Drawer
 		mNavigationDrawerFragment.closeDrawer();
-		mNavigationDrawerFragment.selectItem(mWoche-1);
+		if(mWoche <= 4){
+			mNavigationDrawerFragment.selectItem(mWoche-2);
+		}else{
+			mNavigationDrawerFragment.selectItem(3);
+		}
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		return super.onCreateOptionsMenu(menu);
+		getMenuInflater().inflate(R.menu.main, menu);
+		this.menu = menu;
+        return true;
 	}
+	
+    public void resetUpdating()
+    {
+        // Get our refresh item from the menu
+        MenuItem m = menu.findItem(R.id.action_refresh);
+        if(m.getActionView()!=null)
+        {
+            // Remove the animation.
+            m.getActionView().clearAnimation();
+            m.setActionView(null);
+        }
+    }
+    
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+    	LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    	ImageView iv = (ImageView)inflater.inflate(R.layout.iv_refresh, null);
+    	Animation rotation = AnimationUtils.loadAnimation(this, R.anim.rotate_refresh);
+    	rotation.setRepeatCount(Animation.INFINITE);
+    	iv.startAnimation(rotation);
+    	item.setActionView(iv);
+        new UpdateSpeisen(this).execute();
+        return super.onOptionsItemSelected(item);
+    }
 
 	@Override
 	public void onNavigationDrawerItemSelected(int position) {
