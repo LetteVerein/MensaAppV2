@@ -1,10 +1,14 @@
 package de.lette.mensaplan.app;
 
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.Locale;
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.text.format.Time;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -63,12 +67,13 @@ public class TabFragment extends Fragment {
 			@Override
 			public void onPageScrollStateChanged(int arg0) {}
 		});
-
-		// Setzt den Tab auf den Aktuellen Tag.
-		Time today = new Time(Time.getCurrentTimezone());
-		today.setToNow();
-		if(today.weekDay >= 1 && today.weekDay <= 5) {
-			viewPager.setCurrentItem(today.weekDay - 1);
+		Calendar calendar = new GregorianCalendar(Locale.getDefault());
+		Date trialTime = new Date();
+		calendar.setTime(trialTime);
+		int today = calendar.get(Calendar.DAY_OF_WEEK);
+		
+		if(today >= 2 && today <= 6) {
+			viewPager.setCurrentItem(today - 2);
 		} else {
 			viewPager.setCurrentItem(0);
 		}

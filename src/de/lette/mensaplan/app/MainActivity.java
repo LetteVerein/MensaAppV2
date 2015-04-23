@@ -5,8 +5,6 @@ import java.net.URISyntaxException;
 import java.text.ParseException;
 import java.util.Calendar;
 
-import org.apache.http.client.ClientProtocolException;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -16,7 +14,7 @@ import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -28,10 +26,11 @@ import android.widget.ImageView;
 import android.widget.Toast;
 import de.lette.mensaplan.R;
 
-public class MainActivity extends ActionBarActivity implements NavigationDrawerCallbacks {
+public class MainActivity extends AppCompatActivity implements NavigationDrawerCallbacks {
 
 	private Toolbar mToolbar;
 	private NavigationDrawerFragment mNavigationDrawerFragment;
+	private SharedPreferences prefs;
 	private static final String FIRST_LAUNCH = "first_launch";
 	public static final String ARG_WOCHE = "ARG_WOCHE";
 	private boolean isLast = false;
@@ -44,7 +43,7 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerC
 		setContentView(R.layout.activity_main);
 		tagesplan = new LocalTagesplan(getApplicationContext());
 
-		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+		prefs = PreferenceManager.getDefaultSharedPreferences(this);
 
 		if (prefs.getBoolean(FIRST_LAUNCH, true)) {
 			Intent intent = new Intent(this, FirstLaunch.class);
@@ -55,8 +54,6 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerC
 			try {
 				tagesplan.setLocalTagesplan();
 				Log.i("Neuer Tagesplan","Neuer Tagesplan geladen");
-			} catch (ClientProtocolException e) {
-				e.printStackTrace();
 			} catch (IOException e) {
 				e.printStackTrace();
 			} catch (URISyntaxException e) {
@@ -107,6 +104,7 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerC
     public boolean onOptionsItemSelected(MenuItem item) {
     	LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     	ImageView iv = (ImageView)inflater.inflate(R.layout.iv_refresh, null);
+//    	menu.findItem(R.id.action_refresh);
     	Animation rotation = AnimationUtils.loadAnimation(this, R.anim.rotate_refresh);
     	rotation.setRepeatCount(Animation.INFINITE);
     	iv.startAnimation(rotation);
@@ -148,7 +146,7 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerC
 			new Handler().postDelayed(new Runnable() {
 				@Override
 				public void run() {
-					fm.commit();
+					fm.commitAllowingStateLoss();
 				}
 			}, 350);
 		}

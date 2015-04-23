@@ -6,8 +6,6 @@ import java.net.URISyntaxException;
 import java.text.ParseException;
 import java.util.List;
 
-import org.apache.http.client.ClientProtocolException;
-
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -25,7 +23,7 @@ public class LocalTagesplan {
 		sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
 	}
 	
-	public void setLocalTagesplan() throws ClientProtocolException, IOException, URISyntaxException, ParseException{
+	public void setLocalTagesplan() throws IOException, URISyntaxException, ParseException{
 		List<Tagesplan> data = ConnectionHandler.getClientData();
 		String json = new Gson().toJson(data);
 		editor = sharedPrefs.edit();
