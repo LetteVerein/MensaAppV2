@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity implements NavigationDrawerC
     
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-    	LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    	LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     	ImageView iv = (ImageView)inflater.inflate(R.layout.iv_refresh, null);
 //    	menu.findItem(R.id.action_refresh);
     	Animation rotation = AnimationUtils.loadAnimation(this, R.anim.rotate_refresh);
