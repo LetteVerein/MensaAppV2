@@ -1,8 +1,5 @@
 package de.lette.mensaplan.app;
 
-import java.io.IOException;
-import java.net.URISyntaxException;
-import java.text.ParseException;
 import java.util.Calendar;
 
 import android.content.Context;
@@ -50,18 +47,14 @@ public class MainActivity extends AppCompatActivity implements NavigationDrawerC
 			startActivity(intent);
 		}
 
-		if (prefs.getString("Tagesplan", null) == null) {
-			try {
-				tagesplan.setLocalTagesplan();
-				Log.i("Neuer Tagesplan","Neuer Tagesplan geladen");
-			} catch (IOException e) {
-				e.printStackTrace();
-			} catch (URISyntaxException e) {
-				e.printStackTrace();
-			} catch (ParseException e) {
-				e.printStackTrace();
-			}
-		}
+//		if (prefs.getString("Tagesplan", null) == null) {
+			new Thread() {
+				public void run() {
+					tagesplan.setLocalTagesplan();
+				}
+			}.start();
+			Log.i("Neuer Tagesplan", "Neuer Tagesplan geladen");
+//		}
 		Calendar now = Calendar.getInstance();
 		int mWoche = now.get(Calendar.WEEK_OF_MONTH);
 
@@ -74,9 +67,9 @@ public class MainActivity extends AppCompatActivity implements NavigationDrawerC
 
 		// Schließe Drawer
 		mNavigationDrawerFragment.closeDrawer();
-		if(mWoche <= 4){
-			mNavigationDrawerFragment.selectItem(mWoche-2);
-		}else{
+		if (mWoche <= 4) {
+			mNavigationDrawerFragment.selectItem(mWoche - 2);
+		} else {
 			mNavigationDrawerFragment.selectItem(3);
 		}
 	}
@@ -85,33 +78,31 @@ public class MainActivity extends AppCompatActivity implements NavigationDrawerC
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.main, menu);
 		this.menu = menu;
-        return true;
+		return true;
 	}
-	
-    public void resetUpdating()
-    {
-        // Get our refresh item from the menu
-        MenuItem m = menu.findItem(R.id.action_refresh);
-        if(m.getActionView()!=null)
-        {
-            // Remove the animation.
-            m.getActionView().clearAnimation();
-            m.setActionView(null);
-        }
-    }
-    
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-    	LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-    	ImageView iv = (ImageView)inflater.inflate(R.layout.iv_refresh, null);
-//    	menu.findItem(R.id.action_refresh);
-    	Animation rotation = AnimationUtils.loadAnimation(this, R.anim.rotate_refresh);
-    	rotation.setRepeatCount(Animation.INFINITE);
-    	iv.startAnimation(rotation);
-    	item.setActionView(iv);
-        new UpdateSpeisen(this).execute();
-        return super.onOptionsItemSelected(item);
-    }
+
+	public void resetUpdating() {
+		// Get our refresh item from the menu
+		MenuItem m = menu.findItem(R.id.action_refresh);
+		if (m.getActionView() != null) {
+			// Remove the animation.
+			m.getActionView().clearAnimation();
+			m.setActionView(null);
+		}
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		ImageView iv = (ImageView) inflater.inflate(R.layout.iv_refresh, null);
+		// menu.findItem(R.id.action_refresh);
+		Animation rotation = AnimationUtils.loadAnimation(this, R.anim.rotate_refresh);
+		rotation.setRepeatCount(Animation.INFINITE);
+		iv.startAnimation(rotation);
+		item.setActionView(iv);
+		new UpdateSpeisen(this).execute();
+		return super.onOptionsItemSelected(item);
+	}
 
 	@Override
 	public void onNavigationDrawerItemSelected(int position) {
