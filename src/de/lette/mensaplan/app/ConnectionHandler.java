@@ -3,24 +3,27 @@ package de.lette.mensaplan.app;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
+import java.net.URLEncoder;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+
 import android.annotation.SuppressLint;
 import android.util.Log;
+
 import com.google.gson.Gson;
+
 import de.lette.mensaplan.server.ClientData;
 import de.lette.mensaplan.server.Termin;
 
 public class ConnectionHandler {
-	public static String urlToServer = "http://192.168.50.30:8080/MensaPlan/?startdate=2001-01-01";
+	public static String urlToServer = "http://192.168.50.30:8080/MensaPlan/";
 	private static List<Tagesplan> tagesPläne;
 
 	public static List<Tagesplan> getClientData() throws IOException, URISyntaxException, ParseException {
@@ -98,7 +101,7 @@ public class ConnectionHandler {
 			Tagesplan tagesPlan = new Tagesplan(dateMap.getKey());
 			for (Entry<de.lette.mensaplan.server.Speise, Termin> dataMap : dateMap.getValue().entrySet()) {
 				de.lette.mensaplan.server.Speise s = dataMap.getKey();
-				Speise speise = new Speise(s.getName(), s.getArt(), s.isDiät(), dataMap.getValue().getPreis(), s.getBeachte(), s.getKcal(), s.getEiweiß(), s.getFett(), s.getKohlenhydrate(), data.getZusatzstoffe(s), s.getLikes(), s.getDislikes());
+				Speise speise = new Speise(s.getId(), s.getName(), s.getArt(), dataMap.getValue().isDiät(), dataMap.getValue().getPreis(), s.getBeachte(), s.getKcal(), s.getEiweiß(), s.getFett(), s.getKohlenhydrate(), data.getZusatzstoffe(s), s.getLikes(), s.getDislikes());
 				tagesPlan.addSpeise(speise);
 				Log.i("CONNECTION", speise.getName());
 			}
@@ -121,8 +124,10 @@ public class ConnectionHandler {
 	@SuppressLint("NewApi")
 	private static ClientData getClientDataFromServer() throws IOException, URISyntaxException {
 		// Prepare Connection //
-		URL url = new URL(urlToServer);
+		URL url = new URL(urlToServer + "?startdate=2001-01-01");
 		HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+		connection.setRequestProperty("charset", "UTF-8");
+		connection.setRequestProperty("Accept-Charset", "UTF-8");
 		connection.setRequestMethod("GET");
 
 		// Read Stream //
@@ -132,7 +137,7 @@ public class ConnectionHandler {
 		while ((currentLine = br.readLine()) != null) {
 			result += currentLine;
 		}
-		Log.d("CONNECTION", "" + result);
+		Log.d("GET", "" + result);
 		br.close();
 
 		// Get the ClientData
@@ -141,25 +146,43 @@ public class ConnectionHandler {
 		if (o == null)
 			new ClientData();
 		return o;
+	}
 
-		// HttpClient httpclient = new DefaultHttpClient();
-		// HttpResponse response = httpclient.execute(new HttpGet(urlToServer));
-		// StatusLine statusLine = response.getStatusLine();
-		// if (statusLine.getStatusCode() == HttpStatus.SC_OK) {
-		// ByteArrayOutputStream out = new ByteArrayOutputStream();
-		// response.getEntity().writeTo(out);
-		// String responseString = out.toString();
-		// out.close();
-		// // ..more logic
-		// Gson gson = new Gson();
-		// ClientData o = gson.fromJson(responseString, ClientData.class);
-		// if (o == null)
-		// new ClientData();
-		// return o;
-		// } else {
-		// // Closes the connection.
-		// response.getEntity().getContent().close();
-		// throw new IOException(statusLine.getReasonPhrase());
-		// }
+	/**
+	 * 
+	 * @param userId
+	 *            die Id vom Gerät des Nutzers
+	 * @param speiseId
+	 *            die Id der Speise, die zu bewerten ist
+	 * @param action
+	 *            entweder "like", "dislike" oder "reset" (siehe Action im
+	 *            Server)
+	 * @throws IOException
+	 */
+	public static boolean rateFoodWithAction(String userId, int speiseId, String action) throws IOException {
+		String requestParams = "user=" + URLEncoder.encode(userId, "UTF-8") + "&" + "speise=" + URLEncoder.encode("" + speiseId, "UTF-8") + "&" + "action=" + URLEncoder.encode(action, "UTF-8");
+
+		URL url = new URL(urlToServer);
+		HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+		connection.setRequestProperty("charset", "UTF-8");
+		connection.setRequestProperty("Accept-Charset", "UTF-8");
+		connection.setRequestMethod("POST");
+
+		OutputStreamWriter writer = new OutputStreamWriter(connection.getOutputStream());
+		writer.write(requestParams);
+		writer.flush();
+
+		// Read Stream //
+		BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream(), "UTF-8"));
+		String result = "";
+		String currentLine = "";
+		while ((currentLine = br.readLine()) != null) {
+			result += currentLine;
+		}
+		Log.d("POST", "" + result);
+
+		writer.close();
+		br.close();
+		return Boolean.parseBoolean(result);
 	}
 }

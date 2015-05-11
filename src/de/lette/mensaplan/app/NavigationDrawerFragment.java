@@ -37,6 +37,7 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
 	private boolean mFromSavedInstanceState;
 	private int mCurrentSelectedPosition;
 	private NavigationDrawerAdapter adapter;
+	private LocalTagesplan lt;
 
 	@Nullable
 	@Override
@@ -61,6 +62,7 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		//lt.getLocalTagesplan();
 		mUserLearnedDrawer = Boolean.valueOf(readSharedSetting(getActivity(), PREF_USER_LEARNED_DRAWER, "false"));
 		if (savedInstanceState != null) {
 			mCurrentSelectedPosition = savedInstanceState.getInt(STATE_SELECTED_POSITION);

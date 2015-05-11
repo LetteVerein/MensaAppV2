@@ -54,6 +54,7 @@ public class Tagesplan {
 }
 
 class Speise {
+	private int id;
 	private String name;
 	private SpeiseArt art;
 	private boolean isDiät;
@@ -67,8 +68,9 @@ class Speise {
 	private int likes;
 	private int dislikes;
 
-	public Speise(String name, SpeiseArt art, boolean isDiät, BigDecimal preis, String beachte, int kcal, int eiweiß, int fett, int kohlenhydrate,
+	public Speise(int id, String name, SpeiseArt art, boolean isDiät, BigDecimal preis, String beachte, int kcal, int eiweiß, int fett, int kohlenhydrate,
 			Set<Zusatzstoff> zusatzstoffe, int likes, int dislikes) {
+		this.id = id;
 		this.name = name;
 		this.art = art;
 		this.isDiät = isDiät;
@@ -83,6 +85,14 @@ class Speise {
 		this.dislikes = dislikes;
 	}
 
+	public int getId() {
+		return id;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
+	}
+	
 	public String getName() {
 		return name;
 	}

@@ -1,5 +1,7 @@
 package de.lette.mensaplan.server;
 
+import java.io.Serializable;
+
 import com.google.gson.Gson;
 
 /**
@@ -8,7 +10,8 @@ import com.google.gson.Gson;
  * @author Tommy Schmidt
  *
  */
-public class Zusatzstoff {
+public class Zusatzstoff implements Serializable {
+	private static final long serialVersionUID = -4233149297103159036L;
 	private int id;
 	private int nummer;
 	private String name;

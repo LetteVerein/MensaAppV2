@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
+import android.provider.Settings.Secure;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
@@ -17,9 +18,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.ImageView;
 import android.widget.Toast;
 import de.lette.mensaplan.R;
 
@@ -30,6 +28,7 @@ public class MainActivity extends AppCompatActivity implements NavigationDrawerC
 	private SharedPreferences prefs;
 	private static final String FIRST_LAUNCH = "first_launch";
 	public static final String ARG_WOCHE = "ARG_WOCHE";
+	public static String android_id;
 	private boolean isLast = false;
 	private LocalTagesplan tagesplan;
 	private Menu menu;
@@ -39,13 +38,14 @@ public class MainActivity extends AppCompatActivity implements NavigationDrawerC
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		tagesplan = new LocalTagesplan(getApplicationContext());
-
+		android_id = Secure.getString(getContentResolver(),Secure.ANDROID_ID);
 		prefs = PreferenceManager.getDefaultSharedPreferences(this);
 
 		if (prefs.getBoolean(FIRST_LAUNCH, true)) {
 			Intent intent = new Intent(this, FirstLaunch.class);
 			startActivity(intent);
 		}
+		Log.d("Android_ID: ", android_id);
 
 //		if (prefs.getString("Tagesplan", null) == null) {
 			new Thread() {
@@ -93,13 +93,6 @@ public class MainActivity extends AppCompatActivity implements NavigationDrawerC
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		ImageView iv = (ImageView) inflater.inflate(R.layout.iv_refresh, null);
-		// menu.findItem(R.id.action_refresh);
-		Animation rotation = AnimationUtils.loadAnimation(this, R.anim.rotate_refresh);
-		rotation.setRepeatCount(Animation.INFINITE);
-		iv.startAnimation(rotation);
-		item.setActionView(iv);
 		new UpdateSpeisen(this).execute();
 		return super.onOptionsItemSelected(item);
 	}
