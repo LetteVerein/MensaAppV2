@@ -6,7 +6,6 @@ import java.util.Set;
 import com.google.gson.Gson;
 
 /**
- * BITTE NICHT NUTZEN! Diese Klasse dient deserialisierungszwecken.
  * Representiert einen Eintrag aus der Tabelle speisen.
  * 
  * @author Tommy Schmidt
@@ -30,7 +29,7 @@ public class Speise {
 		zusatzstoffe = new LinkedHashSet<Integer>();
 	}
 
-	public Speise(int id, String name, SpeiseArt typ, boolean isDiät, String beachte, int kcal, int eiweiß, int fett, int kohlenhydrate, int likes, int dislikes) {
+	public Speise(int id, String name, SpeiseArt typ, boolean isDiät, String beachte, int kcal, int eiweiß, int fett, int kohlenhydrate) {
 		this();
 		this.id = id;
 		this.name = name;
@@ -41,8 +40,6 @@ public class Speise {
 		this.eiweiß = eiweiß;
 		this.fett = fett;
 		this.kohlenhydrate = kohlenhydrate;
-		this.likes = likes;
-		this.dislikes = dislikes;
 	}
 
 	public int getId() {
@@ -125,24 +122,16 @@ public class Speise {
 		return likes;
 	}
 
-	public void addLikes() {
-		likes += 1;
+	public void setLikes(int likes) {
+		this.likes = likes;
 	}
 
-	public void remLikes() {
-		likes -= 1;
-	}
-	
 	public int getDislikes() {
 		return dislikes;
 	}
 
-	public void addDislikes() {
-		dislikes += 1;
-	}
-
-	public void remDislikes() {
-		dislikes -= 1;
+	public void setDislikes(int dislikes) {
+		this.dislikes = dislikes;
 	}
 
 	@Override
@@ -157,11 +146,13 @@ public class Speise {
 			if(getKohlenhydrate() != speise.getKohlenhydrate()) return false;
 			if(getArt() != speise.getArt()) return false;
 			if(isDiät() != speise.isDiät()) return false;
+			if(getLikes() != speise.getLikes()) return false;
+			if(getDislikes() != speise.getDislikes()) return false;
 			return true;
 		}
 		return false;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		return (41 * (41 + getId()));

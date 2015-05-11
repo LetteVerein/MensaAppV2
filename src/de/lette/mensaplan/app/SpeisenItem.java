@@ -52,41 +52,43 @@ public class SpeisenItem extends LinearLayout {
 
 		likeButton.setOnClickListener(new OnClickListener() {
 			@Override
-			public void onClick(final View v) {
+			public void onClick(View v) {
 				if (selectedButton == v) {
 					new Thread() {
 						public void run() {
 							try {
 								boolean success = ConnectionHandler.rateFoodWithAction(MainActivity.android_id, speise.getId(), "reset");
 								Log.i("RESET", "RESET works");
-								if(success) {
-									speise.remLikes();
-									likeButton.setImageDrawable(like2);
-									selectedButton = null;
-									dislikeButton.setClickable(true);									
+								if(!success) {
+									speise.addLikes();			
 								}
 							} catch (IOException e) {
 								e.printStackTrace();
 							}
 						}
 					}.start();
+					speise.remLikes();	
+					likeButton.setImageDrawable(like2);
+					selectedButton = null;
+					dislikeButton.setClickable(true);
 				} else if (selectedButton == null) {
 					new Thread() {
 						public void run() {
 							try {
 								boolean success = ConnectionHandler.rateFoodWithAction(MainActivity.android_id, speise.getId(), "like");
 								Log.i("LIKE", "LIKE works");
-								if(success) {
-									speise.addLikes();
-									likeButton.setImageDrawable(like1);
-									selectedButton = v;
-									dislikeButton.setClickable(false);
+								if(!success) {
+									speise.remLikes();
 								}
 							} catch (IOException e) {
 								e.printStackTrace();
 							}
 						}
 					}.start();
+					speise.addLikes();
+					likeButton.setImageDrawable(like1);
+					selectedButton = v;
+					dislikeButton.setClickable(false);
 				}
 				likeCount.setText("" + speise.getLikes());
 			}
@@ -102,41 +104,44 @@ public class SpeisenItem extends LinearLayout {
 
 		dislikeButton.setOnClickListener(new OnClickListener() {
 			@Override
-			public void onClick(final View v) {
+			public void onClick(View v) {
 				if (selectedButton == v) {
 					new Thread() {
 						public void run() {
 							try {
 								boolean success = ConnectionHandler.rateFoodWithAction(MainActivity.android_id, speise.getId(), "reset");
 								Log.i("RESET", "RESET works");
-								if(success) {
-									speise.remDislikes();
-									dislikeButton.setImageDrawable(dislike2);
-									selectedButton = null;
-									likeButton.setClickable(true);									
+								if(!success) {
+									speise.addDislikes();								
 								}
 							} catch (IOException e) {
 								e.printStackTrace();
+								
 							}
 						}
 					}.start();
+					speise.remDislikes();
+					dislikeButton.setImageDrawable(dislike2);
+					selectedButton = null;
+					likeButton.setClickable(true);	
 				} else if (selectedButton == null) {
 					new Thread() {
 						public void run() {
 							try {
 								boolean success = ConnectionHandler.rateFoodWithAction(MainActivity.android_id, speise.getId(), "dislike");
 								Log.i("DISLIKE", "DISLIKE works");
-								if(success) {
-									speise.addDislikes();
-									dislikeButton.setImageDrawable(dislike1);
-									selectedButton = v;
-									likeButton.setClickable(false);									
+								if(!success) {
+									speise.remDislikes();								
 								}
 							} catch (IOException e) {
 								e.printStackTrace();
 							}
 						}
 					}.start();
+					speise.addDislikes();
+					dislikeButton.setImageDrawable(dislike1);
+					selectedButton = v;
+					likeButton.setClickable(false);	
 				}
 				dislikeCount.setText("" + speise.getDislikes());
 			}
