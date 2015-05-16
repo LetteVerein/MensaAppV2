@@ -15,6 +15,12 @@ import com.larvalabs.svgandroid.SVGParser;
 
 import de.lette.mensaplan.R;
 
+/**
+ * activity, die zum ersten Start der App direkt nach der Installation aufgerufen wird mit den Nutzungsbestimmungen.
+ * 
+ * @author Marcel Henze
+ *  */
+
 public class FirstLaunch extends Activity {
 
 	private static final String FIRST_LAUNCH = "first_launch";

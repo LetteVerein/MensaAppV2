@@ -14,7 +14,12 @@ import android.widget.RelativeLayout;
 import de.lette.mensaplan.R;
 import de.lette.mensaplan.server.SpeiseArt;
 
-// In this case, the fragment displays simple text based on the page
+/**
+ * Anzeige des Speisenplans.
+ * 
+ * @author Marcel Henze
+ */
+
 public class SpeiseplanFragment extends Fragment {
 	public static final String ARG_PAGE = "ARG_PAGE";
 	public static final String ARG_WOCHE = "ARG_WOCHE";
@@ -24,6 +29,13 @@ public class SpeiseplanFragment extends Fragment {
 	private List<Tagesplan> data;
 	private LocalTagesplan tagesplan;
 
+	/**
+	 * Methode, die aufgerufen wird um ein neues Fragment des Speiseplans zu erstellen.
+	 * @param page
+	 * @param woche
+	 * @return
+	 */
+	
 	public static SpeiseplanFragment newInstance(int page, int woche) {
 		Bundle args = new Bundle();
 		args.putInt(ARG_PAGE, page);
@@ -33,6 +45,10 @@ public class SpeiseplanFragment extends Fragment {
 		return fragment;
 	}
 
+	/**
+	 * Beim erstellen des SpeiseplanFragments wird der aktuelle Speiseplan geladen.
+	 */
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -43,7 +59,7 @@ public class SpeiseplanFragment extends Fragment {
 	}
 
 	/**
-	 * Fügt die Speisen hinzu und zeigt sie an..
+	 * Fügt die Speisen den jewaligen Gruppen hinzu und zeigt sie an..
 	 */
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

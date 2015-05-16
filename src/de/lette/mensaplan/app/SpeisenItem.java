@@ -14,6 +14,12 @@ import com.larvalabs.svgandroid.SVGParser;
 
 import de.lette.mensaplan.R;
 
+/**
+ * Stellt die Anzeige einer Speise dar.
+ * 
+ * @author Marcel Henze
+ */
+
 public class SpeisenItem extends LinearLayout {
 	private ImageView icon;
 	private ImageView likeButton, dislikeButton;
@@ -21,6 +27,16 @@ public class SpeisenItem extends LinearLayout {
 	private View selectedButton = null;
 	private TextView speisenBeschreibung;
 
+	/**
+	 * View wird aufgebaut, Icon wird aus einem abgespeicherten SVG zusammengebaut und gesetzt.
+	 * Speisenbeschreibung wird gesetzt.
+	 * Handling der Bewertungen über Like, Dislike Buttons.
+	 * 
+	 * @param context
+	 * @param speise Das speisenitem, welches dargestellt werden soll.
+	 * @param drawable Name des Speisentyps, welches als Icon dargestellt wird.
+	 */
+	
 	public SpeisenItem(Context context, final Speise speise, String drawable) {
 		super(context);
 
@@ -28,7 +44,7 @@ public class SpeisenItem extends LinearLayout {
 		icon = (ImageView) view.findViewById(R.id.fragment_page_entry_imageView);
 		Drawable imageResource = SVGParser.getSVGFromResource(getResources(), getResources().getIdentifier(drawable, "raw", "de.lette.mensaplan")).createPictureDrawable();
 		icon.setImageDrawable(imageResource);
-		icon.setLayerType(LAYER_TYPE_SOFTWARE, null);
+		icon.setLayerType(LAYER_TYPE_SOFTWARE, null); //Wichtig für die Anzeige des Icons auf den Geräten.
 
 		speisenBeschreibung = (TextView) view.findViewById(R.id.fragment_page_entry_description);
 		speisenBeschreibung.setText(speise.getName());

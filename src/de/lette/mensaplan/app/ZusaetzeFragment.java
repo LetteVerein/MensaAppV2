@@ -13,6 +13,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+/**
+ * Fragment für die anzeige der Zusatzstoffe.
+ * 
+ * @author Marcel Henze
+ */
+
 public class ZusaetzeFragment extends Fragment {
 
 	public static ZusaetzeFragment newInstance(int page) {
@@ -25,6 +31,10 @@ public class ZusaetzeFragment extends Fragment {
 		super.onCreate(savedInstanceState);
 	}
 
+	/**
+	 * Schreibt die ausglesenen Texte in die Textfelder.
+	 */
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.fragment_zusaetze, container, false);
@@ -41,6 +51,13 @@ public class ZusaetzeFragment extends Fragment {
 		return view;
 	}
 
+	/**
+	 * Liest ein Textfile aus.
+	 * 
+	 * @param is InputStream aus dem die Zusatzstoffe gelesen werden.
+	 * @return Gibt den Text des textfiles zurück.
+	 */
+	
 	private StringBuilder readFile(InputStream is) {
 		BufferedReader reader = new BufferedReader(new InputStreamReader(is));
 		StringBuilder strBuild = new StringBuilder();

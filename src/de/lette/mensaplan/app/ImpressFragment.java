@@ -9,6 +9,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+/**
+ * Fragment für die Anzeige des Impressums.
+ * 
+ * @author Marcel Henze
+ */
+
 public class ImpressFragment extends Fragment {
 
 	public static ImpressFragment newInstance(int page) {
@@ -21,6 +27,9 @@ public class ImpressFragment extends Fragment {
 		super.onCreate(savedInstanceState);
 	}
 
+	/**
+	 * Baut ein Fragment aus der fragment_impress xml, gibt dem Textfeld die möglichkeit zu scrollen.
+	 */
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.fragment_impress, container, false);

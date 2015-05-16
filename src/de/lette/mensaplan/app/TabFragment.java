@@ -72,6 +72,7 @@ public class TabFragment extends Fragment {
 		calendar.setTime(trialTime);
 		int today = calendar.get(Calendar.DAY_OF_WEEK);
 		
+		// Setzt den ViewPager auf den aktuellen Tag (Montag - Freitag) oder auf Montag falls Wochenende.
 		if(today >= 2 && today <= 6) {
 			viewPager.setCurrentItem(today - 2);
 		} else {

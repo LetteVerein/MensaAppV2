@@ -143,6 +143,11 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
 		mCallbacks = null;
 	}
 
+	/**
+	 * Befüllen des Drawers mit Wochen und anderen Menüpunkten.
+	 * @return
+	 */
+	
 	public List<NavigationItem> getMenu() {
 		List<NavigationItem> items = new ArrayList<NavigationItem>();
 		items.add(new NavigationItem("6.4. bis 10.4.2015"));

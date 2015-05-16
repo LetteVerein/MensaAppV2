@@ -5,6 +5,13 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+/**
+ * MyFragmentPagerAdapter ist für die Tagesauswahl/anzeige zuständig.
+ * 
+ * @author Marcel Henze
+ *
+ */
+
 public class MyFragmentPagerAdapter extends FragmentPagerAdapter {
 	private String tabTitles[] = new String[]{"Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag"};
 	final int PAGE_COUNT = tabTitles.length;

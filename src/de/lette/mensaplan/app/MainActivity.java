@@ -2,7 +2,6 @@ package de.lette.mensaplan.app;
 
 import java.util.Calendar;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -15,11 +14,16 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 import de.lette.mensaplan.R;
+
+/**
+ * Main Methode in der die App aufgebaut und verwaltet wird.
+ * 
+ * @author Marcel Henze
+ *  */
 
 public class MainActivity extends AppCompatActivity implements NavigationDrawerCallbacks {
 
@@ -31,8 +35,16 @@ public class MainActivity extends AppCompatActivity implements NavigationDrawerC
 	public static String android_id;
 	private boolean isLast = false;
 	private LocalTagesplan tagesplan;
-	private Menu menu;
 
+	/**
+	 * Wird start der App aufgerufen.
+	 * In der android_id wird die einzigartige ID des Geräts gespeichert um die identifizierung des users im Bewertungssystem.
+	 * Abfrage auf den ersten start der App bei true wird der user auf FirstLaunch umgeleitet.
+	 * Die App holt sich den aktuellen Speiseplan vom server.
+	 * Setup der toolbar und des drawers.
+	 * Setzen der wochenauswahl auf die aktuelle Woche.
+	 */
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -45,7 +57,6 @@ public class MainActivity extends AppCompatActivity implements NavigationDrawerC
 			Intent intent = new Intent(this, FirstLaunch.class);
 			startActivity(intent);
 		}
-		Log.d("Android_ID: ", android_id);
 
 //		if (prefs.getString("Tagesplan", null) == null) {
 			new Thread() {
@@ -77,26 +88,23 @@ public class MainActivity extends AppCompatActivity implements NavigationDrawerC
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.main, menu);
-		this.menu = menu;
 		return true;
 	}
 
-	public void resetUpdating() {
-		// Get our refresh item from the menu
-		MenuItem m = menu.findItem(R.id.action_refresh);
-		if (m.getActionView() != null) {
-			// Remove the animation.
-			m.getActionView().clearAnimation();
-			m.setActionView(null);
-		}
-	}
-
+	/**
+	 * Verantwortlich für das drücken des refresh Buttons in der Menüleiste.
+	 * Fordert neue Daten vom Server an.
+	 */
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		new UpdateSpeisen(this).execute();
 		return super.onOptionsItemSelected(item);
 	}
 
+	/**
+	 * Navigation durch den Drawer.
+	 * Fragente werden erstellt und ausgetauscht.
+	 */
 	@Override
 	public void onNavigationDrawerItemSelected(int position) {
 		Fragment fragment = null;
@@ -136,6 +144,12 @@ public class MainActivity extends AppCompatActivity implements NavigationDrawerC
 		}
 	}
 
+	/**
+	 * Überschreiben der onBackPressed() Methode welche beim drücken des return Buttons aufgerufen wird.
+	 * Wenn der Drawer geöffnet ist schließt ein drücken den Drawer.
+	 * Wenn der Drawer geschlossen ist wird solange durch die fragmente zurücknavigiert, bis man wieder auf dem ersten Fragment landet.
+	 * Wenn man sich auf dem ersten Fragment befindet wird man darauf aufmerksam gemacht, dass ein erneutes drücken die App beendet.
+	 */
 	@Override
 	public void onBackPressed() {
 		if (mNavigationDrawerFragment.isDrawerOpen()) {

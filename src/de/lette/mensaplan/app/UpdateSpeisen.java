@@ -5,6 +5,12 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
+/**
+ * Speisen werden im aktualisiert.
+ * 
+ * @author Marcel Henze
+ */
+
 public class UpdateSpeisen extends AsyncTask<Void, Void, Void> {
 	private Context mCon;
 	private LocalTagesplan tagesplan;
@@ -14,6 +20,10 @@ public class UpdateSpeisen extends AsyncTask<Void, Void, Void> {
 		mCon = con;
 	}
 
+	/**
+	 * Bevor der Update prozess beginnt wird ein Dialogfeld angelegt, welches den user darüber informiert, was gerade geschieht.
+	 */
+	
 	@Override
 	protected void onPreExecute() {
 		progressDialog = new ProgressDialog(mCon);
@@ -22,6 +32,10 @@ public class UpdateSpeisen extends AsyncTask<Void, Void, Void> {
 		progressDialog.show();
 	}
 
+	/**
+	 * Führt im Hintergrund den Update prozess durch.
+	 */
+	
 	@Override
 	protected Void doInBackground(Void... params) {
 		try {
@@ -35,6 +49,10 @@ public class UpdateSpeisen extends AsyncTask<Void, Void, Void> {
 		}
 	}
 
+	/**
+	 * Nach dem beenden des Updates wird das Dialogfeld geschlossen.
+	 */
+	
 	@Override
 	protected void onPostExecute(Void params) {
 		// Give some feedback on the UI.

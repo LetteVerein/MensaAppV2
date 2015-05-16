@@ -15,6 +15,12 @@ import android.util.Log;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+/**
+ * Speiseplan vom Server laden und lokal speichern.
+ * 
+ * @author Marcel Henze *
+ */
+
 public class LocalTagesplan {
 
 	static SharedPreferences sharedPrefs;
@@ -24,6 +30,9 @@ public class LocalTagesplan {
 		sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
 	}
 
+	/**
+	 * Holt sich den aktuellen Speiseplan vom Server und schreibt ihn als JSon lokal in die SharedPreferences.
+	 */
 	public void setLocalTagesplan() {
 		try {
 			List<Tagesplan> data = ConnectionHandler.getClientData();
@@ -42,6 +51,10 @@ public class LocalTagesplan {
 		}
 	}
 
+	/**
+	 * Holt sich den Speiseplan aus den SharedPreferences und gibt es als Tagesplan Liste zurück.
+	 * @return
+	 */
 	public List<Tagesplan> getLocalTagesplan() {
 		Type type = new TypeToken<List<Tagesplan>>() {
 		}.getType();
